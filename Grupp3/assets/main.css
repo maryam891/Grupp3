@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: rgb(32,32,32);
+    background: linear-gradient(90deg, rgba(32,32,32,1) 100%, rgba(38,0,111,1) 100%, rgba(75,3,132,1) 100%);
+    color: #ffffff;
+}
