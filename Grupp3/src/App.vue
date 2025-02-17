@@ -1,10 +1,10 @@
 <script>
-  import CitiesList from "./components/CitiesList.vue";
+  import Home from "./components/Home.vue";
   import HelloWorld from "./components/HelloWorld.vue";
 
   export default {
     components: {
-      CitiesList,
+      Home,
       HelloWorld
     }
   };
@@ -12,5 +12,5 @@
 
 <template>
   <HelloWorld msg="Hello World!" />
-  <CitiesList />
+  <Home/>
 </template>
