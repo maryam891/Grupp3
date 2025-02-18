@@ -27,13 +27,24 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
 .startQuizContainer {
-  height: 300px;
-  width: 400px;
-  background-color: rgb(244, 237, 227);
+  height: 247.98px;
+  width: 450px;
+  background-color: FDFDFD;
   position: relative;
-  left: 35%;
+  left: 27%;
   bottom: -80%;
+  border-radius: 43.02px;
+  text-align: center;
+
+}
+p {
+  font-weight: bold;
+  position: relative;
+  bottom: -80%;
+  left: 29%;
+  margin-bottom: 10px;
+
 }
 </style>
