@@ -28,10 +28,14 @@ export default {
 </template>
 
 <style scoped>
+
+h1 {
+  color: #6C6C6C;
+}
 .startQuizContainer {
   height: 247.98px;
   width: 450px;
-  background-color: FDFDFD;
+  background-color: #FDFDFD;
   position: relative;
   left: 27%;
   bottom: -80%;
