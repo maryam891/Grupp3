@@ -1,15 +1,8 @@
 <script>
 export default {
-  created() {
-    fetch("https://avancera.app/cities/")
-      .then((response) => response.json())
-      .then((cities) => {
-        this.cities = cities;
-      });
-  },
   data() {
     return {
-      cities: null,
+      earthImg:"/assets/image/earth-transparent.png"
     };
   },
 };
@@ -24,6 +17,7 @@ export default {
     <button>
       Start Quiz
     </button>
+    <img :src="earthImg" class="earthImg">
   </div>
 </template>
 
@@ -31,26 +25,46 @@ export default {
 
 h1 {
   color: #6C6C6C;
-  font-size: 2.25rem;
+  position: absolute;
+  left: 33%;
+  top: 10%;
+  font-weight: 500;
 }
 .startQuizContainer {
   height: 247.98px;
-  width: 450px;
+  width: 455px;
   background-color: #FDFDFD;
   position: absolute;
-  left: 20%;
+  left: 23%;
   top: 30%;
   border-radius: 43.02px;
-  text-align: center;
 
 }
 p {
   font-weight: bold;
   position: absolute;
-  font-size: 1.125rem;
   top: 20%;
-  left: 20%;
+  left: 24%;
   margin-bottom: 10px;
 
+}
+button {
+  background-color: #E3CAFB;
+  border: none;
+  width: 140px;
+  height: 43.21px;
+  border-radius: 36.06px;
+  color:#280070;
+  font-weight: 550;
+  position: absolute;
+  top: 43%;
+  left: 28%;
+}
+.earthImg {
+  height: 200px;
+  width: 200px;
+  position: relative;
+  left: 64%;
+  top:40%
 }
 </style>
