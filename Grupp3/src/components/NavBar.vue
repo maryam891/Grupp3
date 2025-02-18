@@ -3,18 +3,17 @@
 <template>
   <header>
     <nav class="navbar-container">
-      <router-link to="/">
-        <img src="/assets/image/Space Learning Logo.png" alt="Logo" />
-      </router-link>
       <ul class="nav">
-        <li class="nav-link">
-          <router-link to="/">Home</router-link>
+        <li>
+          <router-link to="/">
+            <img src="/assets/image/Space Learning Logo.png" alt="Logo" />
+          </router-link>
         </li>
-        <li class="nav-link">
-          <router-link to="/quiz">Quiz</router-link>
+        <li>
+          <router-link to="/quiz" class="nav-link">Quiz</router-link>
         </li>
-        <li class="nav-link">
-          <router-link to="/facts">Facts</router-link>
+        <li>
+          <router-link to="/facts" class="nav-link">Facts</router-link>
         </li>
       </ul>
     </nav>
@@ -24,12 +23,16 @@
 <style>
 .navbar-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: left;
+  padding: 20px;
 }
 .nav {
   display: flex;
+  list-style: none;
 }
 .nav-link {
-  padding: 0 20px;
+  padding: 0 40px;
+  text-decoration: none;
+  color: #ffffff;
 }
 </style>
