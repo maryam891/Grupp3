@@ -7,7 +7,7 @@ export default createRouter({
   history: createWebHashHistory(),
   routes: [
     { path: "/", component: HomeView },
-    { path: "/quiz", component: QuizView },
+    { path: "/quiz", component: QuizView, name: "quiz" },
     { path: "/facts", component: FactsView },
   ],
 });
