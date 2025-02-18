@@ -1,16 +1,7 @@
-<script>
-  import Home from "./components/Home.vue";
-  import HelloWorld from "./components/HelloWorld.vue";
-
-  export default {
-    components: {
-      Home,
-      HelloWorld
-    }
-  };
+<script setup>
+import NavBar from "./components/NavBar.vue";
 </script>
 
 <template>
-  <HelloWorld msg="Hello World!" />
-  <Home/>
+  <NavBar />
 </template>

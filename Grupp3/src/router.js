@@ -1,12 +1,13 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Home from "./views/Home.vue";
+import HomeView from "./views/HomeView.vue";
+import QuizView from "./views/QuizView.vue";
+import FactsView from "./views/FactsView.vue";
 
 export default createRouter({
   history: createWebHashHistory(),
   routes: [
-    {
-      component: Home,
-      path: "/",
-    },
+    { path: "/", component: HomeView },
+    { path: "/quiz", component: QuizView },
+    { path: "/facts", component: FactsView },
   ],
 });
