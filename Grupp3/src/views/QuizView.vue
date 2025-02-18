@@ -31,23 +31,25 @@ export default {
 
 h1 {
   color: #6C6C6C;
+  font-size: 2.25rem;
 }
 .startQuizContainer {
   height: 247.98px;
   width: 450px;
   background-color: #FDFDFD;
-  position: relative;
-  left: 27%;
-  bottom: -80%;
+  position: absolute;
+  left: 20%;
+  top: 30%;
   border-radius: 43.02px;
   text-align: center;
 
 }
 p {
   font-weight: bold;
-  position: relative;
-  bottom: -80%;
-  left: 29%;
+  position: absolute;
+  font-size: 1.125rem;
+  top: 20%;
+  left: 20%;
   margin-bottom: 10px;
 
 }
