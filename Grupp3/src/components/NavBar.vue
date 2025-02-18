@@ -1,14 +1,12 @@
-<script setup></script>
+<script></script>
 
 <template>
   <header>
     <nav class="navbar-container">
+      <router-link to="/">
+        <img src="/assets/image/Space Learning Logo.png" alt="Logo" />
+      </router-link>
       <ul class="nav">
-        <li>
-          <router-link to="/">
-            <img src="/assets/image/Space Learning Logo.png" alt="Logo" />
-          </router-link>
-        </li>
         <li>
           <router-link to="/quiz" class="nav-link">Quiz</router-link>
         </li>
@@ -23,7 +21,7 @@
 <style>
 .navbar-container {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   padding: 20px;
 }
 .nav {
