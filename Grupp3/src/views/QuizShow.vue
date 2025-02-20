@@ -91,6 +91,7 @@ export default {
         >
           {{ answer.text }}
         </button>
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
     </div>
   </div>

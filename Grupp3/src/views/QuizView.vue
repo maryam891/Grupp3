@@ -29,17 +29,17 @@ export default {
   <div id="textContainer">
   <div>
     <p class="factText">Fact 1</p>
-    <img :src="starImg" class="starImg">
+    <i class="fa-regular fa-star staIcon"></i>
     <p>Gamified learning</p>
   </div>
   <div>
     <p class="factText">Fact 2</p>
-    <img :src="starImg" class="starImg">
+    <i class="fa-regular fa-star starIcon"></i>
     <p>Daily challenges</p>
   </div>
   <div>
     <p class="factText">Fact 3</p>
-    <img :src="starImg" class="starImg">
+    <i class="fa-regular fa-star starIcon"></i>
     <p>Bite-sized, anytime learning</p>
   </div>
   </div>
@@ -139,10 +139,13 @@ button:hover {
   transform: rotate(-20deg);
 }
 
-.starImg {
+.starIcon {
   position: relative;
   left: 25%;
   margin-bottom: 10px;
+  color:#E3CAFB;
+  height: 30px;
+  width: 30px;
 }
 
 
