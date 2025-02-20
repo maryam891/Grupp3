@@ -3,38 +3,45 @@
     data() {
       return {
         earthImg:"/assets/image/earth-transparent.png",
-        star: "/assets/image/starImg.png"
+        starImg: "/assets/image/starImg.png"
       }
     }
   };
 </script>
 
 <template>
-  <main>
-    <div class="startpage-intro-container">
-      <h1>Learn about the planets</h1>
-      <p>One quiz at a time</p>
-      <div class="startpage-btn-part">
-        <router-link to="/quiz">
-          <button class="btn-quiz">Go to quiz</button>
-        </router-link>
-        <router-link to="/facts">
-          <button class="btn-more">Read more</button>
-        </router-link>
-      </div>
-      <div class="startpage-background-planet">
-        <img :src="earthImg" class="earth-img">
-      </div>
+  <div class="startpage-intro-container">
+    <h1>Learn about the planets</h1>
+    <p>One quiz at a time</p>
+    <div class="startpage-btn-part">
+      <router-link to="/quiz">
+        <button class="btn-quiz">Go to quiz</button>
+      </router-link>
+      <router-link to="/facts">
+        <button class="btn-more">Read more</button>
+      </router-link>
     </div>
-    <div class="startpage-sellingpoints-container">
-      <img :src="star" alt="Fact 1" class="star">
+    <div class="startpage-background-planet">
+      <img :src="earthImg" class="earth-img">
+    </div>
+  </div>
+  <div id="textContainer">
+    <div>
+      <p class="factText">Fact 1</p>
+      <img :src="starImg" class="star-img">
       <p>Gamified learning</p>
-      <img :src="star" alt="Fact 2" class="star">
-      <p>Bite-sized, anytime learning</p>
-      <img :src="star" alt="Fact 3" class="star">
+    </div>
+    <div>
+      <p class="factText">Fact 2</p>
+      <img :src="starImg" class="star-img">
       <p>Daily challenges</p>
     </div>
-  </main>
+    <div>
+      <p class="factText">Fact 3</p>
+      <img :src="starImg" class="star-img">
+      <p>Bite-sized, anytime learning</p>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -52,10 +59,6 @@
 
 .earth-img {
   height: 70vh;
-}
-
-.star {
-  height: 5vh;
 }
 
 p {
@@ -102,11 +105,33 @@ p {
   color: #27006f;
 }
 
-.startpage-sellingpoints-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  padding: 6em;
-  margin-bottom: 3em;
+#textContainer {
+  display: flex;
+  width: 800px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 10px;
+  position: absolute;
+  top: 73%;
+  left: 22%;
+}
+
+.factText {
+  width: 90px;
+  position: relative;
+  left: 10%;
+  height: 30px;
+  background-color:#E3CAFB;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.starImg {
+  position: relative;
+  margin-bottom: 10px;
+  left: 25%;
 }
 </style>
