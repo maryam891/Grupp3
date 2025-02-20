@@ -1,5 +1,7 @@
 <script>
 export default {
+  methods:{
+  },
   data() {
     return {
       earthImg:"/assets/image/earth-transparent.png",
@@ -17,7 +19,7 @@ export default {
     <h1>
       Quiz
     </h1>
-    <button>
+    <button id="startQuizBtn">
       Start Quiz
     </button>
     <img :src="mercuryImg" class="mercuryImg">
@@ -71,7 +73,7 @@ h2 {
   margin-bottom: 10px;
 
 }
-button {
+#startQuizBtn {
   background-color: #E3CAFB;
   border: none;
   width: 140px;
@@ -83,6 +85,11 @@ button {
   top: 40%;
   left: 28%;
   cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
 }
 .earthImg {
   height: 180px;
@@ -129,6 +136,7 @@ button {
   text-align: center;
   border-radius: 5px;
   margin-bottom: 15px;
+  transform: rotate(-20deg);
 }
 
 .starImg {
@@ -136,5 +144,6 @@ button {
   left: 25%;
   margin-bottom: 10px;
 }
+
 
 </style>
