@@ -1,5 +1,7 @@
 <script>
 export default {
+  methods:{
+  },
   data() {
     return {
       earthImg:"/assets/image/earth-transparent.png",
@@ -17,7 +19,7 @@ export default {
     <h1>
       Quiz
     </h1>
-    <button>
+    <button id="startQuizBtn">
       Start Quiz
     </button>
     <img :src="mercuryImg" class="mercuryImg">
@@ -27,17 +29,17 @@ export default {
   <div id="textContainer">
   <div>
     <p class="factText">Fact 1</p>
-    <img :src="starImg" class="starImg">
+    <i class="fa-regular fa-star staIcon"></i>
     <p>Gamified learning</p>
   </div>
   <div>
     <p class="factText">Fact 2</p>
-    <img :src="starImg" class="starImg">
+    <i class="fa-regular fa-star starIcon"></i>
     <p>Daily challenges</p>
   </div>
   <div>
     <p class="factText">Fact 3</p>
-    <img :src="starImg" class="starImg">
+    <i class="fa-regular fa-star starIcon"></i>
     <p>Bite-sized, anytime learning</p>
   </div>
   </div>
@@ -71,7 +73,7 @@ h2 {
   margin-bottom: 10px;
 
 }
-button {
+#startQuizBtn {
   background-color: #E3CAFB;
   border: none;
   width: 140px;
@@ -83,6 +85,11 @@ button {
   top: 40%;
   left: 28%;
   cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
 }
 .earthImg {
   height: 180px;
@@ -129,12 +136,17 @@ button {
   text-align: center;
   border-radius: 5px;
   margin-bottom: 15px;
+  transform: rotate(-20deg);
 }
 
-.starImg {
+.starIcon {
   position: relative;
   left: 25%;
   margin-bottom: 10px;
+  color:#E3CAFB;
+  height: 30px;
+  width: 30px;
 }
+
 
 </style>
