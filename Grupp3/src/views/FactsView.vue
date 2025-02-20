@@ -6,16 +6,19 @@ export default {
   //      return data
   //   },
   created(){
-    fetch('/db.json')
+    fetch('/infodb.json')
     .then(response => response.json())
     .then(data =>{
-      console.log(data.planets.mars.questions[0].question)
-      console.log(data.planets.mars.questions[0].correct_answer)
+      // this.planetInfo = data.name
+      // console.log(data.planets.mars)
+      console.log(data)
+      console.log(data.planet_info[0].name)
     })
   },
   data() {
     return {
-      planets: null,
+      planetsName: null,
+      planetInfo: null,
       imageMars: "/assets/image/mars-transparent.png"
     };
   },

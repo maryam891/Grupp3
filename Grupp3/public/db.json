@@ -1,60 +1,163 @@
 {
-   "planets":{
-    "mars": {
-      "questions": [
-        {
-          "id": 1,
-          "question": "Whats the average temperature on Mars?",
-          "correct_answer": "-63 °C",
-          "incorrect_answers": ["-230 °C", "123 °C", "30 °C"]
-        },
-        {
-          "id": 2,
-          "question": "What has been discovered beneath Mars's surface?",
-          "correct_answer": "Ice and possibly liquid water",
-          "incorrect_answers": ["Large amounts of liquid nitrogen", "A massive iron core", "A radioactive isotope"]
-        },
-        {
-          "id": 3,
-          "question": "What makes Mars's sunsets special?",
-          "correct_answer": "They are blue",
-          "incorrect_answers": ["They are green", "They last for several hours", "They are not visible due to dust in the atmosphere"]
-        },
-        {
-          "id": 4,
-          "question": "What has the Curiosity rover discovered that may indicate life?",
-          "correct_answer": "Organic molecules and methane variations",
-          "incorrect_answers":["Microorganisms in craters", "Moving sand dunes", "Volcanic flows"]
-        }
-      ]
-    },
-    "jupiter":{
-      "questions":[
-        {
-          "id": 5,
-          "question": "How many Earth masses does Jupiter equal?",
-          "correct_answer": {"answer":"318", "isCorrect":false},
-          "incorrect_answers": [{"answer":"100", "isCorrect":false}, {"answer":"450", "isCorrect":false}, {"answer":"900", "isCorrect":false}]
-        },
-        {
-          "id": 6,
-          "question":"Which moon is believed to have a subsurface ocean?",
-          "correct_answer": {"answer":"Europa", "isCorrect":true},
-          "incorrect_answers": [{"answer":"Io", "isCorrect":false}, {"answer":"Callisto", "isCorrect":false}, {"answer":"Ganymede", "isCorrect":false}]
-        },
-        {
-          "id": 7,
-          "question": "What is unique about Jupiter's magnetic field?",
-          "correct_answer": {"answer": "It is the strongest in the solar system", "isCorrect": true},
-          "incorrect_answers":[{"answer":"It is almost nonexistent", "isCorrect": false}, {"answer":"It causes powerful auroras", "isCorrect":false}, {"answer":"It is completely symmetrical", "isCorrect":false}]
-        },
-        {
-          "id": 8,
-          "question": "What is Jupiter's core likely made of?",
-          "correct_answer": {"answer":"Liquid metallic hydrogen", "isCorrect": true},
-          "incorrect_answers":[{"answer": "A massive iron core", "isCorrect": false}, {"answer":"Frozen helium", "isCorrect": false}, {"answer":"A lump of compressed ice", "isCorrect":false}]
-        }
-      ]
-    }
+  "planets": [
+  { "id": 1, "name": "Mercury" },
+  { "id": 2, "name": "Mars" },
+  { "id": 3, "name": "Jupiter" },
+  { "id": 4, "name": "Venus" },
+  { "id": 5, "name": "Earth" },
+  { "id": 6, "name": "Uranus"},
+  { "id": 7, "name": "Saturn"},
+  {"id": 8, "name": "Pluto"},
+  {"id": 9, "name": "Neptune"}
+],
+
+"questions": [
+  {
+    "id": 1,
+    "planet_id": 1,
+    "text": "What place does Mercury have in order from the Sun?"
+  },
+  {
+    "id": 2,
+    "planet_id": 1,
+    "text": "How long does it take for Mercury to orbit the Sun?"
+  },
+  { "id": 3, "planet_id": 1, "text": "What does Mercury almost completely lack?" },
+  { "id": 4, "planet_id": 1, "text": "What is Mercury most known for?" },
+  {
+    "id": 5,
+    "planet_id": 2,
+    "text": "What has been discovered beneath Mars's surface?"
+  },
+  {
+    "id": 6,
+    "planet_id": 2,
+    "text": "What suggests that Mars once had a thicker climate and liquid water?"
+  },
+  { "id": 7, "planet_id": 3, "text": "How many Earth masses does Jupiter equal?" },
+  {
+    "id": 8,
+    "planet_id": 3,
+    "text": "Which of Jupiters moons is believed to have a subsurface ocean?"
+  },
+  {
+    "id": 9,
+    "planet_id": 4,
+    "text": "What is the main cause of Venus's extreme greenhouse effect?"
+  },
+  {
+    "id": 10,
+    "planet_id": 2,
+    "text": "What makes Mars's sunsets special?"
+  },
+  {
+    "id": 11,
+    "planet_id": 2,
+    "text": "What has the Curiosity rover discovered that may indicate life on Mars?"
+  },
+  {
+    "id": 12,
+    "planet_id": 3,
+    "text": "What is unique about Jupiter's magnetic field?"
+  },
+  {
+    "id": 13,
+    "planet_id": 3,
+    "text": "What is Jupiter's core likely made of?"
+  },
+  {
+    "id": 14,
+    "planet_id": 7,
+    "text": "What is unique about Saturn's density?"
+  },
+  {
+    "id": 15,
+    "planet_id": 7,
+    "text": "Which moon of Saturn is believed to have a lake of liquid hydrocarbons?"
+  },
+  {
+    "id": 16,
+    "planet_id": 7,
+    "text": "What discovery has been made on Enceladus?"
   }
+],
+
+"answers": [
+  { "question_id": 1, "text": "First", "is_correct": true },
+  { "question_id": 1, "text": "Second", "is_correct": false },
+  { "question_id": 1, "text": "Third", "is_correct": false },
+  { "question_id": 1, "text": "Fourth", "is_correct": false },
+  { "question_id": 2, "text": "88 days", "is_correct": true },
+  { "question_id": 2, "text": "225 days", "is_correct": false },
+  { "question_id": 2, "text": "365 days", "is_correct": false },
+  { "question_id": 2, "text": "687 days", "is_correct": false },
+  { "question_id": 3, "text": "Atmosphere", "is_correct": true },
+  { "question_id": 3, "text": "Magnetic field", "is_correct": false },
+  { "question_id": 3, "text": "Gravity", "is_correct": false },
+  { "question_id": 3, "text": "Mountains", "is_correct": false },
+  { "question_id": 4, "text": "Being the smallest planet", "is_correct": true },
+  { "question_id": 4, "text": "Being the hottest planet", "is_correct": false },
+  { "question_id": 4, "text": "Having rings", "is_correct": false },
+  { "question_id": 4, "text": "Having water", "is_correct": false },
+  { "question_id": 5, "text": "Ice and possibly liquid water", "is_correct": true },
+  {
+    "question_id": 5,
+    "text": "Large amounts of liquid nitrogen",
+    "is_correct": false
+  },
+  { "question_id": 5, "text": "A massive iron core", "is_correct": false },
+  { "question_id": 5, "text": "A radioactive isotope", "is_correct": false },
+  {
+    "question_id": 6,
+    "text": "Signs of erosion and dry riverbeds",
+    "is_correct": true
+  },
+  { "question_id": 6, "text": "A warm core", "is_correct": false },
+  { "question_id": 6, "text": "Volcanic mountain ranges", "is_correct": false },
+  { "question_id": 6, "text": "Magnetic storms", "is_correct": false },
+  { "question_id": 7, "text": "318", "is_correct": true },
+  { "question_id": 7, "text": "100", "is_correct": false },
+  { "question_id": 7, "text": "450", "is_correct": false },
+  { "question_id": 7, "text": "900", "is_correct": false },
+  { "question_id": 8, "text": "Europa", "is_correct": true },
+  { "question_id": 8, "text": "Io", "is_correct": false },
+  { "question_id": 8, "text": "Ganymede", "is_correct": false },
+  { "question_id": 8, "text": "Callisto", "is_correct": false },
+  {
+    "question_id": 9,
+    "text": "Carbon dioxide and sulfuric acid in the atmosphere",
+    "is_correct": true
+  },
+  { "question_id": 9, "text": "Ozone layer", "is_correct": false },
+  { "question_id": 9, "text": "High levels of methane", "is_correct": false },
+  { "question_id": 9, "text": "Proximity to the Sun", "is_correct": false },
+  { "question_id": 10, "text": "They are green", "is_correct": false},
+  { "question_id": 10, "text": "They are blue", "is_correct": true},
+  { "question_id": 10, "text": "They last for several hours", "is_correct": false},
+  { "question_id": 10, "text": "They are not visible due to dust in the atmosphere", "is_correct": false},
+  { "question_id": 11, "text": "Organic molecules and methane variations", "is_correct": true},
+  { "question_id": 11, "text": "Microorganisms in craters", "is_correct": false},
+  { "question_id": 11, "text": "Moving sand dunes", "is_correct": false},
+  { "question_id": 11, "text": "Volcanic flows", "is_correct": false},
+  { "question_id": 12, "text": "It is the strongest in the solar system", "is_correct": true},
+  { "question_id": 12, "text": "It is almost nonexistent", "is_correct": false},
+  { "question_id": 12, "text": "It causes powerful auroras", "is_correct": false},
+  { "question_id": 12, "text": "It is completely symmetrical", "is_correct": false},
+  { "question_id": 13, "text": "Liquid metallic hydrogen", "is_correct": true},
+  { "question_id": 13, "text": "A massive iron core", "is_correct": false},
+  { "question_id": 13, "text": "Frozen helium", "is_correct": false},
+  { "question_id": 13, "text": "A lump of compressed ice", "is_correct": false},
+  { "question_id": 14, "text": "It is lower than water's ", "is_correct": true},
+  { "question_id": 14, "text": "It is higher than iron's", "is_correct": false},
+  { "question_id": 14, "text": "It varies between the equator and poles", "is_correct": false},
+  { "question_id": 14, "text": "It is as high as Earth's", "is_correct": false},
+  { "question_id": 15, "text": "Enceladus", "is_correct": false},
+  { "question_id": 15, "text": "Titan", "is_correct": true},
+  { "question_id": 15, "text": "Mimas", "is_correct": false},
+  { "question_id": 15, "text": "Dione", "is_correct": false},
+  { "question_id": 16, "text": "Cryovolcanoes ejecting water", "is_correct": true},
+  { "question_id": 16, "text": "Flowing lava", "is_correct": false},
+  { "question_id": 16, "text": "An oxygen-rich atmosphere", "is_correct": false},
+  { "question_id": 16, "text": "A magnetic field", "is_correct": false}
+  ]
 }
