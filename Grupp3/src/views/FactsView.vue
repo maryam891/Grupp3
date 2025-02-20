@@ -5,6 +5,14 @@ export default {
   //      const data = await res.json()
   //      return data
   //   },
+  created(){
+    fetch('/db.json')
+    .then(response => response.json())
+    .then(data =>{
+      console.log(data.planets.mars.questions[0].question)
+      console.log(data.planets.mars.questions[0].correct_answer)
+    })
+  },
   data() {
     return {
       planets: null,

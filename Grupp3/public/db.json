@@ -1,0 +1,60 @@
+{
+   "planets":{
+    "mars": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Whats the average temperature on Mars?",
+          "correct_answer": "-63 °C",
+          "incorrect_answers": ["-230 °C", "123 °C", "30 °C"]
+        },
+        {
+          "id": 2,
+          "question": "What has been discovered beneath Mars's surface?",
+          "correct_answer": "Ice and possibly liquid water",
+          "incorrect_answers": ["Large amounts of liquid nitrogen", "A massive iron core", "A radioactive isotope"]
+        },
+        {
+          "id": 3,
+          "question": "What makes Mars's sunsets special?",
+          "correct_answer": "They are blue",
+          "incorrect_answers": ["They are green", "They last for several hours", "They are not visible due to dust in the atmosphere"]
+        },
+        {
+          "id": 4,
+          "question": "What has the Curiosity rover discovered that may indicate life?",
+          "correct_answer": "Organic molecules and methane variations",
+          "incorrect_answers":["Microorganisms in craters", "Moving sand dunes", "Volcanic flows"]
+        }
+      ]
+    },
+    "jupiter":{
+      "questions":[
+        {
+          "id": 5,
+          "question": "How many Earth masses does Jupiter equal?",
+          "correct_answer": {"answer":"318", "isCorrect":false},
+          "incorrect_answers": [{"answer":"100", "isCorrect":false}, {"answer":"450", "isCorrect":false}, {"answer":"900", "isCorrect":false}]
+        },
+        {
+          "id": 6,
+          "question":"Which moon is believed to have a subsurface ocean?",
+          "correct_answer": {"answer":"Europa", "isCorrect":true},
+          "incorrect_answers": [{"answer":"Io", "isCorrect":false}, {"answer":"Callisto", "isCorrect":false}, {"answer":"Ganymede", "isCorrect":false}]
+        },
+        {
+          "id": 7,
+          "question": "What is unique about Jupiter's magnetic field?",
+          "correct_answer": {"answer": "It is the strongest in the solar system", "isCorrect": true},
+          "incorrect_answers":[{"answer":"It is almost nonexistent", "isCorrect": false}, {"answer":"It causes powerful auroras", "isCorrect":false}, {"answer":"It is completely symmetrical", "isCorrect":false}]
+        },
+        {
+          "id": 8,
+          "question": "What is Jupiter's core likely made of?",
+          "correct_answer": {"answer":"Liquid metallic hydrogen", "isCorrect": true},
+          "incorrect_answers":[{"answer": "A massive iron core", "isCorrect": false}, {"answer":"Frozen helium", "isCorrect": false}, {"answer":"A lump of compressed ice", "isCorrect":false}]
+        }
+      ]
+    }
+  }
+}
