@@ -11,6 +11,9 @@
           <router-link to="/quiz" class="nav-link">Quiz</router-link>
         </li>
         <li>
+          <router-link to="/quizshow" class="nav-link">QuizShow</router-link>
+        </li>
+        <li>
           <router-link to="/facts" class="nav-link">Facts</router-link>
         </li>
       </ul>
