@@ -187,12 +187,6 @@ p {
   text-align: center;
   padding: 10px 0;
 }
-.correct {
-  background-color: green;
-}
-.incorrect {
-  background-color: red;
-}
 /* ---> Button <--- */
 button {
   height: 43.21px;
@@ -250,5 +244,11 @@ button:hover {
 .congrats-img {
   width: 120px;
   padding-bottom: 20px;
+}
+.correct {
+  background-color: green;
+}
+.incorrect {
+  background-color: red;
 }
 </style>
