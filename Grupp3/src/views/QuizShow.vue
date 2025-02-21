@@ -73,17 +73,33 @@ export default {
 </script>
 
 <template>
-  <h1>Test your space skills with this quiz!</h1>
-  <div class="startQuizContainer">
-    <div v-if="!showQuiz && !quizCompleted">
+  <h2>Test your space skills with this quiz!</h2>
+  <div class="startQuizContainer" v-if="!showQuiz && !quizCompleted">
       <h1>Quiz</h1>
-      <button @click="startQuiz">Start Quiz</button>
+      <button @click="startQuiz" id="startQuizBtn">Start Quiz</button>
       <img :src="mercuryImg" class="mercuryImg" />
       <img :src="venusImg" class="venusImg" />
       <img :src="earthImg" class="earthImg" />
+      <div id="textContainer">
+        <div>
+    <p class="factText">Fact 1</p>
+    <i class="fa-regular fa-star starIcon"></i>
+    <p>Gamified learning</p>
+  </div>
+  <div>
+    <p class="factText">Fact 2</p>
+    <i class="fa-regular fa-star starIcon"></i>
+    <p>Daily challenges</p>
+  </div>
+  <div>
+    <p class="factText">Fact 3</p>
+    <i class="fa-regular fa-star starIcon"></i>
+    <p>Bite-sized, anytime learning</p>
+  </div>
     </div>
+</div>
+    <div v-if="showQuiz && !quizCompleted" id="quizContent">
 
-    <div v-if="showQuiz && !quizCompleted" class="quizContent">
       <h2>{{ questions[currentQuestionIndex]?.text }}</h2>
       <!-- optional chaining -->
       <div class="answers">
@@ -101,8 +117,6 @@ export default {
         </button>
       </div>
     </div>
-  </div>
-
   <div v-if="quizCompleted" class="resultContainer">
     <h2>Quiz Completed!</h2>
     <p>
@@ -125,7 +139,7 @@ export default {
 
 <style scoped>
 h1 {
-  color: #6c6c6c;
+  color: #6C6C6C;
   position: absolute;
   left: 33%;
   top: 10%;
@@ -133,54 +147,50 @@ h1 {
 }
 .startQuizContainer {
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
-  height: 400px;
-  width: 600px;
-  background-color: #fdfdfd;
+  height: 260px;
+  width: 460px;
+  background-color: #FDFDFD;
   position: absolute;
   left: 30%;
   top: 25%;
   border-radius: 43.02px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.quizContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
 }
 h2 {
   font-weight: bold;
-  margin-bottom: 20px;
-  color: #40027d;
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  margin-bottom: 10px;
+
 }
-button {
-  background-color: #e3cafb;
+#startQuizBtn {
+  background-color: #E3CAFB;
   border: none;
   width: 140px;
   height: 43.21px;
   border-radius: 36.06px;
-  color: #40027d;
+  color:#280070;
   font-weight: 550;
+  position: absolute;
+  top: 40%;
+  left: 28%;
   cursor: pointer;
-  margin-top: 10px;
+  transition: all .2s ease-in-out;
 }
-.answers {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
+
+button:hover {
+  transform: scale(1.1);
 }
 .earthImg {
   height: 180px;
   width: 180px;
   position: relative;
   left: 20%;
-  top: 50%;
+  top: 50%
 }
 .venusImg {
+
   height: 120px;
   width: 120px;
   position: relative;
@@ -192,7 +202,47 @@ button {
   width: 130px;
   position: relative;
   left: -12%;
-  top: -35%;
+  top:-35%
+}
+
+#quizContent {
+  display: flex;
+  width: 800px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 10px;
+  position: absolute;
+  top: 73%;
+  left: 22%;
+}
+
+.factText {
+  width: 90px;
+  position: relative;
+  left: 10%;
+  height: 30px;
+  background-color:#E3CAFB;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  transform: rotate(-20deg);
+}
+
+.starIcon {
+  position: relative;
+  left: 25%;
+  margin-bottom: 12px;
+  color:#E3CAFB;
+  font-size: 30px;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
 .correct {
   background-color: green;

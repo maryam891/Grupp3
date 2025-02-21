@@ -22,14 +22,14 @@ export default {
     <button id="startQuizBtn">
       Start Quiz
     </button>
-    <img :src="mercuryImg" class="mercuryImg">
-    <img :src="venusImg" class="venusImg">
-    <img :src="earthImg" class="earthImg">
+    <img :src="mercuryImg" class="mercuryImg"/>
+    <img :src="venusImg" class="venusImg"/>
+    <img :src="earthImg" class="earthImg"/>
   </div>
   <div id="textContainer">
   <div>
     <p class="factText">Fact 1</p>
-    <i class="fa-regular fa-star staIcon"></i>
+    <i class="fa-regular fa-star starIcon"></i>
     <p>Gamified learning</p>
   </div>
   <div>
@@ -135,17 +135,16 @@ button:hover {
   color: black;
   text-align: center;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   transform: rotate(-20deg);
 }
 
 .starIcon {
   position: relative;
   left: 25%;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color:#E3CAFB;
-  height: 30px;
-  width: 30px;
+  font-size: 30px;
 }
 
 
