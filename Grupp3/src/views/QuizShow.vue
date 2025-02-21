@@ -1,6 +1,4 @@
 <script>
-import { data } from "../mock/data";
-
 export default {
   data() {
     return {
@@ -11,6 +9,7 @@ export default {
       correctAnswersCount: 0,
       quizCompleted: false,
       feedback: {},
+      planets: [],
       earthImg: "/assets/image/earth-transparent.png",
       venusImg: "/assets/image/venus-transparent.png",
       mercuryImg: "/assets/image/mercury.png",
@@ -18,29 +17,37 @@ export default {
     };
   },
   methods: {
-    // Funktion för att slumpa ordningen på svarsalternativ
+    // Hämta frågor från filer db.json
+    async fetchQuestions() {
+      const response = await fetch("/db.json");
+      console.log(response);
+      const jsonData = await response.json();
+      console.log(jsonData);
+
+      // Sparar planetlistan
+      this.planets = jsonData.planets;
+      // Hämtar alla frågor från alla planeter
+      this.questions = jsonData.questions.map((q) => ({
+        id: q.id,
+        text: q.text,
+        answers: this.shuffleArray(
+          jsonData.answers.filter((a) => a.question_id === q.id)
+        ),
+      }));
+    },
+
+    // Blandar svarsalternativen slumpmässigt
     shuffleArray(array) {
       return array.sort(() => Math.random() - 0.5);
     },
-    loadQuestions() {
-      this.questions = data.questions.map((q) => {
-        return {
-          ...q, // Bevarar alla egenskaper för frågan
-          answers: this.shuffleArray(
-            // Filtrerar och blandar svar
-            data.answers.filter((a) => a.question_id === q.id)
-          ),
-        };
-      });
-    },
 
-    // Startar quiz och laddar frågor
+    // Startar quizet
     startQuiz() {
       this.showQuiz = true;
-      this.loadQuestions();
+      this.fetchQuestions(); // Laddar frågor vid start
     },
 
-    // Kontrollerar om användaren valt rätt svar
+    // Kontrollerar om användarens svar är rätt eller fel
     checkAnswer(answer) {
       this.selectedAnswer = answer.text;
       if (answer.is_correct) {
@@ -52,7 +59,7 @@ export default {
       setTimeout(this.nextQuestion, 1000); // Väntar 1 sekund innan nästa fråga
     },
 
-    // Går till nästa fråga eller avslutar quiz
+    // Växlar till nästa fråga
     nextQuestion() {
       this.selectedAnswer = null;
       if (this.currentQuestionIndex < this.questions.length - 1) {
@@ -78,6 +85,7 @@ export default {
 
     <div v-if="showQuiz && !quizCompleted" class="quizContent">
       <h2>{{ questions[currentQuestionIndex]?.text }}</h2>
+      <!-- optional chaining -->
       <div class="answers">
         <button
           v-for="answer in questions[currentQuestionIndex]?.answers"
@@ -91,7 +99,6 @@ export default {
         >
           {{ answer.text }}
         </button>
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
     </div>
   </div>
