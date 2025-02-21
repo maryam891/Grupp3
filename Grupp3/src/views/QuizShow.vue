@@ -73,181 +73,182 @@ export default {
 </script>
 
 <template>
-  <h2>Test your space skills with this quiz!</h2>
-  <div class="startQuizContainer" v-if="!showQuiz && !quizCompleted">
-      <h1>Quiz</h1>
-      <button @click="startQuiz" id="startQuizBtn">Start Quiz</button>
-      <img :src="mercuryImg" class="mercuryImg" />
-      <img :src="venusImg" class="venusImg" />
-      <img :src="earthImg" class="earthImg" />
-      <div id="textContainer">
-        <div>
-    <p class="factText">Fact 1</p>
-    <i class="fa-regular fa-star starIcon"></i>
-    <p>Gamified learning</p>
-  </div>
-  <div>
-    <p class="factText">Fact 2</p>
-    <i class="fa-regular fa-star starIcon"></i>
-    <p>Daily challenges</p>
-  </div>
-  <div>
-    <p class="factText">Fact 3</p>
-    <i class="fa-regular fa-star starIcon"></i>
-    <p>Bite-sized, anytime learning</p>
-  </div>
-    </div>
-</div>
-    <div v-if="showQuiz && !quizCompleted" id="quizContent">
-
-      <h2>{{ questions[currentQuestionIndex]?.text }}</h2>
-      <!-- optional chaining -->
-      <div class="answers">
+  <div class="quiz-container">
+    <div class="quiz-content">
+      <div v-if="!showQuiz && !quizCompleted" class="quiz-intro">
+        <h1>Welcome, Space Explorer! 🚀</h1>
+        <p>
+          Think you know the universe? 🌍 <br />
+          Test your knowledge about planets, stars, and black holes! <br />
+          Just answer correctly and prove you're a true space explorer!
+        </p>
+        <p><strong>Ready?</strong> Click Start Quiz to begin!</p>
+        <button @click="startQuiz" class="start-btn">Start Quiz</button>
+        <div class="planet-images">
+          <img :src="mercuryImg" class="planet mercury-img" />
+          <img :src="venusImg" class="planet venus-img" />
+          <img :src="earthImg" class="planet earth-img" />
+        </div>
+      </div>
+      <div v-if="showQuiz && !quizCompleted" class="quiz-questions">
+        <h2>{{ questions[currentQuestionIndex]?.text }}</h2>
+        <!-- optional chaining -->
+        <div class="answers">
+          <button
+            v-for="answer in questions[currentQuestionIndex]?.answers"
+            :key="answer.text"
+            @click="checkAnswer(answer)"
+            class="answer-btn"
+            :class="{
+              correct:
+                feedback[currentQuestionIndex] === 'correct' &&
+                answer.is_correct,
+              incorrect: selectedAnswer === answer.text && !answer.is_correct,
+            }"
+          >
+            {{ answer.text }}
+          </button>
+        </div>
+      </div>
+      <div v-if="quizCompleted">
+        <img
+          src="/assets/image/party-popper.png"
+          alt="congratulation"
+          class="congrats-img"
+        />
+        <h2>Quiz Completed!</h2>
+        <p>
+          You answered {{ correctAnswersCount }} out of
+          {{ questions.length }} correctly.
+        </p>
         <button
-          v-for="answer in questions[currentQuestionIndex]?.answers"
-          :key="answer.text"
-          @click="checkAnswer(answer)"
-          :class="{
-            correct:
-              feedback[currentQuestionIndex] === 'correct' && answer.is_correct,
-            incorrect: selectedAnswer === answer.text && !answer.is_correct,
-          }"
+          class="result-btn"
+          @click="
+            showQuiz = false;
+            quizCompleted = false;
+            currentQuestionIndex = 0;
+            correctAnswersCount = 0;
+            feedback = {};
+          "
         >
-          {{ answer.text }}
+          Restart Quiz
         </button>
       </div>
     </div>
-  <div v-if="quizCompleted" class="resultContainer">
-    <h2>Quiz Completed!</h2>
-    <p>
-      You answered {{ correctAnswersCount }} out of
-      {{ questions.length }} correctly.
-    </p>
-    <button
-      @click="
-        showQuiz = false;
-        quizCompleted = false;
-        currentQuestionIndex = 0;
-        correctAnswersCount = 0;
-        feedback = {};
-      "
-    >
-      Restart Quiz
-    </button>
   </div>
 </template>
 
 <style scoped>
-h1 {
-  color: #6C6C6C;
-  position: absolute;
-  left: 33%;
-  top: 10%;
-  font-weight: 500;
-}
-.startQuizContainer {
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
-  height: 260px;
-  width: 460px;
-  background-color: #FDFDFD;
-  position: absolute;
-  left: 30%;
-  top: 25%;
-  border-radius: 43.02px;
-
-}
-h2 {
-  font-weight: bold;
-  position: absolute;
-  top: 10%;
-  left: 30%;
-  margin-bottom: 10px;
-
-}
-#startQuizBtn {
-  background-color: #E3CAFB;
-  border: none;
-  width: 140px;
-  height: 43.21px;
-  border-radius: 36.06px;
-  color:#280070;
-  font-weight: 550;
-  position: absolute;
-  top: 40%;
-  left: 28%;
-  cursor: pointer;
-  transition: all .2s ease-in-out;
-}
-
-button:hover {
-  transform: scale(1.1);
-}
-.earthImg {
-  height: 180px;
-  width: 180px;
-  position: relative;
-  left: 20%;
-  top: 50%
-}
-.venusImg {
-
-  height: 120px;
-  width: 120px;
-  position: relative;
-  top: 40%;
-  left: -40%;
-}
-.mercuryImg {
-  height: 130px;
-  width: 130px;
-  position: relative;
-  left: -12%;
-  top:-35%
-}
-
-#quizContent {
+.quiz-container {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
   display: flex;
-  width: 800px;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 15px;
-  padding: 10px;
-  position: absolute;
-  top: 73%;
-  left: 22%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-.factText {
-  width: 90px;
-  position: relative;
-  left: 10%;
-  height: 30px;
-  background-color:#E3CAFB;
-  color: black;
+.quiz-content {
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
+  height: 450px;
+  width: 700px;
+  background-color: #ffffff;
+  border-radius: 43.02px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  border-radius: 5px;
-  margin-bottom: 12px;
-  transform: rotate(-20deg);
 }
-
-.starIcon {
-  position: relative;
-  left: 25%;
-  margin-bottom: 12px;
-  color:#E3CAFB;
-  font-size: 30px;
+.quiz-intro {
+  width: 80%;
 }
-
+.quiz-questions {
+  width: 80%;
+}
 .answers {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
+  padding: 10px 0;
+}
+h1 {
+  color: #40027d;
+  font-weight: 500;
+  text-align: center;
+}
+h2 {
+  font-weight: bold;
+  color: #020632;
+}
+p {
+  color: #000000;
+  text-align: center;
+  padding: 10px 0;
 }
 .correct {
   background-color: green;
 }
 .incorrect {
   background-color: red;
+}
+/* ---> Button <--- */
+button {
+  height: 43.21px;
+  border-radius: 36.06px;
+  font-weight: 550;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 5px;
+}
+button:hover {
+  transform: scale(1.1);
+}
+.start-btn {
+  background-color: #e3cafb;
+  border: none;
+  width: 140px;
+  color: #280070;
+}
+.answer-btn {
+  background-color: #ffffff;
+  border: 2px solid #40027d;
+  width: 300px;
+  color: #40027d;
+}
+.result-btn {
+  background-color: #40027d;
+  border: none;
+  width: 150px;
+  color: #ffffff;
+}
+/* ---> Images <--- */
+.planet-images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.planet {
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+  width: 200px;
+}
+.earth-img {
+  top: -450px;
+  left: -150px;
+}
+.venus-img {
+  top: -50px;
+  right: -120px;
+}
+.mercury-img {
+  top: -60px;
+  left: -150px;
+}
+.congrats-img {
+  width: 120px;
+  padding-bottom: 20px;
 }
 </style>
