@@ -10,7 +10,7 @@ export default createRouter({
     { path: "/", component: HomeView },
     { path: "/facts", component: FactsView },
     { path: "/quiz", component: QuizShow },
-    { path: "/Favorites", Favorites },
+    { path: "/Favorites", component: Favorites },
     { path: "/contact", component: ContactView },
   ],
 });
