@@ -10,38 +10,40 @@
 </script>
 
 <template>
-  <div class="startpage-intro-container">
-    <h1>Learn about the planets</h1>
-    <p>One quiz at a time</p>
-    <div class="startpage-btn-part">
-      <router-link to="/quiz">
-        <button class="btn-quiz">Go to quiz</button>
-      </router-link>
-      <router-link to="/facts">
-        <button class="btn-more">Read more</button>
-      </router-link>
+  <main>
+    <div class="startpage-intro-container">
+      <h1>Learn about the planets</h1>
+      <p>One quiz at a time</p>
+      <div class="startpage-btn-part">
+        <router-link to="/quiz">
+          <button class="btn-quiz">Go to quiz</button>
+        </router-link>
+        <router-link to="/facts">
+          <button class="btn-more">Read more</button>
+        </router-link>
+      </div>
+      <div class="startpage-background-planet">
+        <img :src="earthImg" class="earth-img">
+      </div>
     </div>
-    <div class="startpage-background-planet">
-      <img :src="earthImg" class="earth-img">
+    <div id="textContainer">
+      <div>
+        <p class="factText">Fact 1</p>
+        <img :src="starImg" class="star-img">
+        <p>Gamified learning</p>
+      </div>
+      <div>
+        <p class="factText">Fact 2</p>
+        <img :src="starImg" class="star-img">
+        <p>Daily challenges</p>
+      </div>
+      <div>
+        <p class="factText">Fact 3</p>
+        <img :src="starImg" class="star-img">
+        <p>Bite-sized, anytime learning</p>
+      </div>
     </div>
-  </div>
-  <div id="textContainer">
-    <div>
-      <p class="factText">Fact 1</p>
-      <img :src="starImg" class="star-img">
-      <p>Gamified learning</p>
-    </div>
-    <div>
-      <p class="factText">Fact 2</p>
-      <img :src="starImg" class="star-img">
-      <p>Daily challenges</p>
-    </div>
-    <div>
-      <p class="factText">Fact 3</p>
-      <img :src="starImg" class="star-img">
-      <p>Bite-sized, anytime learning</p>
-    </div>
-  </div>
+  </main>
 </template>
 
 <style scoped>
