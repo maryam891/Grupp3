@@ -14,7 +14,7 @@
           <router-link to="/facts" class="nav-link">Facts</router-link>
         </li>
         <li>
-          <router-link to="/Favorites" class="nav-link">Favorites</router-link>
+          <router-link to="/favorites" class="nav-link">Favorites</router-link>
         </li>
       </ul>
     </nav>
