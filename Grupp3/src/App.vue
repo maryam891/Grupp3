@@ -6,7 +6,8 @@ import Nasa from "./components/Nasa.vue"
 <template>
   <div>
     <NavBar />
-    <Nasa/>
     <RouterView />
+    <Nasa/>
+
   </div>
 </template>
