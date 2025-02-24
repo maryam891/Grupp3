@@ -6,7 +6,7 @@
 </template>
 <script>
 const apiKey = import.meta.env.VITE_NASA_API_KEY;
-console.log("API Key:", apiKey);
+// console.log("API Key:", apiKey);
 export default {
   created() {
     fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
