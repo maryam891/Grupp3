@@ -8,10 +8,17 @@ export default {
       console.log("planets", data)
       console.log(data[0].name)
 
-      //skapar en array med bilder, där jag hämtar info till respektive planet från infodb.json. Går det att göra så?
+      //skapar en array med bilder, där jag hämtar info till respektive planet från infodb.json.
       this.images= [
       {src: '/assets/image/earth-transparent.png', text: this.planets[2].info, name: this.planets[2].name},
-      {src: '/assets/image/mercury.png', text: this.planets[0].info, name: this.planets[0].name}
+      {src: '/assets/image/mercury.png', text: this.planets[0].info, name: this.planets[0].name},
+      {src: '/assets/image/jupiter-transparent.png.png', text: this.planets[4].info, name: this.planets[4].name},
+      {src: '/assets/image/mars-transparent.png', text: this.planets[3].info, name: this.planets[3].name},
+      {src: '/assets/image/neptune-transparent.png', text: this.planets[7].info, name: this.planets[7].name},
+      {src: '/assets/image/pluto-transparent.png', text: this.planets[8].info, name: this.planets[8].name},
+      {src: '/assets/image/saturnus-transparent.png', text: this.planets[5].info, name: this.planets[5].name},
+      {src: '/assets/image/uranus.png', text: this.planets[6].info, name: this.planets[6].name},
+      {src: '/assets/image/venus-transparent.png', text: this.planets[1].info, name: this.planets[1].name}
       ]
 
     })
@@ -20,7 +27,6 @@ export default {
     return {
       planets: null,
       planetInfo: null,
-      imageMars: "/assets/image/mars-transparent.png",
       modalVisible: false,
       modalText: '',
       modalHeader: '',
@@ -55,10 +61,6 @@ export default {
       <p>Click the planet to read more</p>
 
       <div class="planet-card"><!--När jag klickar på bilden ska funktionen showModal "starta" som innehåller info från arrayen i data-->
-        <!-- <img :src= imageMars alt="" @mouseover="mouseOver" @mouseout="mouseOut" @click="showModal(image)" ref="imageMars">
-        <div v-if="planets !== null">
-          {{ planets[0].name }}
-        </div> -->
 
         <!--Försöker rendera bilderna från arrayen i created-->
         <div class="planets">
@@ -121,5 +123,6 @@ export default {
 
 .planets{
   display: flex;
+  flex-wrap: wrap;
 }
 </style>
