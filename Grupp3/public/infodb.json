@@ -1,5 +1,4 @@
-{
-  "planet_info": [
+[
     {
       "id": 40,
       "name": "Mercury",
@@ -46,4 +45,3 @@
       "info": "Once considered the ninth planet, Pluto is now classified as a dwarf planet. It has five known moons, with Charon being the largest, nearly half the size of Pluto itself."
     }
   ]
-}
