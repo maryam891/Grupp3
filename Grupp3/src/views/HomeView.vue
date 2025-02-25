@@ -1,12 +1,12 @@
 <script>
-  export default {
-    data() {
-      return {
-        earthImg:"/assets/image/earth-transparent.png",
-        starImg: "/assets/image/starImg.png"
-      }
-    }
-  };
+export default {
+  data() {
+    return {
+      earthImg: "/assets/image/earth-transparent.png",
+      starImg: "/assets/image/starImg.png",
+    };
+  },
+};
 </script>
 
 <template>
@@ -16,27 +16,27 @@
       <p>One quiz at a time</p>
       <div class="startpage-btn-part">
         <router-link to="/quiz">
-          <button class="btn-quiz">Go to quiz</button>
+          <button class="primary-btn">Go to quiz</button>
         </router-link>
         <router-link to="/facts">
-          <button class="btn-more">Go to planets</button>
+          <button class="secondary-btn btn-more">Read more</button>
         </router-link>
       </div>
       <div class="startpage-background-planet">
-        <img :src="earthImg" class="earth-img">
+        <img :src="earthImg" class="earth-img" />
       </div>
     </div>
     <div id="textContainer">
       <div>
-        <img :src="starImg" class="star-img">
+        <img :src="starImg" class="star-img" />
         <p>Gamified learning</p>
       </div>
       <div>
-        <img :src="starImg" class="star-img">
+        <img :src="starImg" class="star-img" />
         <p>Daily challenges</p>
       </div>
       <div>
-        <img :src="starImg" class="star-img">
+        <img :src="starImg" class="star-img" />
         <p>Bite-sized, anytime learning</p>
       </div>
     </div>
@@ -78,34 +78,11 @@ p {
   border: none;
   width: 140px;
   height: 43.21px;
-  border-radius: 36.06px;
   color: #40027d;
-  font-weight: 550;
-  cursor: pointer;
 }
-
-.btn-quiz:hover {
-  background-color: #27006f;
-  color: #e3cafb;
-  border: solid 2px #e3cafb;
-}
-
 
 .btn-more {
-  background-color: #27006f00;
-  border: solid 2px #e3cafb;
-  width: 140px;
-  height: 43.21px;
-  border-radius: 36.06px;
-  color: #e3cafb;
-  font-weight: 550;
-  cursor: pointer;
   margin-left: 4vw;
-}
-
-.btn-more:hover {
-  background-color: #e3cafb;
-  color: #27006f;
 }
 
 #textContainer {
@@ -125,7 +102,7 @@ p {
   position: relative;
   left: 10%;
   height: 30px;
-  background-color:#E3CAFB;
+  background-color: #e3cafb;
   color: black;
   text-align: center;
   border-radius: 5px;

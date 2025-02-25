@@ -31,3 +31,31 @@ h2 {
 h3 {
   font-size: 1.625rem;
 }
+.primary-btn {
+  border-radius: 36.06px;
+  font-weight: 550;
+  cursor: pointer;
+  height: 43.21px;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #e3cafb;
+  border: none;
+  width: 140px;
+  color: #280070;
+}
+.secondary-btn {
+  border-radius: 36.06px;
+  font-weight: 550;
+  cursor: pointer;
+  height: 43.21px;
+  margin-top: 10px;
+  padding: 5px;
+  border: 2px solid #e3cafb;
+  width: 140px;
+  color: #e3cafb;
+  background-color: #27006f00;
+  height: 43.21px;
+}
+button:hover {
+  transform: scale(1.1);
+}

@@ -83,7 +83,7 @@ export default {
           Just answer correctly and prove you're a true space explorer!
         </p>
         <p><strong>Ready?</strong> Click Start Quiz to begin!</p>
-        <button @click="startQuiz" class="start-btn">Start Quiz</button>
+        <button @click="startQuiz" class="primary-btn">Start Quiz</button>
         <div class="planet-images">
           <img :src="mercuryImg" class="planet mercury-img" />
           <img :src="venusImg" class="planet venus-img" />
@@ -197,25 +197,6 @@ p {
 }
 
 /* ---> Button <--- */
-button {
-  height: 43.21px;
-  border-radius: 36.06px;
-  font-weight: 550;
-  cursor: pointer;
-  margin-top: 10px;
-  padding: 5px;
-}
-
-button:hover {
-  transform: scale(1.1);
-}
-
-.start-btn {
-  background-color: #e3cafb;
-  border: none;
-  width: 140px;
-  color: #280070;
-}
 
 .answer-btn {
   background-color: #ffffff;
