@@ -94,6 +94,7 @@ footer .footer-row {
 }
 
 .email-field, .btn-enter {
+    border: transparent;
     padding: 4px;
     border-radius: 8px;
     font-family: poppins;

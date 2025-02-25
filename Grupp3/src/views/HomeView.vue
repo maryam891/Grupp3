@@ -19,7 +19,7 @@
           <button class="btn-quiz">Go to quiz</button>
         </router-link>
         <router-link to="/facts">
-          <button class="btn-more">Read more</button>
+          <button class="btn-more">Go to planets</button>
         </router-link>
       </div>
       <div class="startpage-background-planet">

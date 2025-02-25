@@ -128,6 +128,7 @@ textarea {
 .contact-field, .btn-send {
     padding: 4px;
     border-radius: 8px;
+    border: transparent;
     font-family: poppins;
 }
 
