@@ -80,12 +80,12 @@ p {
   height: 43.21px;
   color: #40027d;
 }
-
+/* 
 .btn-quiz:hover {
   background-color: #27006f;
   color: #e3cafb;
   border: solid 2px #e3cafb;
-}
+} */
 
 .btn-more {
   background-color: #27006f00;
