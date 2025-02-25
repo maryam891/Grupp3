@@ -197,19 +197,6 @@ p {
 }
 
 /* ---> Button <--- */
-button {
-  height: 43.21px;
-  border-radius: 36.06px;
-  font-weight: 550;
-  cursor: pointer;
-  margin-top: 10px;
-  padding: 5px;
-}
-
-button:hover {
-  transform: scale(1.1);
-}
-
 .start-btn {
   background-color: #e3cafb;
   border: none;
