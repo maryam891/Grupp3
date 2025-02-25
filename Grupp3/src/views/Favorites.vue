@@ -8,6 +8,8 @@
   </div>
 </template>
 <script>
+ import { mapStores } from 'pinia'
+  import { useCounterStore } from '../store'
 export default {
   created() {
     fetch("/db.json")
