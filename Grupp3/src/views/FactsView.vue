@@ -1,15 +1,15 @@
 <script>
 export default {
-  created(){
+  created() {
     fetch('/infodb.json')
     .then(response => response.json())
-    .then(data =>{
+    .then(data => {
       this.planets = data
       console.log("planets", data)
       console.log(data[0].name)
 
       //skapar en array med bilder, där jag hämtar info till respektive planet från infodb.json.
-      this.images= [
+      this.images = [
       {src: '/assets/image/earth-transparent.png', text: this.planets[2].info, name: this.planets[2].name},
       {src: '/assets/image/mercury.png', text: this.planets[0].info, name: this.planets[0].name},
       {src: '/assets/image/jupiter-transparent.png.png', text: this.planets[4].info, name: this.planets[4].name},
@@ -34,20 +34,20 @@ export default {
 
     };
   },
-  methods:{
-    mouseOver(event){
+  methods: {
+    mouseOver(event) {
       event.target.classList.add("hovered")
     },
-    mouseOut(event){
+    mouseOut(event) {
       event.target.classList.remove("hovered")
     },
 
-    showModal(image){
+    showModal(image) {
       this.modalVisible = true;
       this.modalText = image.text;
       this.modalHeader = image.name;
     },
-    closeModal(){
+    closeModal() {
       this.modalVisible = false;
     }
   }

@@ -121,6 +121,7 @@ export default {
           You answered {{ correctAnswersCount }} out of
           {{ questions.length }} correctly.
         </p>
+        <!--click to restart quiz-->
         <button
           class="result-btn"
           @click="
@@ -148,6 +149,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .quiz-content {
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
   height: 450px;
@@ -160,12 +162,15 @@ export default {
   align-items: center;
   text-align: center;
 }
+
 .quiz-intro {
   width: 80%;
 }
+
 .quiz-questions {
   width: 80%;
 }
+
 .answers {
   display: flex;
   flex-direction: column;
@@ -173,20 +178,24 @@ export default {
   align-items: center;
   padding: 10px 0;
 }
+
 h1 {
   color: #40027d;
   font-weight: 500;
   text-align: center;
 }
+
 h2 {
   font-weight: bold;
   color: #020632;
 }
+
 p {
   color: #000000;
   text-align: center;
   padding: 10px 0;
 }
+
 /* ---> Button <--- */
 button {
   height: 43.21px;
@@ -196,58 +205,70 @@ button {
   margin-top: 10px;
   padding: 5px;
 }
+
 button:hover {
   transform: scale(1.1);
 }
+
 .start-btn {
   background-color: #e3cafb;
   border: none;
   width: 140px;
   color: #280070;
 }
+
 .answer-btn {
   background-color: #ffffff;
   border: 2px solid #40027d;
   width: 300px;
   color: #40027d;
 }
+
 .result-btn {
   background-color: #40027d;
   border: none;
   width: 150px;
   color: #ffffff;
 }
+
 /* ---> Images <--- */
 .planet-images {
   position: relative;
   width: 100%;
   height: 100%;
 }
+
 .planet {
   position: absolute;
   width: 200px;
   z-index: 2;
   width: 200px;
 }
+
 .earth-img {
   top: -450px;
   left: -150px;
 }
+
 .venus-img {
   top: -50px;
   right: -120px;
 }
+
 .mercury-img {
   top: -60px;
   left: -150px;
 }
+
 .congrats-img {
   width: 120px;
   padding-bottom: 20px;
 }
+
 .correct {
   background-color: green;
 }
+
 .incorrect {
   background-color: red;
 }

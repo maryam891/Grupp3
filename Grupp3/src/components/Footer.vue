@@ -7,6 +7,7 @@
       }
     },
     methods: {
+        //function to sign up for newsletter + empty textfield
         onSubmitNewsletter() {
             alert("You've signed up to our newsletter using email address: " + this.message)
             this.message = ""
@@ -40,6 +41,7 @@
                 </ul>
             </div>
             <div class="footer-column">
+                <!-- kommentera -->
                 <form @submit="onSubmitNewsletter">
                     <h3 class="footer-newsletter-h3">Sign up to our newsletter</h3>
     <!--                 <p>Stay updated with our latest news and exclusive insights—subscribe to our newsletter! Enter your email below and join our community.</p> -->
