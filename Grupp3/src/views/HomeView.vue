@@ -16,10 +16,10 @@ export default {
       <p>One quiz at a time</p>
       <div class="startpage-btn-part">
         <router-link to="/quiz">
-          <button class="btn-quiz">Go to quiz</button>
+          <button class="primary-btn">Go to quiz</button>
         </router-link>
         <router-link to="/facts">
-          <button class="btn-more">Read more</button>
+          <button class="secondary-btn btn-more">Read more</button>
         </router-link>
       </div>
       <div class="startpage-background-planet">
@@ -80,26 +80,10 @@ p {
   height: 43.21px;
   color: #40027d;
 }
-/* 
-.btn-quiz:hover {
-  background-color: #27006f;
-  color: #e3cafb;
-  border: solid 2px #e3cafb;
-} */
 
 .btn-more {
-  background-color: #27006f00;
-  border: solid 2px #e3cafb;
-  width: 140px;
-  height: 43.21px;
-  color: #e3cafb;
   margin-left: 4vw;
 }
-
-/* .btn-more:hover {
-  background-color: #e3cafb;
-  color: #27006f;
-} */
 
 #textContainer {
   display: flex;
