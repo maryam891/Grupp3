@@ -1,15 +1,6 @@
-<template>
-  <h1>Your favorite planets</h1>
-  <div id="favorites-container">
-    <div v-for="(planet, id) in result.planets" id="favorite-card" :key="id">
-      <i class="fa-solid fa-heart heart-icon" @click="removeFromFav(id)"></i>
-      <p>{{ planet.name }}</p>
-    </div>
-  </div>
-</template>
 <script>
- import { mapStores } from 'pinia'
-  import { useCounterStore } from '../store'
+import { mapStores } from 'pinia'
+import { useCounterStore } from '../store'
 export default {
   created() {
     fetch("/db.json")
@@ -20,6 +11,7 @@ export default {
       });
   },
   methods: {
+    //function to remove planets from favourites
     removeFromFav(id) {
       this.result.planets.splice(id, 1);
     },
@@ -31,6 +23,17 @@ export default {
   },
 };
 </script>
+
+<template>
+  <h1>Your favorite planets</h1>
+  <div id="favorites-container">
+    <div v-for="(planet, id) in result.planets" id="favorite-card" :key="id">
+      <i class="fa-solid fa-heart heart-icon" @click="removeFromFav(id)"></i>
+      <p>{{ planet.name }}</p>
+    </div>
+  </div>
+</template>
+
 <style scoped>
 h1 {
   text-align: center;
@@ -45,11 +48,13 @@ h1 {
   gap: 10px;
   margin-top: 15px;
 }
+
 #favorite-card {
   height: 300px;
   width: 300px;
   background-color: rgb(90, 89, 88);
 }
+
 .heart-icon {
   color: #e3cafb;
   cursor: pointer;

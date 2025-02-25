@@ -28,17 +28,14 @@
     </div>
     <div id="textContainer">
       <div>
-        <p class="factText">Fact 1</p>
         <img :src="starImg" class="star-img">
         <p>Gamified learning</p>
       </div>
       <div>
-        <p class="factText">Fact 2</p>
         <img :src="starImg" class="star-img">
         <p>Daily challenges</p>
       </div>
       <div>
-        <p class="factText">Fact 3</p>
         <img :src="starImg" class="star-img">
         <p>Bite-sized, anytime learning</p>
       </div>
@@ -136,8 +133,7 @@ p {
 }
 
 .starImg {
-  position: relative;
+  position: absolute;
   margin-bottom: 10px;
-  left: 25%;
 }
 </style>

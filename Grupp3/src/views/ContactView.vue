@@ -9,6 +9,7 @@ export default {
             }
         }
     },
+    //kommentera
     methods: {
         submitContactForm(e) {
             alert("Message sent successfully!")
@@ -32,6 +33,7 @@ export default {
                     <h2>Got any questions or feedback?</h2>
                     <p class="p-contact">Contact us and we'll get back to you as soon as possible.</p>
                     <p class="p-obligatory">*Obligatory field</p>
+                    <!--kommentera-->
                     <form @submit="submitContactForm">
                         <div class="form-contact-info">
                             <label for="name">Name:</label>
@@ -51,8 +53,6 @@ export default {
             </div>
         </section>
         <section class="address-container">
-            <div class="location-part">
-            </div>
             <div class="address-part">
                 <h3>Address:</h3>
                 <p>SPACE LEARNING & co</p>

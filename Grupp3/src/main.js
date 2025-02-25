@@ -7,4 +7,4 @@ const pinia = createPinia();
 const app = createApp(App);
 
 app.use(pinia);
-createApp(App).use(router).mount("#app");
+app.use(router).mount("#app");
