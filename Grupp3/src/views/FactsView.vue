@@ -5,8 +5,6 @@ export default {
     .then(response => response.json())
     .then(data =>{
       this.planets = data
-      console.log("planets", data)
-      console.log(data[0].name)
 
       //skapar en array med bilder, där jag hämtar info till respektive planet från infodb.json.
       this.images= [
@@ -46,9 +44,11 @@ export default {
       this.modalVisible = true;
       this.modalText = image.text;
       this.modalHeader = image.name;
+      classList.add('overlay')
     },
     closeModal(){
       this.modalVisible = false;
+      classList.remove('overlay')
     }
   }
 };
@@ -60,55 +60,59 @@ export default {
       <h1>Some fun facts about each planet in our solar system (including Pluto)</h1>
       <p>Click the planet to read more</p>
 
-      <div class="planet-card"><!--När jag klickar på bilden ska funktionen showModal "starta" som innehåller info från arrayen i data-->
-
-        <!--Försöker rendera bilderna från arrayen i created-->
+      <!--Planeterna-->
+      <div class="planet-card">
+        <!--Renderar bilderna från arrayen i created-->
         <div class="planets">
           <div class="planet-card" v-for="(image, index) in images" :key="index" >
             <img :src="image.src" :alt="image.name"  @click="showModal(image)" @mouseover="mouseOver" @mouseout="mouseOut">
             <p> {{ image.name }}</p>
           </div>
         </div>
-    </div>
+
+      </div>
       <p>science.nasa.gov (källa)</p>
     </div>
 
-<!--modal kod-->
-    <div class="modal" v-show="modalVisible">
-      <div class="modal-inner">
+    <!--modal kod-->
+      <div class="modal" v-show="modalVisible">
+        <div class="modal-inner">
+          <header class="modal-header">
+            {{ modalHeader }}
+          </header>
+          <section class="modal-body">
+            {{ modalText }}
+          </section>
 
-        <header class="modal-header">
-          {{ modalHeader }}
-        </header>
-
-        <section class="modal-body">
-          {{ modalText }}
-        </section>
-
-        <button class="btn-close" @click="closeModal">Close</button>
+          <button class="btn-close" @click="closeModal">Close</button>
+        </div>
       </div>
-    </div>
+
+      <!--Bakgrund till modalen så att man inte kan klicka på annat-->
+      <div class="overlay" v-show="modalVisible"></div>
 
   </div>
 </template>
 
 <style scoped>
-  .hovered{
+  .hovered {
     scale: 1.1;
   }
 
-  .main{
+  .main {
     padding: 3em;
   }
 
-.modal{
+.modal {
   position: fixed;
-  top:0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  /* right: 50%; */
+  transform: translate(-50%, -50%);
+  /* bottom: 0; */
   z-index: 99;
-  background-color: rgba(0, 0, 0, 0,2);
+  background-color: rgba(0, 0, 0, 0,5);
+  max-width: 37.5rem;
 
   display: flex;
   flex-direction: column;
@@ -116,13 +120,35 @@ export default {
   justify-content: center;
 }
 
-.modal-inner{
+.modal-inner {
   background: #464545;
-  padding: 32px;
+  padding: 2rem;
 }
 
-.planets{
+.overlay {
+position: fixed;
+left: 0;
+top: 0;
+width: 100vw;
+height: 100vh;
+background-color: #57565672;
+opacity: 0.6;
+z-index: 5;
+}
+
+.planets {
   display: flex;
   flex-wrap: wrap;
+}
+
+.planet-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  max-width: 70%;
 }
 </style>
