@@ -1,6 +1,7 @@
 <script setup>
 import NavBar from "./components/NavBar.vue";
 import Nasa from "./components/Nasa.vue";
+import Footer from "./components/Footer.vue";
 </script>
 
 <template>
@@ -8,7 +9,6 @@ import Nasa from "./components/Nasa.vue";
     <NavBar />
     <!-- <Nasa /> -->
     <RouterView />
-    <Nasa/>
-
+    <Footer></Footer>
   </div>
 </template>

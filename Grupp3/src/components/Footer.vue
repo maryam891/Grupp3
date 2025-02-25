@@ -19,7 +19,9 @@
     <footer>
         <div class="footer-row">
             <div class="footer-column">
-                <img :src="logo" alt="Logo">
+                <router-link to="/">
+                    <img :src="logo" alt="Logo">
+                </router-link>
             </div>
             <div class="footer-column">
                 <ul class="footer-links">
@@ -58,7 +60,8 @@
 <style>
 footer {
     width: 100%;
-    position: fixed;
+    margin-top: 4em;
+    position: static;
     bottom: 0;
 }
 
@@ -70,7 +73,7 @@ footer .footer-row {
 }
 
 .footer-column img {
-    height: 25%;
+    width: 100%;
     margin-left: 2em;
 }
 
@@ -109,6 +112,7 @@ footer .footer-row {
     display: flex;
     justify-content: center;
     margin-top: .4em;
+    margin-bottom: .2em;
 }
 
 .copyright p {

@@ -10,9 +10,14 @@ export default {
         }
     },
     methods: {
-        submitContactForm() {
+        submitContactForm(e) {
             alert("Message sent successfully!")
-            this.contactData()
+            this.contactData = {
+                name: "",
+                email: "",
+                message: ""
+            }
+            e.preventDefault()
         }
     }
 }
@@ -45,12 +50,16 @@ export default {
                 </div>
             </div>
         </section>
-<!--         <section class="address-container">
-            <h2>Address:</h2>
-            <p>SPACE LEARNING & co</p>
-            <p>The street 1800</p>
-            <p>12111 New York</p>
-        </section> -->
+        <section class="address-container">
+            <div class="location-part">
+            </div>
+            <div class="address-part">
+                <h3>Address:</h3>
+                <p>SPACE LEARNING & co</p>
+                <p>The street 1800</p>
+                <p>12111 New York</p>
+            </div>
+        </section>
     </main>
 </template>
 
@@ -136,6 +145,13 @@ textarea {
 
 .btn-send:hover {
     background-color: #dec1fa;
+}
+
+.address-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #00000010;
+    padding: 2em;
 }
 
 </style>

@@ -47,6 +47,10 @@
 </template>
 
 <style scoped>
+main {
+  min-height: 100vh;
+}
+
 .startpage-intro-container {
   margin-top: 7vh;
   margin-left: 2vw;
