@@ -78,7 +78,152 @@
   {
     "id": 16,
     "planet_id": 7,
-    "text": "What discovery has been made on Enceladus?"
+    "text": "What discovery has been made on Enceladus? (One of Saturns moons)"
+  },
+  {
+    "id": 17,
+    "planet_id": 7,
+    "text": "How old are Saturn's rings estimated to be?"
+  },
+  {
+    "id": 18,
+    "planet_id": 9,
+    "text": "How many known moons does Neptune have?"
+  },
+  {
+    "id": 19,
+    "planet_id": 9,
+    "text": "What makes Neptune’s deep blue color unique compared to Uranus?"
+  },
+  {
+    "id": 20,
+    "planet_id": 9,
+    "text": "What was unique about Neptune's discovery?"
+  },
+  {
+    "id": 21,
+    "planet_id": 9,
+    "text": "What drives Neptune's powerful storms?"
+  },
+  {
+    "id": 22,
+    "planet_id": 6,
+    "text": "What is unusual about Uranus's rotation?"
+  },
+  {
+    "id": 23,
+    "planet_id": 6,
+    "text": "What was recently discovered in Uranus's atmosphere?"
+  },
+  {
+    "id": 24,
+    "planet_id": 6,
+    "text": "What is one of the most remarkable features of Uranus' magnetic field?"
+  },
+  {
+    "id": 25,
+    "planet_id": 6,
+    "text": "Which of Uranus' moons is believed to have an icy surface with a possible subsurface ocean?"
+  },
+  {
+    "id": 26,
+    "planet_id": 5,
+    "text": "How much of Earth's surface is covered by water?"
+  },
+  {
+    "id": 27,
+    "planet_id": 5,
+    "text": "What is unique about Earth's atmosphere compared to other rocky planets?"
+  },
+  {
+    "id": 28,
+    "planet_id": 5,
+    "text": "Which geological process affects Earth's surface the most over time?"
+  },
+  {
+    "id": 29,
+    "planet_id": 5,
+    "text": "What is the main reason Earth has liquid water?"
+  },
+  {
+    "id": 30,
+    "planet_id": 4,
+    "text": "What is special about Venus's day compared to its year?"
+  },
+  {
+    "id": 31,
+    "planet_id": 4,
+    "text": "What is Venus's highest volcano?"
+  },
+  {
+    "id": 32,
+    "planet_id": 4,
+    "text": "What is unusual about Venus's magnetic field?"
+  },
+  {
+    "id": 33,
+    "planet_id": 9,
+    "text": "Whats the average temperature on Neptune?"
+  },
+  {
+    "id": 34,
+    "planet_id": 8,
+    "text": "Whats the average temperature on Pluto?"
+  },
+  {
+    "id": 35,
+    "planet_id": 5,
+    "text": "Whats the average temperature on Earth?"
+  },
+  {
+    "id": 36,
+    "planet_id": 4,
+    "text": "Whats the average temperature on Venus?"
+  },
+  {
+    "id": 37,
+    "planet_id": 1,
+    "text": "Whats the average temperature on Mercury?"
+  },
+  {
+    "id": 38,
+    "planet_id": 2,
+    "text": "Whats the average temperature on Mars?"
+  },
+  {
+    "id": 39,
+    "planet_id": 3,
+    "text": "Whats the average temperature on Jupiter?"
+  },
+  {
+    "id": 40,
+    "planet_id": 7,
+    "text": "Whats the average temperature on Saturn?"
+  },
+  {
+    "id": 41,
+    "planet_id": 6,
+    "text": "Whats the average temperature on Uranus?"
+  },
+  {
+    "id": 42,
+    "planet_id": 8,
+    "text": "What is the main component of Pluto’s thin atmosphere?"
+  },
+  {
+    "id": 43,
+    "planet_id": 8,
+    "text": "What is special about Pluto and its largest moon, Charon?"
+  },
+  {
+    "id": 44,
+    "planet_id": 8,
+    "text": "What was the primary reason Pluto was reclassified as a dwarf planet in 2006?"
+  },
+  {
+    "id": 45,
+    "planet_id": 8,
+    "text": "What spacecraft provided the first close-up images of Pluto?"
   }
 ],
 
@@ -158,6 +303,122 @@
   { "question_id": 16, "text": "Cryovolcanoes ejecting water", "is_correct": true},
   { "question_id": 16, "text": "Flowing lava", "is_correct": false},
   { "question_id": 16, "text": "An oxygen-rich atmosphere", "is_correct": false},
-  { "question_id": 16, "text": "A magnetic field", "is_correct": false}
+  { "question_id": 16, "text": "A magnetic field", "is_correct": false},
+  { "question_id": 17, "text": "100 billion years", "is_correct": true},
+  { "question_id": 17, "text": "1 billion years", "is_correct": false},
+  { "question_id": 17, "text": "4.5 billion years", "is_correct": false},
+  { "question_id": 17, "text": "They formed recently", "is_correct": false},
+  { "question_id": 18, "text": "8", "is_correct": false},
+  { "question_id": 18, "text": "14", "is_correct": true},
+  { "question_id": 18, "text": "14", "is_correct": false},
+  { "question_id": 18, "text": "30", "is_correct": false},
+  { "question_id": 19, "text": "It has a higher amount of methane in its atmosphere", "is_correct": true},
+  { "question_id": 19, "text": "It has a thinner atmosphere", "is_correct": false},
+  { "question_id": 19, "text": "It reflects more sunlight", "is_correct": false},
+  { "question_id": 19, "text": "It lacks cloud formations", "is_correct": false},
+  { "question_id": 20, "text": "It was discovered through mathematical calculations", "is_correct": true},
+  { "question_id": 20, "text": "It was first seen with the naked eye", "is_correct": false},
+  { "question_id": 20, "text": "It was known in ancient astronomy", "is_correct": false},
+  { "question_id": 20, "text": "It was originally classified as an asteroid", "is_correct": false},
+  { "question_id": 21, "text": "The Sun's energy", "is_correct": false},
+  { "question_id": 21, "text": "Heat from the planet's interior", "is_correct": true},
+  { "question_id": 21, "text": "Methane gas", "is_correct": false},
+  { "question_id": 21, "text": "Tidal forces from its moons", "is_correct": false},
+  { "question_id": 22, "text": "It tilts almost 98 degrees", "is_correct": true},
+  { "question_id": 22, "text": "It rotates the fastest of all planets", "is_correct": false},
+  { "question_id": 22, "text": "It is the only planet that rotates backwar", "is_correct": false},
+  { "question_id": 22, "text": "It has a double axis", "is_correct": false},
+  { "question_id": 23, "text": "Traces of methane and ammonia", "is_correct": true},
+  { "question_id": 23, "text": "Oxygen bubbles", "is_correct": false},
+  { "question_id": 23, "text": "Strong hurricanes", "is_correct": false},
+  { "question_id": 23, "text": "A new moon", "is_correct": false},
+  { "question_id": 24, "text": "It is unusually weak", "is_correct": false},
+  { "question_id": 24, "text": "It is stronger than Jupiter's", "is_correct": false},
+  { "question_id": 24, "text": "It is extremely tilted and offset from the planet's center", "is_correct": true},
+  { "question_id": 24, "text": "It has no poles", "is_correct": false},
+  { "question_id": 25, "text": "Miranda", "is_correct": false},
+  { "question_id": 25, "text": "Ariel", "is_correct": true},
+  { "question_id": 25, "text": "Oberon", "is_correct": false},
+  { "question_id": 25, "text": "Titania", "is_correct": false},
+  { "question_id": 26, "text": "51%", "is_correct": false},
+  { "question_id": 26, "text": "61%", "is_correct": false},
+  { "question_id": 26, "text": "71%", "is_correct": true},
+  { "question_id": 26, "text": "81%", "is_correct": false},
+  { "question_id": 27, "text": "It has the highest carbon dioxide levels", "is_correct": false},
+  { "question_id": 27, "text": "It contains a significant amount of oxygen", "is_correct": true},
+  { "question_id": 27, "text": "It is the thinnest in the solar system", "is_correct": false},
+  { "question_id": 27, "text": "It has the lowest temperature", "is_correct": false},
+  { "question_id": 28, "text": "Volcanism", "is_correct": false},
+  { "question_id": 28, "text": "Plate tectonics", "is_correct": true},
+  { "question_id": 28, "text": "Meteorite impacts", "is_correct": false},
+  { "question_id": 28, "text": "Erosion", "is_correct": false},
+  { "question_id": 29, "text": "The Sun's energy", "is_correct": false},
+  { "question_id": 29, "text": "Atmospheric pressure and temperature", "is_correct": true},
+  { "question_id": 29, "text": "Earth's magnetic field", "is_correct": false},
+  { "question_id": 29, "text": "The Moon's gravitational force", "is_correct": false},
+  { "question_id": 30, "text": "Venus rotates faster than it orbits the Sun", "is_correct": false},
+  { "question_id": 30, "text": "A day on Venus is longer than a Venus year", "is_correct": true},
+  { "question_id": 30, "text": "Venus rotates 10 times faster than Earth", "is_correct": false},
+  { "question_id": 30, "text": "Venus has no actual day-night cycle", "is_correct": false},
+  { "question_id": 31, "text": "Olympus Mons", "is_correct": false},
+  { "question_id": 31, "text": "Maxwell Montes", "is_correct": true},
+  { "question_id": 31, "text": "Elysium Mons", "is_correct": false},
+  { "question_id": 31, "text": "Arsia Mons", "is_correct": false},
+  { "question_id": 32, "text": "It is stronger than Jupiter's", "is_correct": false},
+  { "question_id": 32, "text": "It is weaker than Earth's", "is_correct": true},
+  { "question_id": 32, "text": "It has two poles at the equator", "is_correct": false},
+  { "question_id": 32, "text": "It is created by electrically charged clouds", "is_correct": false},
+  { "question_id": 33, "text": "-218°C", "is_correct": true},
+  { "question_id": 33, "text": "-145°C", "is_correct": false},
+  { "question_id": 33, "text": "-37°C", "is_correct": false},
+  { "question_id": 33, "text": "92°C", "is_correct": false},
+  { "question_id": 34, "text": "-229°C", "is_correct": true},
+  { "question_id": 34, "text": "0°C", "is_correct": false},
+  { "question_id": 34, "text": "-78°C", "is_correct": false},
+  { "question_id": 34, "text": "5°C", "is_correct": false},
+  { "question_id": 35, "text": "15°C", "is_correct": true},
+  { "question_id": 35, "text": "12°C", "is_correct": false},
+  { "question_id": 35, "text": "20°C", "is_correct": false},
+  { "question_id": 35, "text": "10°C", "is_correct": false},
+  { "question_id": 36, "text": "464°C", "is_correct": true},
+  { "question_id": 36, "text": "300°C", "is_correct": false},
+  { "question_id": 36, "text": "45°C", "is_correct": false},
+  { "question_id": 36, "text": "-80°C", "is_correct": false},
+  { "question_id": 37, "text": "167°C", "is_correct": true},
+  { "question_id": 37, "text": "200°C", "is_correct": false},
+  { "question_id": 37, "text": "2°C", "is_correct": false},
+  { "question_id": 37, "text": "-100°C", "is_correct": false},
+  { "question_id": 38, "text": "-63°C", "is_correct": true},
+  { "question_id": 38, "text": "-230°C", "is_correct": false},
+  { "question_id": 38, "text": "123°C", "is_correct": false},
+  { "question_id": 38, "text": "30°C", "is_correct": false},
+  { "question_id": 39, "text": "-108°C", "is_correct": true},
+  { "question_id": 39, "text": "-157°C", "is_correct": false},
+  { "question_id": 39, "text": "45°C", "is_correct": false},
+  { "question_id": 39, "text": "367°C", "is_correct": false},
+  { "question_id": 40, "text": "-139°C", "is_correct": true},
+  { "question_id": 40, "text": "90C", "is_correct": false},
+  { "question_id": 40, "text": "-54°C", "is_correct": false},
+  { "question_id": 40, "text": "154°C", "is_correct": false},
+  { "question_id": 41, "text": "-197°C", "is_correct": true},
+  { "question_id": 41, "text": "-278°C", "is_correct": false},
+  { "question_id": 41, "text": "78°C", "is_correct": false},
+  { "question_id": 41, "text": "105°C", "is_correct": false},
+  { "question_id": 42, "text": "Oxygen", "is_correct": false},
+  { "question_id": 42, "text": "Carbon dioxide", "is_correct": false},
+  { "question_id": 42, "text": "Nitrogen", "is_correct": true},
+  { "question_id": 42, "text": "Hydrogen", "is_correct": false},
+  { "question_id": 43, "text": "Charon is almost half the size of Pluto, making them a binary system", "is_correct": true},
+  { "question_id": 43, "text": "Charon is the only moon in the Solar System with a ring", "is_correct": false},
+  { "question_id": 43, "text": "Charon has active volcanoes", "is_correct": false},
+  { "question_id": 43, "text": "Charon is denser than Pluto", "is_correct": false},
+  { "question_id": 44, "text": "It has no atmosphere", "is_correct": false},
+  { "question_id": 44, "text": "It is too far from the Sun", "is_correct": false},
+  { "question_id": 44, "text": "It has not cleared its orbit of other debris", "is_correct": true},
+  { "question_id": 44, "text": "It does not have any moons", "is_correct": false},
+  { "question_id": 45, "text": "Voyager", "is_correct": false},
+  { "question_id": 45, "text": "New Horizons", "is_correct": true},
+  { "question_id": 45, "text": "Cassini", "is_correct": false},
+  { "question_id": 45, "text": "Pioneer 10", "is_correct": false}
   ]
 }
