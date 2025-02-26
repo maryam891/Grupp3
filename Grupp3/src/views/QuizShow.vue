@@ -3,6 +3,7 @@ export default {
   data() {
     return {
       showQuiz: false,
+      allQuestions: [],
       questions: [],
       currentQuestionIndex: 0,
       selectedAnswer: null,
@@ -13,21 +14,16 @@ export default {
       earthImg: "/assets/image/earth-transparent.png",
       venusImg: "/assets/image/venus-transparent.png",
       mercuryImg: "/assets/image/mercury.png",
-      starImg: "/assets/image/starImg.png",
     };
   },
   methods: {
-    // Hämta frågor från filer db.json
+    // Fetch questions from db.json
     async fetchQuestions() {
       const response = await fetch("/db.json");
-      console.log(response);
       const jsonData = await response.json();
-      console.log(jsonData);
-
-      // Sparar planetlistan
       this.planets = jsonData.planets;
-      // Hämtar alla frågor från alla planeter
-      this.questions = jsonData.questions.map((q) => ({
+      // Save all questions for later use
+      this.allQuestions = jsonData.questions.map((q) => ({
         id: q.id,
         text: q.text,
         answers: this.shuffleArray(
@@ -36,18 +32,22 @@ export default {
       }));
     },
 
-    // Blandar svarsalternativen slumpmässigt
+    // Shuffle array elements randomly
     shuffleArray(array) {
       return array.sort(() => Math.random() - 0.5);
     },
 
-    // Startar quizet
-    startQuiz() {
+    // Start quiz with selected number of questions
+    startQuiz(questionCount) {
       this.showQuiz = true;
-      this.fetchQuestions(); // Laddar frågor vid start
+      // Shuffle all questions and pick the required amount
+      this.questions = this.shuffleArray([...this.allQuestions]).slice(
+        0,
+        questionCount
+      );
     },
 
-    // Kontrollerar om användarens svar är rätt eller fel
+    // Check if selected answer is correct
     checkAnswer(answer) {
       this.selectedAnswer = answer.text;
       if (answer.is_correct) {
@@ -56,10 +56,10 @@ export default {
       } else {
         this.feedback[this.currentQuestionIndex] = "incorrect";
       }
-      setTimeout(this.nextQuestion, 1000); // Väntar 1 sekund innan nästa fråga
+      setTimeout(this.nextQuestion, 1000); // Waits 1 second before next question
     },
 
-    // Växlar till nästa fråga
+    // Move to next question
     nextQuestion() {
       this.selectedAnswer = null;
       if (this.currentQuestionIndex < this.questions.length - 1) {
@@ -68,6 +68,10 @@ export default {
         this.quizCompleted = true;
       }
     },
+  },
+  // Fetches questions when the component is mounted
+  async mounted() {
+    await this.fetchQuestions();
   },
 };
 </script>
@@ -82,8 +86,21 @@ export default {
           Test your knowledge about planets, stars, and black holes! <br />
           Just answer correctly and prove you're a true space explorer!
         </p>
-        <p><strong>Ready?</strong> Click Start Quiz to begin!</p>
-        <button @click="startQuiz" class="primary-btn">Start Quiz</button>
+        <p>
+          <strong>Ready?</strong> Select your challenge and start the adventure!
+        </p>
+        <!-- <button @click="startQuiz" class="primary-btn">Start Quiz</button> -->
+        <div class="quiz-options">
+          <button @click="startQuiz(10)" class="primary-btn quiz-btn">
+            10 Questions
+          </button>
+          <button @click="startQuiz(20)" class="primary-btn quiz-btn">
+            20 Questions
+          </button>
+          <button @click="startQuiz(30)" class="primary-btn quiz-btn">
+            30 Questions
+          </button>
+        </div>
         <div class="planet-images">
           <img :src="mercuryImg" class="planet mercury-img" />
           <img :src="venusImg" class="planet venus-img" />
@@ -91,6 +108,7 @@ export default {
         </div>
       </div>
       <div v-if="showQuiz && !quizCompleted" class="quiz-questions">
+        <h4>({{ currentQuestionIndex + 1 }} / {{ questions.length }})</h4>
         <h2>{{ questions[currentQuestionIndex]?.text }}</h2>
         <!-- optional chaining -->
         <div class="answers">
@@ -98,7 +116,7 @@ export default {
             v-for="answer in questions[currentQuestionIndex]?.answers"
             :key="answer.text"
             @click="checkAnswer(answer)"
-            class="answer-btn"
+            class="answer-btn secondary-btn"
             :class="{
               correct:
                 feedback[currentQuestionIndex] === 'correct' &&
@@ -123,7 +141,7 @@ export default {
         </p>
         <!--click to restart quiz-->
         <button
-          class="result-btn"
+          class="primary-btn"
           @click="
             showQuiz = false;
             quizCompleted = false;
@@ -187,9 +205,13 @@ h1 {
 
 h2 {
   font-weight: bold;
-  color: #020632;
+  color: #40027d;
 }
 
+h4 {
+  color: #40027d;
+  text-align: right;
+}
 p {
   color: #000000;
   text-align: center;
@@ -197,19 +219,15 @@ p {
 }
 
 /* ---> Button <--- */
-
+.quiz-btn {
+  width: 10em;
+  margin: 1em;
+}
 .answer-btn {
   background-color: #ffffff;
   border: 2px solid #40027d;
   width: 300px;
   color: #40027d;
-}
-
-.result-btn {
-  background-color: #40027d;
-  border: none;
-  width: 150px;
-  color: #ffffff;
 }
 
 /* ---> Images <--- */
@@ -233,7 +251,7 @@ p {
 
 .venus-img {
   top: -50px;
-  right: -120px;
+  right: -150px;
 }
 
 .mercury-img {
