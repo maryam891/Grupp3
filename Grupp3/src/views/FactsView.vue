@@ -93,8 +93,10 @@ export default {
 </script>
 
 <template>
-  <Nasa />
   <div class="main">
+    <div class="nasa-img-container">
+      <Nasa />
+    </div>
     <div class="information">
       <h1>
         Some fun facts about each planet in our solar system (including Pluto)

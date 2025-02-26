@@ -27,18 +27,16 @@ export default {
 </template>
 
 <style scoped>
-@media (min-width: 980px) and (max-width: 768px) {
-
-}
-
-@media (min-width: 768px) and (max-width: 500px) {
-
-}
-
-@media (min-width: 500px) and (max-width: 375px) {
-
-}
 img {
-  height: 40vh;
+  height: 47vh;
+  border-radius: 1rem;
 }
+
+@media (min-width: 980px) and (max-width: 768px) {}
+
+
+
+@media (min-width: 768px) and (max-width: 500px) {}
+
+@media (min-width: 500px) and (max-width: 375px) {}
 </style>
