@@ -10,7 +10,7 @@ export default {
       .then((data) => {
         this.planets = data;
 
-        //skapar en array med bilder, där jag hämtar info till respektive planet från infodb.json.
+        //creates an array of images, where I retrieve info for the respective planet in infodb.json.
         this.images = [
           {
             src: "/assets/image/earth-transparent.png",
@@ -93,17 +93,19 @@ export default {
 </script>
 
 <template>
-  <Nasa />
+
   <div class="main">
+    <Nasa />
+    <hr>
     <div class="information">
       <h1>
         Some fun facts about each planet in our solar system (including Pluto)
       </h1>
       <p>Click the planet to read more</p>
 
-      <!--Planeterna-->
+      <!--Planets-->
       <div class="planet-card">
-        <!--Renderar bilderna från arrayen i created-->
+        <!--Rendering the pictures from the array in created-->
         <div class="planets">
           <div class="planet-card" v-for="(image, index) in images" :key="index">
             <img :src="image.src" :alt="image.name" @click="showModal(image)" @mouseover="mouseOver"
@@ -115,7 +117,7 @@ export default {
       <p>science.nasa.gov (källa)</p>
     </div>
 
-    <!--modal kod-->
+    <!--modal code-->
     <div class="modal" v-show="modalVisible">
       <div class="modal-inner">
         <header class="modal-header">
@@ -129,7 +131,7 @@ export default {
       </div>
     </div>
 
-    <!--Bakgrund till modalen så att man inte kan klicka på annat-->
+    <!--Background to the modal so that you cannot click on anything else-->
     <div class="overlay" v-show="modalVisible"></div>
   </div>
 </template>
@@ -161,8 +163,22 @@ export default {
 }
 
 .modal-inner {
-  background: #464545;
+  background: #efefef;
   padding: 2rem;
+  color: black;
+  border-radius: 25px;
+
+  h1{
+    color: #40027d;
+  }
+}
+
+.modal-header {
+  padding-bottom: 1rem;
+}
+
+.modal-body {
+  padding-bottom: 1rem;
 }
 
 .overlay {
@@ -190,5 +206,11 @@ export default {
 
 img {
   max-width: 70%;
+  cursor: pointer;
+}
+
+hr{
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 </style>
