@@ -1,5 +1,9 @@
 <script>
+import Nasa from '../components/Nasa.vue';
 export default {
+  components: {
+    'Nasa': Nasa
+  },
   created() {
     fetch("/infodb.json")
       .then((response) => response.json())
@@ -89,6 +93,7 @@ export default {
 </script>
 
 <template>
+  <Nasa />
   <div class="main">
     <div class="information">
       <h1>
@@ -100,18 +105,9 @@ export default {
       <div class="planet-card">
         <!--Renderar bilderna från arrayen i created-->
         <div class="planets">
-          <div
-            class="planet-card"
-            v-for="(image, index) in images"
-            :key="index"
-          >
-            <img
-              :src="image.src"
-              :alt="image.name"
-              @click="showModal(image)"
-              @mouseover="mouseOver"
-              @mouseout="mouseOut"
-            />
+          <div class="planet-card" v-for="(image, index) in images" :key="index">
+            <img :src="image.src" :alt="image.name" @click="showModal(image)" @mouseover="mouseOver"
+              @mouseout="mouseOut" />
             <p>{{ image.name }}</p>
           </div>
         </div>
