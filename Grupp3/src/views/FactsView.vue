@@ -100,11 +100,7 @@ export default {
       <div class="planet-card">
         <!--Renderar bilderna från arrayen i created-->
         <div class="planets">
-          <div
-            class="planet-card"
-            v-for="(image, index) in images"
-            :key="index"
-          >
+          <div class="planet-card" v-for="(image, index) in images" :key="index">
             <img
               :src="image.src"
               :alt="image.name"
@@ -123,7 +119,7 @@ export default {
     <div class="modal" v-show="modalVisible">
       <div class="modal-inner">
         <header class="modal-header">
-          {{ modalHeader }}
+          <h1>{{ modalHeader }}</h1>
         </header>
         <section class="modal-body">
           {{ modalText }}
