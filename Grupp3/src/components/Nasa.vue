@@ -1,21 +1,21 @@
 <script>
-const apiKey = import.meta.env.VITE_NASA_API_KEY;
-//fetch planets
-export default {
-  created() {
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        this.result = result;
-      });
-  },
-  data() {
-    return {
-      result: [],
-    };
-  },
-};
+  const apiKey = import.meta.env.VITE_NASA_API_KEY
+  //fetch planets
+  export default {
+    created() {
+      fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result)
+          this.result = result
+        })
+    },
+    data() {
+      return {
+        result: []
+      }
+    }
+  }
 </script>
 
 <template>
@@ -27,16 +27,14 @@ export default {
 </template>
 
 <style scoped>
-img {
-  height: 47vh;
-  border-radius: 1rem;
-}
+  img {
+    height: 47vh;
+    border-radius: 1rem;
+  }
 
-@media (min-width: 980px) and (max-width: 768px) {}
+  @media (min-width: 768px) and (max-width: 500px) {
+  }
 
-
-
-@media (min-width: 768px) and (max-width: 500px) {}
-
-@media (min-width: 500px) and (max-width: 375px) {}
+  @media (min-width: 500px) and (max-width: 375px) {
+  }
 </style>
