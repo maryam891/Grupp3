@@ -72,6 +72,10 @@ export default {
   // Fetches questions when the component is mounted
   async mounted() {
     await this.fetchQuestions();
+    // Listen event resetView and restart the quiz view when triggered
+    window.addEventListener("resetView", () => {
+      this.showQuiz = false;
+    });
   },
 };
 </script>
@@ -82,9 +86,8 @@ export default {
       <div v-if="!showQuiz && !quizCompleted" class="quiz-intro">
         <h1>Welcome, Space Explorer! 🚀</h1>
         <p>
-          Think you know the universe? 🌍 <br />
-          Test your knowledge about planets, stars, and black holes! <br />
-          Just answer correctly and prove you're a true space explorer!
+          Think you know the universe? <br />
+          Test your knowledge about planets, stars, and black holes!
         </p>
         <p>
           <strong>Ready?</strong> Select your challenge and start the adventure!
@@ -160,7 +163,7 @@ export default {
 <style scoped>
 .quiz-container {
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -170,8 +173,8 @@ export default {
 
 .quiz-content {
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
-  height: 450px;
-  width: 700px;
+  height: 70%;
+  width: 60%;
   background-color: #ffffff;
   border-radius: 43.02px;
   display: flex;
@@ -182,7 +185,7 @@ export default {
 }
 
 .quiz-intro {
-  width: 80%;
+  width: 90%;
 }
 
 .quiz-questions {
@@ -220,7 +223,7 @@ p {
 
 /* ---> Button <--- */
 .quiz-btn {
-  width: 10em;
+  width: 20%;
   margin: 1em;
 }
 .answer-btn {
@@ -270,5 +273,52 @@ p {
 
 .incorrect {
   background-color: red;
+}
+
+@media (max-width: 768px) {
+  .quiz-content {
+    width: 85%;
+    /* height: auto; */
+    padding: 15px;
+  }
+  .quiz-btn {
+    width: 50%;
+  }
+  .answer-btn {
+    width: 15em;
+  }
+  h1 {
+    font-size: 1.625rem;
+  }
+  h2 {
+    font-size: 1.375rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768.1px) and (max-width: 989px) {
+  .quiz-content {
+    width: 90%;
+    padding: 15px;
+  }
+  .quiz-content {
+    width: 70%;
+    padding: 15px;
+  }
+
+  .quiz-btn {
+    width: 8em;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  p {
+    font-size: 1.125rem;
+  }
 }
 </style>

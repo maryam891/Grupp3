@@ -1,4 +1,10 @@
-<script></script>
+<script setup>
+// Dispatches a custom event named "resetView"
+// This event is used to reset the quiz view when navigating back to the quiz page
+const handleResetQuizView = () => {
+  window.dispatchEvent(new CustomEvent("resetView"));
+};
+</script>
 
 <template>
   <header>
@@ -8,7 +14,9 @@
       </router-link>
       <ul class="nav">
         <li>
-          <router-link to="/quiz" class="nav-link">Quiz</router-link>
+          <router-link to="/quiz" class="nav-link" @click="handleResetQuizView"
+            >Quiz</router-link
+          >
         </li>
         <li>
           <router-link to="/facts" class="nav-link">Facts</router-link>
