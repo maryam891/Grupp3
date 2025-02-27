@@ -90,7 +90,7 @@ p {
 
 .star-img {
   width: 4vw;
-  margin-left: 50%;
+  margin-left: 35%;
 }
 
 @media screen and (max-width: 375px) {
