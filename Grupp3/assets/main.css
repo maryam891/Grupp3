@@ -59,3 +59,36 @@ h3 {
 button:hover {
   transform: scale(1.1);
 }
+
+@media screen and (min-width: 556px) and (max-width: 300px) {
+  h1 {
+    font-size: 1.625rem;
+    color: aqua;
+  }
+
+  h2 {
+    font-size: 1.375rem;
+
+  }
+
+  p {
+    font-size: 1rem;
+    margin-left: 10px;
+
+  }
+
+  main {
+    margin-left: 10px;
+  }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 556px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+}
