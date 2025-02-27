@@ -1,88 +1,106 @@
 <script>
-export default {
-  data() {
-    return {
-      showQuiz: false,
-      allQuestions: [],
-      questions: [],
-      currentQuestionIndex: 0,
-      selectedAnswer: null,
-      correctAnswersCount: 0,
-      quizCompleted: false,
-      feedback: {},
-      planets: [],
-      earthImg: "/assets/image/earth-transparent.png",
-      venusImg: "/assets/image/venus-transparent.png",
-      mercuryImg: "/assets/image/mercury.png",
-    };
-  },
-  methods: {
-    // Fetch questions from db.json
-    async fetchQuestions() {
-      const response = await fetch("/db.json");
-      const jsonData = await response.json();
-      this.planets = jsonData.planets;
-      // Save all questions for later use
-      this.allQuestions = jsonData.questions.map((q) => ({
-        id: q.id,
-        text: q.text,
-        answers: this.shuffleArray(
-          jsonData.answers.filter((a) => a.question_id === q.id)
-        ),
-      }));
-    },
-
-    // Shuffle array elements randomly
-    shuffleArray(array) {
-      return array.sort(() => Math.random() - 0.5);
-    },
-
-    // Start quiz with selected number of questions
-    startQuiz(questionCount) {
-      this.showQuiz = true;
-      // Shuffle all questions and pick the required amount
-      this.questions = this.shuffleArray([...this.allQuestions]).slice(
-        0,
-        questionCount
-      );
-    },
-
-    // Check if selected answer is correct
-    checkAnswer(answer) {
-      this.selectedAnswer = answer.text;
-      if (answer.is_correct) {
-        this.feedback[this.currentQuestionIndex] = "correct";
-        this.correctAnswersCount++;
-      } else {
-        this.feedback[this.currentQuestionIndex] = "incorrect";
-      }
-      setTimeout(this.nextQuestion, 1000); // Waits 1 second before next question
-    },
-
-    // Move to next question
-    nextQuestion() {
-      this.selectedAnswer = null;
-      if (this.currentQuestionIndex < this.questions.length - 1) {
-        this.currentQuestionIndex++;
-      } else {
-        this.quizCompleted = true;
+  export default {
+    data() {
+      return {
+        showQuiz: false,
+        allQuestions: [],
+        questions: [],
+        currentQuestionIndex: 0,
+        selectedAnswer: null,
+        correctAnswersCount: 0,
+        quizCompleted: false,
+        feedback: {},
+        planets: [],
+        showModal: false,
+        earthImg: '/assets/image/earth-transparent.png',
+        venusImg: '/assets/image/venus-transparent.png',
+        mercuryImg: '/assets/image/mercury.png'
       }
     },
-  },
-  // Fetches questions when the component is mounted
-  async mounted() {
-    await this.fetchQuestions();
-    // Listen event resetView and restart the quiz view when triggered
-    window.addEventListener("resetView", () => {
-      this.showQuiz = false;
-    });
-  },
-};
+    methods: {
+      // Fetch questions from db.json
+      async fetchQuestions() {
+        const response = await fetch('/db.json')
+        const jsonData = await response.json()
+        this.planets = jsonData.planets
+        // Save all questions for later use
+        this.allQuestions = jsonData.questions.map((q) => ({
+          id: q.id,
+          text: q.text,
+          answers: this.shuffleArray(
+            jsonData.answers.filter((a) => a.question_id === q.id)
+          )
+        }))
+      },
+
+      // Shuffle array elements randomly
+      shuffleArray(array) {
+        return array.sort(() => Math.random() - 0.5)
+      },
+
+      // Start quiz with selected number of questions
+      startQuiz(questionCount) {
+        this.showQuiz = true
+        // Shuffle all questions and pick the required amount
+        this.questions = this.shuffleArray([...this.allQuestions]).slice(
+          0,
+          questionCount
+        )
+      },
+      // Cancel the quiz and reset values
+      cancelQuiz() {
+        this.showQuiz = false
+        this.quizCompleted = false
+        this.currentQuestionIndex = 0
+        this.correctAnswersCount = 0
+        this.feedback = {}
+        this.showModal = false
+      },
+      // Check if selected answer is correct
+      checkAnswer(answer) {
+        this.selectedAnswer = answer.text
+        if (answer.is_correct) {
+          this.feedback[this.currentQuestionIndex] = 'correct'
+          this.correctAnswersCount++
+        } else {
+          this.feedback[this.currentQuestionIndex] = 'incorrect'
+        }
+        setTimeout(this.nextQuestion, 1000) // Waits 1 second before next question
+      },
+
+      // Move to next question
+      nextQuestion() {
+        this.selectedAnswer = null
+        if (this.currentQuestionIndex < this.questions.length - 1) {
+          this.currentQuestionIndex++
+        } else {
+          this.quizCompleted = true
+        }
+      },
+      // Reset the quiz to its initial state
+      resetQuiz() {
+        this.showQuiz = false
+        this.quizCompleted = false
+        this.currentQuestionIndex = 0
+        this.correctAnswersCount = 0
+        this.feedback = {}
+      }
+    },
+    // Fetches questions when the component is mounted
+    async mounted() {
+      await this.fetchQuestions()
+      // Listen event resetView and restart the quiz view when triggered
+      window.addEventListener('resetView', () => {
+        this.showQuiz = false
+      })
+    }
+  }
 </script>
 
 <template>
   <div class="quiz-container">
     <div class="quiz-content">
+      <!-- Show the quiz introduction if the quiz hasn't started or completed -->
       <div v-if="!showQuiz && !quizCompleted" class="quiz-intro">
         <h1>Welcome, Space Explorer! 🚀</h1>
         <p>
@@ -92,7 +110,7 @@ export default {
         <p>
           <strong>Ready?</strong> Select your challenge and start the adventure!
         </p>
-        <!-- <button @click="startQuiz" class="primary-btn">Start Quiz</button> -->
+        <!-- Buttons to start the quiz with different question counts -->
         <div class="quiz-options">
           <button @click="startQuiz(10)" class="primary-btn quiz-btn">
             10 Questions
@@ -110,10 +128,19 @@ export default {
           <img :src="earthImg" class="planet earth-img" />
         </div>
       </div>
+      <!-- Display the quiz questions when the quiz starts -->
       <div v-if="showQuiz && !quizCompleted" class="quiz-questions">
+        <button
+          v-show="!showModal"
+          @click="showModal = true"
+          class="cancel-btn"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
         <h4>({{ currentQuestionIndex + 1 }} / {{ questions.length }})</h4>
         <h2>{{ questions[currentQuestionIndex]?.text }}</h2>
         <!-- optional chaining -->
+        <!-- Answer options for the current question -->
         <div class="answers">
           <button
             v-for="answer in questions[currentQuestionIndex]?.answers"
@@ -124,13 +151,28 @@ export default {
               correct:
                 feedback[currentQuestionIndex] === 'correct' &&
                 answer.is_correct,
-              incorrect: selectedAnswer === answer.text && !answer.is_correct,
+              incorrect: selectedAnswer === answer.text && !answer.is_correct
             }"
           >
             {{ answer.text }}
           </button>
         </div>
       </div>
+      <!-- Display confirmation modal when the user clicks to close the quiz -->
+      <div v-if="showModal" class="modal-overlay">
+        <div class="modal">
+          <h4>Do you wish to leave this quiz?</h4>
+          <div class="modal-buttons">
+            <button class="modal-btn secondary-btn" @click="cancelQuiz">
+              Yes, Quit
+            </button>
+            <button class="modal-btn secondary-btn" @click="showModal = false">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Display results when the quiz is completed -->
       <div v-if="quizCompleted">
         <img
           src="/assets/image/party-popper.png"
@@ -143,182 +185,194 @@ export default {
           {{ questions.length }} correctly.
         </p>
         <!--click to restart quiz-->
-        <button
-          class="primary-btn"
-          @click="
-            showQuiz = false;
-            quizCompleted = false;
-            currentQuestionIndex = 0;
-            correctAnswersCount = 0;
-            feedback = {};
-          "
-        >
-          Restart Quiz
-        </button>
+        <button class="primary-btn" @click="resetQuiz">Restart Quiz</button>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.quiz-container {
-  width: 100%;
-  height: 80vh;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.quiz-content {
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
-  height: 70%;
-  width: 60%;
-  background-color: #ffffff;
-  border-radius: 43.02px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.quiz-intro {
-  width: 90%;
-}
-
-.quiz-questions {
-  width: 80%;
-}
-
-.answers {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  padding: 10px 0;
-}
-
-h1 {
-  color: #40027d;
-  font-weight: 500;
-  text-align: center;
-}
-
-h2 {
-  font-weight: bold;
-  color: #40027d;
-}
-
-h4 {
-  color: #40027d;
-  text-align: right;
-}
-p {
-  color: #000000;
-  text-align: center;
-  padding: 10px 0;
-}
-
-/* ---> Button <--- */
-.quiz-btn {
-  width: 20%;
-  margin: 1em;
-}
-.answer-btn {
-  background-color: #ffffff;
-  border: 2px solid #40027d;
-  width: 300px;
-  color: #40027d;
-}
-
-/* ---> Images <--- */
-.planet-images {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.planet {
-  position: absolute;
-  width: 200px;
-  z-index: 2;
-  width: 200px;
-}
-
-.earth-img {
-  top: -450px;
-  left: -150px;
-}
-
-.venus-img {
-  top: -50px;
-  right: -150px;
-}
-
-.mercury-img {
-  top: -60px;
-  left: -150px;
-}
-
-.congrats-img {
-  width: 120px;
-  padding-bottom: 20px;
-}
-
-.correct {
-  background-color: green;
-}
-
-.incorrect {
-  background-color: red;
-}
-
-@media (max-width: 768px) {
-  .quiz-content {
-    width: 85%;
-    /* height: auto; */
-    padding: 15px;
+  .quiz-container {
+    width: 100%;
+    height: 80vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+
+  .quiz-content {
+    position: relative; /* .cancel-btn can be positioned inside */
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
+    height: 70%;
+    width: 60%;
+    background-color: #ffffff;
+    border-radius: 43.02px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .quiz-intro {
+    width: 90%;
+  }
+
+  .quiz-questions {
+    width: 80%;
+  }
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  h1 {
+    color: #40027d;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  h2 {
+    font-weight: bold;
+    color: #40027d;
+  }
+
+  h4 {
+    color: #40027d;
+    text-align: right;
+  }
+  p {
+    color: #000000;
+    text-align: center;
+    padding: 10px 0;
+  }
+  /* ---> Modal section <--- */
+  .modal-overlay {
+    position: fixed;
+    top: 30%;
+    width: 20rem;
+    height: 20rem;
+    background: #ffffff;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 43.02px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  .modal {
+    text-align: center;
+  }
+  .modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* ---> Button <--- */
   .quiz-btn {
-    width: 50%;
+    width: 20%;
+    margin: 1em;
   }
   .answer-btn {
-    width: 15em;
+    background-color: #ffffff;
+    border: 2px solid #40027d;
+    width: 300px;
+    color: #40027d;
   }
-  h1 {
-    font-size: 1.625rem;
+  .modal-btn {
+    color: #40027d;
+    border: 2px solid #40027d;
   }
-  h2 {
-    font-size: 1.375rem;
+  .cancel-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #40027d;
   }
-  p {
-    font-size: 1rem;
+  .cancel-btn:hover {
+    color: red;
   }
-}
 
-@media (min-width: 768.1px) and (max-width: 989px) {
-  .quiz-content {
-    width: 90%;
-    padding: 15px;
-  }
-  .quiz-content {
-    width: 70%;
-    padding: 15px;
+  /* ---> Images <--- */
+  .planet-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 
-  .quiz-btn {
-    width: 8em;
+  .planet {
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+    width: 200px;
   }
-  h1 {
-    font-size: 2rem;
+
+  .earth-img {
+    top: -450px;
+    left: -150px;
   }
-  h2 {
-    font-size: 1.75rem;
+
+  .venus-img {
+    top: -50px;
+    right: -150px;
   }
-  p {
-    font-size: 1.125rem;
+
+  .mercury-img {
+    top: -60px;
+    left: -150px;
   }
-}
+
+  .congrats-img {
+    width: 120px;
+    padding-bottom: 20px;
+  }
+
+  .correct {
+    background-color: green;
+  }
+
+  .incorrect {
+    background-color: red;
+  }
+
+  @media (max-width: 768px) {
+    .quiz-content {
+      width: 85%;
+      /* height: auto; */
+      padding: 15px;
+    }
+    .quiz-btn {
+      width: 50%;
+    }
+    .answer-btn {
+      width: 15em;
+    }
+  }
+
+  @media (min-width: 768.1px) and (max-width: 980px) {
+    .quiz-content {
+      width: 90%;
+      padding: 15px;
+    }
+    .quiz-content {
+      width: 70%;
+      padding: 15px;
+    }
+
+    .quiz-btn {
+      width: 8em;
+    }
+  }
 </style>
