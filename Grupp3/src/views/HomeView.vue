@@ -3,9 +3,10 @@ export default {
   data() {
     return {
       earthImg: "/assets/image/earth-transparent.png",
-      starImg: "/assets/image/starImg.png",
+      starImg: "/assets/image/star.svg",
     };
   },
+
 };
 </script>
 
@@ -19,14 +20,14 @@ export default {
           <button class="primary-btn">Go to quiz</button>
         </router-link>
         <router-link to="/facts">
-          <button class="secondary-btn btn-more">Read more</button>
+          <button class="secondary-btn">Go to planets</button>
         </router-link>
       </div>
       <div class="startpage-background-planet">
         <img :src="earthImg" class="earth-img" />
       </div>
     </div>
-    <div id="textContainer">
+    <div class="textContainer">
       <div>
         <img :src="starImg" class="star-img" />
         <p>Gamified learning</p>
@@ -73,44 +74,43 @@ p {
   margin-top: 4vh;
 }
 
-.btn-quiz {
-  background-color: #e3cafb;
-  border: none;
-  width: 140px;
-  height: 43.21px;
-  color: #40027d;
-}
-
-.btn-more {
+.secondary-btn {
   margin-left: 4vw;
 }
 
-#textContainer {
+.textContainer {
   display: flex;
-  width: 800px;
+  width: 60vw;
   flex-direction: row;
-  justify-content: space-between;
-  margin-top: 15px;
-  padding: 10px;
-  position: absolute;
-  top: 73%;
-  left: 22%;
-}
-
-.factText {
-  width: 90px;
+  justify-content: space-around;
   position: relative;
-  left: 10%;
-  height: 30px;
-  background-color: #e3cafb;
-  color: black;
-  text-align: center;
-  border-radius: 5px;
-  margin-bottom: 15px;
+  margin-top: 10%;
+  left: 25%;
 }
 
-.starImg {
-  position: absolute;
-  margin-bottom: 10px;
+.star-img {
+  width: 4vw;
+  margin-left: 50%;
+}
+
+@media screen and (max-width: 375px) {
+  .startpage-btn-part {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .secondary-btn {
+    margin-left: 0;
+  }
+
+  .textContainer {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    left: 50%;
+  }
+
+  .star-img {
+    margin-left: 30%;
+  }
 }
 </style>
