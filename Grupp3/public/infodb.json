@@ -1,46 +1,55 @@
 [
     {
       "id": 40,
+      "src": "/assets/image/mercury.png",
       "name": "Mercury",
       "info": " The smallest planet and closest to the Sun, Mercury experiences extreme temperature fluctuations, ranging from scorching heat during the day to freezing cold at night."
     },
     {
       "id": 41,
+      "src": "/assets/image/venus-transparent.png",
       "name": "Venus",
       "info": "Similar in size to Earth, Venus has a toxic atmosphere rich in carbon dioxide and surface temperatures hot enough to melt lead, making it the hottest planet."
     },
     {
       "id": 42,
+      "src": "/assets/image/earth-transparent.png",
       "name": "Earth",
       "info": "The only known planet to support life, Earth's surface is 71% water. It has a protective atmosphere that shields it from harmful solar radiation."
     },
     {
       "id": 43,
+      "src":"/assets/image/mars-transparent.png",
       "name": "Mars",
       "info": " Known as the Red Planet due to its iron oxide-rich soil, Mars hosts the largest volcano in the solar system, Olympus Mons, and has seasons similar to Earth."
     },
     {
       "id": 44,
+      "src": "/assets/image/jupiter-transparent.png.png",
       "name": "Jupiter",
       "info": "The largest planet, Jupiter is famous for its Great Red Spot, a massive storm system larger than Earth, and has at least 79 moons, including the large Galilean moons."
     },
     {
       "id": 45,
+      "src": "/assets/image/saturnus-transparent.png",
       "name": "Saturn",
       "info": "Distinguished by its prominent ring system composed of ice particles, rocky debris, and dust, Saturn is less dense than water, meaning it would float if placed in a large enough body of water."
     },
     {
       "id": 46,
+      "src": "/assets/image/uranus.png",
       "name": "Uranus",
       "info": "Unique for its tilted axis, Uranus rotates on its side, leading to extreme seasonal variations. Its atmosphere contains methane, giving it a blue-green color."
     },
     {
       "id": 47,
+      "src": "/assets/image/neptune-transparent.png",
       "name": "Neptune",
       "info": "The farthest known planet from the Sun, Neptune has the fastest winds in the solar system, reaching speeds over 1,200 miles per hour (2,000 kilometers per hour)."
     },
     {
       "id": 48,
+      "src": "/assets/image/pluto-transparent.png",
       "name": "Pluto",
       "info": "Once considered the ninth planet, Pluto is now classified as a dwarf planet. It has five known moons, with Charon being the largest, nearly half the size of Pluto itself."
     }

@@ -9,65 +9,15 @@ export default {
       .then((response) => response.json())
       .then((data) => {
         this.planets = data;
-
-        //creates an array of images, where I retrieve info for the respective planet in infodb.json.
-        this.images = [
-          {
-            src: "/assets/image/earth-transparent.png",
-            text: this.planets[2].info,
-            name: this.planets[2].name,
-          },
-          {
-            src: "/assets/image/mercury.png",
-            text: this.planets[0].info,
-            name: this.planets[0].name,
-          },
-          {
-            src: "/assets/image/jupiter-transparent.png.png",
-            text: this.planets[4].info,
-            name: this.planets[4].name,
-          },
-          {
-            src: "/assets/image/mars-transparent.png",
-            text: this.planets[3].info,
-            name: this.planets[3].name,
-          },
-          {
-            src: "/assets/image/neptune-transparent.png",
-            text: this.planets[7].info,
-            name: this.planets[7].name,
-          },
-          {
-            src: "/assets/image/pluto-transparent.png",
-            text: this.planets[8].info,
-            name: this.planets[8].name,
-          },
-          {
-            src: "/assets/image/saturnus-transparent.png",
-            text: this.planets[5].info,
-            name: this.planets[5].name,
-          },
-          {
-            src: "/assets/image/uranus.png",
-            text: this.planets[6].info,
-            name: this.planets[6].name,
-          },
-          {
-            src: "/assets/image/venus-transparent.png",
-            text: this.planets[1].info,
-            name: this.planets[1].name,
-          },
-        ];
       });
   },
   data() {
     return {
       planets: null,
-      planetInfo: null,
       modalVisible: false,
       modalText: "",
       modalHeader: "",
-      images: [],
+      image: null
     };
   },
   methods: {
@@ -78,10 +28,10 @@ export default {
       event.target.classList.remove("hovered");
     },
 
-    showModal(image) {
+    showModal(planet) {
       this.modalVisible = true;
-      this.modalText = image.text;
-      this.modalHeader = image.name;
+      this.modalText = planet.info;
+      this.modalHeader = planet.name;
       classList.add("overlay");
     },
     closeModal() {
@@ -107,10 +57,10 @@ export default {
       <div class="planet-card">
         <!--Rendering the pictures from the array in created-->
         <div class="planets">
-          <div class="planet-card" v-for="(image, index) in images" :key="index">
-            <img :src="image.src" :alt="image.name" @click="showModal(image)" @mouseover="mouseOver"
+          <div class="planet-card" v-for="planet in planets" :key="planet.id">
+            <img :src="planet.src" :alt="planet.name" @click="showModal(planet)" @mouseover="mouseOver"
               @mouseout="mouseOut" />
-            <p>{{ image.name }}</p>
+            <p>{{ planet.name }}</p>
           </div>
         </div>
       </div>
