@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 export const useCounterStore = defineStore('counter', {
-  state: () => ({ favoriteList: 0, settings: null }),
+  state: () => ({ /* favoriteList: 0, settings: null, */ value: '' }),
   actions: {
     updateSettings(partialSettings) {
       this.settings = {
@@ -11,7 +11,8 @@ export const useCounterStore = defineStore('counter', {
       // localStorage.setItem(STORE_NAME, JSON.stringify(this.settings));
     },
     increment() {
-      this.favoriteList
+      console.log('hej')
+      // this.favoriteList
     }
   }
 })

@@ -21,6 +21,9 @@ export default {
       result: [],
     };
   },
+  computed:{
+    ...mapStores(useCounterStore)
+  }
 };
 </script>
 
@@ -31,6 +34,7 @@ export default {
     <div v-for="(planet, id) in result.planets" class="favorite-card" :key="id">
       <i class="fa-solid fa-heart heart-icon" @click="removeFromFav(id)" />
       <p>{{ planet.name }}</p>
+      <button @click="counterStore.increment" :value="counterStore.value">Klicka</button>
     </div>
   </div>
   </div>
