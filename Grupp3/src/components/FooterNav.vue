@@ -21,7 +21,7 @@
         <div class="footer-row">
             <div class="footer-column">
                 <router-link to="/">
-                    <img :src="logo" alt="Logo">
+                    <img :src="logo" alt="Logo" />
                 </router-link>
             </div>
             <div class="footer-column">
@@ -46,13 +46,13 @@
                     <h3 class="footer-newsletter-h3">Sign up to our newsletter</h3>
     <!--                 <p>Stay updated with our latest news and exclusive insights—subscribe to our newsletter! Enter your email below and join our community.</p> -->
                     <div class="newsletter-container">
-                        <input type="email" v-model="message" @keyup.enter="onSubmitNewsletter" placeholder="Email address" class="email-field" required>
-                        <input type="submit" value="Submit" class="btn-enter">
+                        <input type="email" v-model="message" @keyup.enter="onSubmitNewsletter" placeholder="Email address" class="email-field" required />
+                        <input type="submit" value="Submit" class="btn-enter" />
                     </div>
                 </form>
             </div>
         </div>
-        <hr>
+        <hr />
         <div class="copyright">
             <p>Copyright FAME © 2025</p>
         </div>
@@ -120,5 +120,56 @@ footer .footer-row {
 
 .copyright p {
     font-size: 12px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 768px){
+    img {
+        padding-left: 1em;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1em;
+        padding-left: 3em;
+    }
+
+    .newsletter-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn-enter {
+        margin-top: 1em;
+    }
+}
+
+@media screen and (min-width: 768.1px) and (max-width: 980px){
+    img {
+        padding-left: 1em;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1em;
+        padding-left: 3em;
+    }
+
+    .newsletter-container{
+        display: flex;
+    }
+
+    .btn-enter {
+        margin-top: 1em;
+    }
+
+    ul{
+        margin-top: 0em;
+    }
+
+    li {
+        margin-top: 0em;
+    }
 }
 </style>
