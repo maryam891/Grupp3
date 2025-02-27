@@ -41,13 +41,15 @@ export default {
               <label for="name">Name:</label>
               <input type="text" name="name" placeholder="Name" v-model="contactData.name" class="contact-field" />
               <label for="email">Email:</label>
-              <input type="email" name="email" placeholder="Email address*" v-model="contactData.email"
+              <input
+              type="email" name="email" placeholder="Email address*" v-model="contactData.email"
                 class="contact-field" required />
             </div>
             <div class="form-textarea">
               <label for="message">Message:</label>
-              <textarea name="message" cols="30" rows="10" placeholder="Message*" v-model="contactData.message"
-                class="contact-field" required></textarea>
+              <textarea
+              name="message" cols="30" rows="10" placeholder="Message*" v-model="contactData.message"
+                class="contact-field" required />
             </div>
             <div class="form-send">
               <input type="submit" value="Send" class="btn-send" />
