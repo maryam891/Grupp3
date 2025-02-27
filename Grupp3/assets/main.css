@@ -31,6 +31,7 @@ h2 {
 h3 {
   font-size: 1.625rem;
 }
+
 .primary-btn {
   border-radius: 36.06px;
   font-weight: 550;
@@ -43,6 +44,7 @@ h3 {
   width: 140px;
   color: #280070;
 }
+
 .secondary-btn {
   border-radius: 36.06px;
   font-weight: 550;
@@ -56,14 +58,14 @@ h3 {
   background-color: #27006f00;
   height: 43.21px;
 }
+
 button:hover {
   transform: scale(1.1);
 }
 
-@media screen and (min-width: 556px) and (max-width: 300px) {
+@media screen and (max-width: 556px) and (min-width: 300px) {
   h1 {
     font-size: 1.625rem;
-    color: aqua;
   }
 
   h2 {
