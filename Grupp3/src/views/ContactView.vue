@@ -39,34 +39,15 @@ export default {
           <form @submit="submitContactForm">
             <div class="form-contact-info">
               <label for="name">Name:</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                v-model="contactData.name"
-                class="contact-field"
-              />
+              <input type="text" name="name" placeholder="Name" v-model="contactData.name" class="contact-field" />
               <label for="email">Email:</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email address*"
-                v-model="contactData.email"
-                class="contact-field"
-                required
-              />
+              <input type="email" name="email" placeholder="Email address*" v-model="contactData.email"
+                class="contact-field" required />
             </div>
             <div class="form-textarea">
               <label for="message">Message:</label>
-              <textarea
-                name="message"
-                cols="30"
-                rows="10"
-                placeholder="Message*"
-                v-model="contactData.message"
-                class="contact-field"
-                required
-              ></textarea>
+              <textarea name="message" cols="30" rows="10" placeholder="Message*" v-model="contactData.message"
+                class="contact-field" required></textarea>
             </div>
             <div class="form-send">
               <input type="submit" value="Send" class="btn-send" />
@@ -146,10 +127,11 @@ textarea {
   width: 90%;
 }
 
-.contact-field, .btn-send {
-    padding: 4px;
-    border-radius: 8px;
-    font-family: poppins;
+.contact-field,
+.btn-send {
+  padding: 4px;
+  border-radius: 8px;
+  font-family: poppins;
 }
 
 .form-send {

@@ -121,7 +121,7 @@ export default {
     <div class="modal" v-show="modalVisible">
       <div class="modal-inner">
         <header class="modal-header">
-          {{ modalHeader }}
+          <h1>{{ modalHeader }}</h1>
         </header>
         <section class="modal-body">
           {{ modalText }}
@@ -167,10 +167,6 @@ export default {
   padding: 2rem;
   color: black;
   border-radius: 25px;
-
-  h1{
-    color: #40027d;
-  }
 }
 
 .modal-header {
