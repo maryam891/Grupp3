@@ -96,7 +96,7 @@ export default {
 
   <div class="main">
     <Nasa />
-    <hr>
+    <hr />
     <div class="information">
       <h1>
         Some fun facts about each planet in our solar system (including Pluto)
@@ -132,7 +132,7 @@ export default {
     </div>
 
     <!--Background to the modal so that you cannot click on anything else-->
-    <div class="overlay" v-show="modalVisible"></div>
+    <div class="overlay" v-show="modalVisible" />
   </div>
 </template>
 

@@ -29,7 +29,7 @@ export default {
   <h1>Your favorite planets</h1>
   <div class="favorites-container">
     <div v-for="(planet, id) in result.planets" class="favorite-card" :key="id">
-      <i class="fa-solid fa-heart heart-icon" @click="removeFromFav(id)"></i>
+      <i class="fa-solid fa-heart heart-icon" @click="removeFromFav(id)" />
       <p>{{ planet.name }}</p>
     </div>
   </div>
