@@ -9,9 +9,12 @@
         selectedAnswer: null,
         correctAnswersCount: 0,
         quizCompleted: false,
-        feedback: {},
+        feedback: [],
+        mark: {},
         planets: [],
         showModal: false,
+        playTimes: 1,
+        isDisabledAnswerArea: false,
         earthImg: '/assets/image/earth-transparent.png',
         venusImg: '/assets/image/venus-transparent.png',
         mercuryImg: '/assets/image/mercury.png'
@@ -54,18 +57,49 @@
         this.currentQuestionIndex = 0
         this.correctAnswersCount = 0
         this.feedback = {}
+        this.mark = []
         this.showModal = false
       },
       // Check if selected answer is correct
       checkAnswer(answer) {
         this.selectedAnswer = answer.text
-        if (answer.is_correct) {
-          this.feedback[this.currentQuestionIndex] = 'correct'
-          this.correctAnswersCount++
-        } else {
-          this.feedback[this.currentQuestionIndex] = 'incorrect'
+        // creates a feedback entry linked to the question ID. Later, this feedback object can be used to show in my page view
+        this.feedback[this.currentQuestionIndex] = {
+          questionId: answer.question_id,
+          isCorrect: true
         }
-        setTimeout(this.nextQuestion, 1000) // Waits 1 second before next question
+        if (answer.is_correct) {
+          // if the user selects the answer correct
+          this.correctAnswersCount++
+          // Reset play attempt counter
+          this.playTimes = 1
+          // Disable answer area
+          this.isDisabledAnswerArea = true
+          // show correct answers visually .
+          this.mark[this.currentQuestionIndex] = true
+          // Waits 1 second before next question
+          setTimeout(this.nextQuestion, 1000)
+        } else {
+          // If a user selects the wrong answer, this line ensures that the question is marked as incorrect in the feedback.
+          this.feedback[this.currentQuestionIndex].isCorrect = false
+          // If the user has made two incorrect attempts,
+          if (this.playTimes === 2) {
+            this.isDisabledAnswerArea = true
+            // the quiz should move to the next question. Waits 2 second before next question
+            setTimeout(this.nextQuestion, 2000)
+            // Resets playTimes so that the next question starts with a fresh attempt counter.
+            this.playTimes = 1
+            // Waits 1 second to show correct answer
+            setTimeout(() => {
+              this.mark[this.currentQuestionIndex] = true
+            }, 1000)
+          } else {
+            // If the user has made first incorrect attempts,
+            this.feedback[this.currentQuestionIndex].isCorrect = false // Marks the current question's feedback as incorrect.
+            this.mark[this.currentQuestionIndex] = false // show incorrect answers visually
+            this.playTimes++ // Increments playTimes, allowing the user to try again
+          }
+        }
       },
 
       // Move to next question
@@ -76,6 +110,7 @@
         } else {
           this.quizCompleted = true
         }
+        this.isDisabledAnswerArea = false
       },
       // Reset the quiz to its initial state
       resetQuiz() {
@@ -83,7 +118,8 @@
         this.quizCompleted = false
         this.currentQuestionIndex = 0
         this.correctAnswersCount = 0
-        this.feedback = {}
+        this.feedback = []
+        this.mark = {}
       }
     },
     // Fetches questions when the component is mounted
@@ -141,16 +177,14 @@
         <h2>{{ questions[currentQuestionIndex]?.text }}</h2>
         <!-- optional chaining -->
         <!-- Answer options for the current question -->
-        <div class="answers">
+        <div class="answers" :class="{ disabled: isDisabledAnswerArea }">
           <button
             v-for="answer in questions[currentQuestionIndex]?.answers"
             :key="answer.text"
             @click="checkAnswer(answer)"
             class="answer-btn secondary-btn"
             :class="{
-              correct:
-                feedback[currentQuestionIndex] === 'correct' &&
-                answer.is_correct,
+              correct: mark[currentQuestionIndex] && answer.is_correct,
               incorrect: selectedAnswer === answer.text && !answer.is_correct
             }"
           >
@@ -192,6 +226,11 @@
 </template>
 
 <style scoped>
+  .answers.disabled {
+    pointer-events: none;
+    /* background: #40027d; */
+  }
+
   .quiz-container {
     width: 100%;
     height: 80vh;
@@ -286,6 +325,7 @@
     border: 2px solid #40027d;
     width: 300px;
     color: #40027d;
+    transition: 0.3s;
   }
   .modal-btn {
     color: #40027d;
@@ -341,10 +381,12 @@
 
   .correct {
     background-color: green;
+    color: white;
   }
 
   .incorrect {
     background-color: red;
+    color: white;
   }
 
   @media (max-width: 768px) {
