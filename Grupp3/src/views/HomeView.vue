@@ -28,15 +28,15 @@ export default {
       </div>
     </div>
     <div class="textContainer">
-      <div>
+      <div class="highlights">
         <img :src="starImg" class="star-img" />
         <p>Gamified learning</p>
       </div>
-      <div>
+      <div class="highlights">
         <img :src="starImg" class="star-img" />
         <p>Daily challenges</p>
       </div>
-      <div>
+      <div class="highlights">
         <img :src="starImg" class="star-img" />
         <p>Bite-sized, anytime learning</p>
       </div>
@@ -61,6 +61,12 @@ main {
   left: 60vw;
 }
 
+.highlights{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2em;
+}
+
 .earth-img {
   height: 70vh;
 }
@@ -80,8 +86,9 @@ p {
 
 .textContainer {
   display: flex;
+  flex-wrap: wrap;
   width: 60vw;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: space-around;
   position: relative;
   margin-top: 10%;
@@ -91,26 +98,80 @@ p {
 .star-img {
   width: 4vw;
   margin-left: 35%;
+  /* position: relative;*/
 }
 
-@media screen and (max-width: 375px) {
-  .startpage-btn-part {
+@media screen and (min-width: 375px) and (max-width: 768px){
+  main {
     display: flex;
     flex-direction: column;
+    align-items: left;
+    justify-content: left;
+  }
+
+  .startpage-btn-part {
+    display: flex;
   }
 
   .secondary-btn {
-    margin-left: 0;
+    margin-left: 2em;
   }
 
   .textContainer {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    left: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    left: 0;
+    width: 80%;
+    padding-top: 4em;
+  }
+
+  .startpage-intro-container {
+    padding: 1em;
   }
 
   .star-img {
-    margin-left: 30%;
+    left: 0;
+    width: 3em;
+  }
+
+  .earth-img {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768.1px) and (max-width: 980px){
+  .earth-img {
+    height: 20em;
+    padding-right: 2em;
+  }
+
+  .startpage-intro-container {
+  margin-top: 0;
+}
+
+.textContainer {
+  left: 15%;
+  padding-top: 4em;
+}
+
+.highlights {
+  padding-bottom: 2em;
+  padding-left: 2em;
+}
+
+.star-img {
+    left: 0;
+    width: 4em;
+  }
+}
+
+@media screen and (min-width: 980.1px) {
+  .textContainer {
+    padding-top: 7em;
+    width: 80%;
+    left: 0;
+    padding-left: 15%;
   }
 }
 </style>
