@@ -3,18 +3,19 @@
   import { useCounterStore } from '../favoriteStore'
   export default {
     created() {
-      let addedFavoritePlanet = localStorage.getItem('favPlanet')
-      console.log(addedFavoritePlanet)
+      this.favorite = JSON.parse(localStorage.getItem('favPlanet'))
+      console.log(this.favorite[0].name)
     },
     methods: {
       //function to remove planets from favourites
       removeFromFav(id) {
-        this.result.planets.splice(id, 1)
+        this.favorite.splice(id, 1)
       }
     },
     data() {
       return {
-        result: []
+        favorite: [],
+        favImg: []
       }
     },
     computed: {
@@ -24,48 +25,56 @@
 </script>
 
 <template>
-  <div>
+  <div class="main">
     <h1>Your favorite planets</h1>
     <div class="favorites-container">
-      <p v-if="favoritesStore.favoriteList !== 0">
-        {{ favoritesStore.favoriteList[0] }}
-      </p>
-      <div
-        v-for="(planet, id) in result.planets"
-        class="favorite-card"
-        :key="id"
-      >
+      <!-- <p v-if="favoriteStore.planet !== 0">
+        {{ favoriteStore.planet[0] }}
+      </p> -->
+      <div v-for="(favorites, id) in favorite" class="favorite-card" :key="id">
         <i class="fa-solid fa-heart heart-icon" @click="removeFromFav(id)" />
-        <p>{{ planet.name }}</p>
+        <p>{{ favorites.name }}</p>
+        <img :src="favorites.src" />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+  .main {
+    height: 100vh;
+  }
   h1 {
     text-align: center;
   }
 
   .favorites-container {
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
     justify-content: center;
     align-items: center;
-    grid-template-columns: repeat(4, 300px);
-    grid-template-rows: 300px 300px 300px;
     gap: 10px;
     margin-top: 15px;
   }
 
   .favorite-card {
+    margin-top: 1em;
     height: 300px;
     width: 300px;
-    background-color: rgb(90, 89, 88);
+    background-color: rgb(47, 47, 55);
+    border-radius: 5px;
   }
 
   .heart-icon {
     color: #e3cafb;
     cursor: pointer;
     font-size: 1em;
+  }
+
+  img {
+    height: 200px;
+    width: 200px;
   }
 </style>

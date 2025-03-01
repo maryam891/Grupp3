@@ -6,7 +6,6 @@
       fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
         .then((response) => response.json())
         .then((result) => {
-          console.log(result)
           this.result = result
         })
     },
@@ -22,7 +21,8 @@
   <div>
     <!--render planets-->
     <img :src="result.url" />
-    <p>{{ result.title }}</p>
+    <h2>{{ result.title }}</h2>
+    <p>{{ result.explanation }}</p>
   </div>
 </template>
 
@@ -30,6 +30,11 @@
   img {
     height: 47vh;
     border-radius: 1rem;
+  }
+
+  p {
+    height: 100%;
+    width: 80%;
   }
 
   @media (min-width: 768px) and (max-width: 500px) {

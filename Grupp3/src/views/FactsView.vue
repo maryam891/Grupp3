@@ -44,12 +44,13 @@
       closeModal() {
         this.modalVisible = false
       },
-      planetClicked(planets) {
+      addToFav(planets) {
         alert(planets)
-        this.favoritesStore.addToFav(planets)
-      },
-      iconClicked() {
+        this.favoriteStore.addToFav(planets)
         this.iconOverlay = true
+      },
+      closedOverlay() {
+        this.iconOverlay = false
       }
     }
   }
@@ -57,9 +58,6 @@
 
 <template>
   <div class="main">
-    <p v-if="favoritesStore.favoriteList !== 0">
-      {{ favoritesStore.favoriteList[0] }}
-    </p>
     <Nasa />
     <hr />
     <div class="information">
@@ -92,13 +90,17 @@
       <div class="modal-inner">
         <header class="modal-header">
           <!--Add planet to favorites icon-->
-          <i class="fa-solid fa-heart heart-icon" @click="iconClicked"></i>
+          <i
+            class="fa-solid fa-heart heart-icon"
+            @click="addToFav(clickedPlanet)"
+          ></i>
           <!--show icon overlay-->
-          <div v-if="iconOverlay">
-            <p>Are you sure you want to add to favorites?</p>
-            <button @click="planetClicked(clickedPlanet)">Yes</button
-            ><button>No</button>
-            <!-- <button @click="favoritesStore.addToFav(clickedPlanet)">Yes</button><button>No</button> -->
+          <div v-if="iconOverlay" class="icon-overlay">
+            <i
+              class="fa-solid fa-x close-icon-overlay"
+              @click="closedOverlay"
+            ></i>
+            <p class="overlay-text">Planet added to favorites</p>
           </div>
           <h1>{{ modalHeader }}</h1>
         </header>
@@ -129,13 +131,10 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    /* right: 50%; */
     transform: translate(-50%, -50%);
-    /* bottom: 0; */
     z-index: 99;
     background-color: rgba(0, 0, 0, 0, 5);
     max-width: 37.5rem;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,6 +194,27 @@
     position: relative;
     left: 94%;
     top: 10%;
+    cursor: pointer;
+  }
+
+  .icon-overlay {
+    position: relative;
+    left: 30%;
+    top: 20%;
+    height: 110px;
+    width: 200px;
+    background-color: #d1cece72;
+    border-radius: 1em;
+  }
+
+  .overlay-text {
+    text-align: center;
+  }
+  .close-icon-overlay {
+    margin-right: 0.7rem;
+    margin-top: 0.3rem;
+    color: rgb(105, 104, 104);
+    float: right;
     cursor: pointer;
   }
 </style>
