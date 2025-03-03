@@ -1,4 +1,5 @@
 <script>
+  import { useResultStore } from '../resultStore'
   export default {
     data() {
       return {
@@ -64,10 +65,16 @@
       checkAnswer(answer) {
         this.selectedAnswer = answer.text
         // creates a feedback entry linked to the question ID. Later, this feedback object can be used to show in my page view
+        // this.feedback[this.currentQuestionIndex] = {
+        //   questionId: answer.question_id,
+        //   isCorrect: true
+        // }
         this.feedback[this.currentQuestionIndex] = {
-          questionId: answer.question_id,
-          isCorrect: true
+          question: this.questions[this.currentQuestionIndex].text,
+          selectedAnswer: answer.text,
+          isCorrect: answer.is_correct
         }
+        console.log(this.feedback)
         if (answer.is_correct) {
           // if the user selects the answer correct
           this.correctAnswersCount++
@@ -108,10 +115,23 @@
         if (this.currentQuestionIndex < this.questions.length - 1) {
           this.currentQuestionIndex++
         } else {
+          // If it's the last question, mark the quiz as completed
           this.quizCompleted = true
+          console.log('completed quiz')
+          // Call quizLog() to save the results to Pinia + localStorage
+          this.quizLog()
         }
         this.isDisabledAnswerArea = false
       },
+
+      // save the quiz results
+      quizLog() {
+        // Retrieve the store instance from Pinia
+        const resultStore = useResultStore()
+        resultStore.saveResult(this.feedback) // save to Pinia + localStorage
+        console.log('localStorage', localStorage.getItem('quizResults'))
+      },
+
       // Reset the quiz to its initial state
       resetQuiz() {
         this.showQuiz = false
