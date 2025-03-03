@@ -86,7 +86,7 @@
           if (this.playTimes === 2) {
             this.isDisabledAnswerArea = true
             // the quiz should move to the next question. Waits 2 second before next question
-            setTimeout(this.nextQuestion, 2000)
+            setTimeout(this.nextQuestion, 3000)
             // Resets playTimes so that the next question starts with a fresh attempt counter.
             this.playTimes = 1
             // Waits 1 second to show correct answer
@@ -144,6 +144,13 @@
           Test your knowledge about planets, stars, and black holes!
         </p>
         <p>
+          <strong>How does it work?</strong><br />
+          Answer correctly to move forward! ✅
+          <br />
+          Get it wrong? No worries—you get **one more shot**! 🔄<br />
+          Miss twice? We'll show you the answer. 🔍
+        </p>
+        <p>
           <strong>Ready?</strong> Select your challenge and start the adventure!
         </p>
         <!-- Buttons to start the quiz with different question counts -->
@@ -185,7 +192,9 @@
             class="answer-btn secondary-btn"
             :class="{
               correct: mark[currentQuestionIndex] && answer.is_correct,
-              incorrect: selectedAnswer === answer.text && !answer.is_correct
+              incorrect: selectedAnswer === answer.text && !answer.is_correct,
+              shake: selectedAnswer === answer.text && !answer.is_correct,
+              scale: mark[currentQuestionIndex] && answer.is_correct
             }"
           >
             {{ answer.text }}
@@ -382,6 +391,7 @@
   .correct {
     background-color: green;
     color: white;
+    transform: scale(1.08);
   }
 
   .incorrect {
@@ -389,10 +399,10 @@
     color: white;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 375px) and (max-width: 768px) {
     .quiz-content {
       width: 85%;
-      /* height: auto; */
+      height: auto;
       padding: 15px;
     }
     .quiz-btn {
@@ -416,5 +426,40 @@
     .quiz-btn {
       width: 8em;
     }
+  }
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+    75% {
+      transform: translateX(-5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .shake {
+    animation: shake 0.3s ease-in-out;
+  }
+  @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .scale {
+    animation: scaleUp 0.3s ease-in-out;
   }
 </style>
