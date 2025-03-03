@@ -79,8 +79,9 @@
           </div>
         </div>
       </div>
-      <p>science.nasa.gov (källa)</p>
+      <p>science.nasa.gov (Source)</p>
       <hr />
+      <h2>Picture of the day and some facts</h2>
       <Nasa />
     </div>
 

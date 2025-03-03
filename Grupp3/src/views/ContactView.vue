@@ -175,14 +175,4 @@
     background-color: #00000010;
     padding: 2em;
   }
-
-  @media screen and (max-width: 556px) and (min-width: 300px) {
-    textarea {
-      margin-left: 10px;
-    }
-
-    main {
-      margin-left: 10px;
-    }
-  }
 </style>
