@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 export const useCounterStore = defineStore('favorite', {
   state: () => {
+    //check if there arent any planets added, show empty array
     const fav = JSON.parse(localStorage.getItem('favPlanet'))
     return { planet: fav === null ? [] : fav, settings: null }
   },
@@ -15,10 +16,10 @@ export const useCounterStore = defineStore('favorite', {
     addToFav(planet) {
       //push favorite planet into fav
       this.planet.push(planet)
-      //store added favorite planet
+      //Localstorage added favorite planet
       localStorage.setItem('favPlanet', JSON.stringify(this.planet))
       //get favorite planet
-      console.log(JSON.parse(localStorage.getItem('favPlanet')))
+      JSON.parse(localStorage.getItem('favPlanet'))
     }
   }
 })

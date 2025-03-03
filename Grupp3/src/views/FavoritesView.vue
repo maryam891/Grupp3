@@ -3,13 +3,15 @@
   import { useCounterStore } from '../favoriteStore'
   export default {
     created() {
+      //Get added planets
       this.favorite = JSON.parse(localStorage.getItem('favPlanet'))
-      console.log(this.favorite[0].name)
     },
     methods: {
       //function to remove planets from favourites
       removeFromFav(id) {
         this.favorite.splice(id, 1)
+        //Update localstorage when removing planet
+        localStorage.setItem('favPlanet', JSON.stringify(this.favorite))
       }
     },
     data() {
@@ -25,12 +27,10 @@
 </script>
 
 <template>
-  <div class="main">
+  <!--Check if any planet is added and show the planets-->
+  <div v-if="favorite !== []">
     <h1>Your favorite planets</h1>
     <div class="favorites-container">
-      <!-- <p v-if="favoriteStore.planet !== 0">
-        {{ favoriteStore.planet[0] }}
-      </p> -->
       <div v-for="(favorites, id) in favorite" class="favorite-card" :key="id">
         <i class="fa-solid fa-heart heart-icon" @click="removeFromFav(id)" />
         <p>{{ favorites.name }}</p>
@@ -38,12 +38,13 @@
       </div>
     </div>
   </div>
+  <!--If no planet is added show the following message-->
+  <div v-if="favorite === []">
+    <h2>No favorite planet added</h2>
+  </div>
 </template>
 
 <style scoped>
-  .main {
-    height: 100vh;
-  }
   h1 {
     text-align: center;
   }
@@ -51,11 +52,12 @@
   .favorites-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     height: 100%;
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 1em;
     margin-top: 15px;
   }
 
@@ -63,7 +65,7 @@
     margin-top: 1em;
     height: 300px;
     width: 300px;
-    background-color: rgb(47, 47, 55);
+    background-color: rgba(79, 79, 136, 0.502);
     border-radius: 5px;
   }
 
@@ -71,10 +73,16 @@
     color: #e3cafb;
     cursor: pointer;
     font-size: 1em;
+    margin-left: 1em;
   }
 
   img {
     height: 200px;
     width: 200px;
+    margin-left: 2em;
+  }
+
+  p {
+    margin-left: 1em;
   }
 </style>

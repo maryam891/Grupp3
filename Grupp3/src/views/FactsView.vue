@@ -45,7 +45,6 @@
         this.modalVisible = false
       },
       addToFav(planets) {
-        alert(planets)
         this.favoriteStore.addToFav(planets)
         this.iconOverlay = true
       },
@@ -58,8 +57,6 @@
 
 <template>
   <div class="main">
-    <Nasa />
-    <hr />
     <div class="information">
       <h1>
         Some fun facts about each planet in our solar system (including Pluto)
@@ -83,6 +80,8 @@
         </div>
       </div>
       <p>science.nasa.gov (källa)</p>
+      <hr />
+      <Nasa />
     </div>
 
     <!--modal code-->
@@ -93,14 +92,15 @@
           <i
             class="fa-solid fa-heart heart-icon"
             @click="addToFav(clickedPlanet)"
-          ></i>
+          />
           <!--show icon overlay-->
           <div v-if="iconOverlay" class="icon-overlay">
             <i
               class="fa-solid fa-x close-icon-overlay"
               @click="closedOverlay"
-            ></i>
+            />
             <p class="overlay-text">Planet added to favorites</p>
+            <!-- <p>Planet already exists in favorites</p> -->
           </div>
           <h1>{{ modalHeader }}</h1>
         </header>

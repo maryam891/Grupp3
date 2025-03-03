@@ -1,6 +1,6 @@
 <script>
   const apiKey = import.meta.env.VITE_NASA_API_KEY
-  //fetch planets
+  //fetch nasa image
   export default {
     created() {
       fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
