@@ -1,13 +1,12 @@
 <script>
-export default {
-  data() {
-    return {
-      earthImg: "/assets/image/earth-transparent.png",
-      starImg: "/assets/image/star.svg",
-    };
-  },
-
-};
+ export default {
+    data() {
+      return {
+        earthImg: '/assets/image/earth-transparent.png',
+        starImg: '/assets/image/star.svg'
+      }
+    }
+  }
 </script>
 
 <template>
@@ -45,15 +44,15 @@ export default {
 </template>
 
 <style scoped>
-main {
-  min-height: 100vh;
-}
+  main {
+    min-height: 100vh;
+  }
 
-.startpage-intro-container {
-  margin-top: 7vh;
-  margin-left: 2vw;
-  padding: 3em;
-}
+  .startpage-intro-container {
+    margin-top: 7vh;
+    margin-left: 2vw;
+    padding: 3em;
+  }
 
 .startpage-background-planet {
   position: absolute;
@@ -67,22 +66,22 @@ main {
   padding-bottom: 2em;
 }
 
-.earth-img {
-  height: 70vh;
-}
+  .earth-img {
+    height: 70vh;
+  }
 
-p {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-}
+  p {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
 
-.startpage-btn-part {
-  margin-top: 4vh;
-}
+  .startpage-btn-part {
+    margin-top: 4vh;
+  }
 
-.secondary-btn {
-  margin-left: 4vw;
-}
+  .secondary-btn {
+    margin-left: 4vw;
+  }
 
 .textContainer {
   display: flex;
