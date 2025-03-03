@@ -8,9 +8,14 @@ export const useResultStore = defineStore('result', {
     // Function to save quiz results
     saveResult(feedback) {
       console.log('before save to localStorage:', feedback)
+      // Get old result list from localStorage
+      const existingResults =
+        JSON.parse(localStorage.getItem('quizResults')) || []
+      // Add new feedback to the result list
+      existingResults.push(feedback)
       // Update the `quizResults` state with the new feedback
-      this.quizResults = feedback
-      localStorage.setItem('quizResults', JSON.stringify(feedback))
+      this.quizResults = existingResults
+      localStorage.setItem('quizResults', JSON.stringify(this.quizResults))
       console.log('localStorage', this.quizResults)
     }
   }
