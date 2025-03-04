@@ -12,14 +12,12 @@
         if (this.username !== '' && this.password !== '') {
           this.loggedInStatus = true
           localStorage.setItem('loggedIn', 'true')
-          localStorage.setItem('username', this.username)
         } else {
           alert('Please enter name and password')
         }
       },
       logout() {
         localStorage.removeItem('loggedIn')
-        localStorage.removeItem('username')
         this.username = ''
         this.password = ''
         this.loggedInStatus = false
@@ -63,8 +61,8 @@
   .login-btn,
   .logout-btn {
     border: transparent;
-    padding: 4px;
-    border-radius: 8px;
+    border-radius: 36.06px;
+    padding: 5px;
     font-family: poppins;
     margin-right: 1em;
   }
@@ -74,6 +72,7 @@
     cursor: pointer;
     background-color: #e3cafb;
     color: #40027d;
+    font-weight: 550;
   }
 
   .input-field {
