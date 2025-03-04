@@ -45,7 +45,7 @@
 
 <style scoped>
   main {
-    min-height: 100vh;
+    min-height: auto;
   }
 
   .startpage-intro-container {
@@ -86,12 +86,12 @@
 .textContainer {
   display: flex;
   flex-wrap: wrap;
-  width: 60vw;
+  width: 100vw;
   /* flex-direction: row; */
   justify-content: space-around;
-  position: relative;
+  /* position: relative; */
   margin-top: 10%;
-  left: 25%;
+  /* left: 25%; */
 }
 
 .star-img {
@@ -100,7 +100,7 @@
   /* position: relative;*/
 }
 
-@media screen and (min-width: 375px) and (max-width: 768px){
+@media screen and (min-width: 375px) and (max-width: 572px){
   main {
     display: flex;
     flex-direction: column;
@@ -121,7 +121,7 @@
     align-items: center;
     justify-content: left;
     left: 0;
-    width: 80%;
+    width: 100%;
     padding-top: 4em;
   }
 
@@ -139,6 +139,22 @@
   }
 }
 
+@media screen and (min-width: 572.1px) and (max-width: 768px){
+    .earth-img{
+      height: 15em;
+      padding-right: 5em;
+    }
+
+    .startpage-intro-container {
+    margin-top: 0;
+    }
+
+    .star-img {
+    left: 0;
+    width: 4em;
+  }
+}
+
 @media screen and (min-width: 768.1px) and (max-width: 980px){
   .earth-img {
     height: 20em;
@@ -147,10 +163,10 @@
 
   .startpage-intro-container {
   margin-top: 0;
-}
+  }
 
 .textContainer {
-  left: 15%;
+  /* left: 15%; */
   padding-top: 4em;
 }
 
@@ -170,7 +186,16 @@
     padding-top: 7em;
     width: 80%;
     left: 0;
-    padding-left: 15%;
+    /* padding-left: 15%; */
+  }
+
+  .earth-img {
+    height: 30em;
+    padding-right: 2em;
+  }
+
+  .highlights {
+    padding-left: 6em;
   }
 }
 </style>

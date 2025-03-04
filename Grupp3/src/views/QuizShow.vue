@@ -1,4 +1,5 @@
 <script>
+  import { useResultStore } from '../resultStore'
   export default {
     data() {
       return {
@@ -64,10 +65,16 @@
       checkAnswer(answer) {
         this.selectedAnswer = answer.text
         // creates a feedback entry linked to the question ID. Later, this feedback object can be used to show in my page view
+        // this.feedback[this.currentQuestionIndex] = {
+        //   questionId: answer.question_id,
+        //   isCorrect: true
+        // }
         this.feedback[this.currentQuestionIndex] = {
-          questionId: answer.question_id,
-          isCorrect: true
+          question: this.questions[this.currentQuestionIndex].text,
+          selectedAnswer: answer.text,
+          isCorrect: answer.is_correct
         }
+        console.log(this.feedback)
         if (answer.is_correct) {
           // if the user selects the answer correct
           this.correctAnswersCount++
@@ -86,7 +93,7 @@
           if (this.playTimes === 2) {
             this.isDisabledAnswerArea = true
             // the quiz should move to the next question. Waits 2 second before next question
-            setTimeout(this.nextQuestion, 3000)
+            setTimeout(this.nextQuestion, 4000)
             // Resets playTimes so that the next question starts with a fresh attempt counter.
             this.playTimes = 1
             // Waits 1 second to show correct answer
@@ -108,10 +115,23 @@
         if (this.currentQuestionIndex < this.questions.length - 1) {
           this.currentQuestionIndex++
         } else {
+          // If it's the last question, mark the quiz as completed
           this.quizCompleted = true
+          console.log('completed quiz')
+          // Call quizLog() to save the results to Pinia + localStorage
+          this.quizLog()
         }
         this.isDisabledAnswerArea = false
       },
+
+      // save the quiz results
+      quizLog() {
+        // Retrieve the store instance from Pinia
+        const resultStore = useResultStore()
+        resultStore.saveResult(this.feedback) // save to Pinia + localStorage
+        console.log('localStorage', localStorage.getItem('quizResults'))
+      },
+
       // Reset the quiz to its initial state
       resetQuiz() {
         this.showQuiz = false
@@ -165,11 +185,11 @@
             30 Questions
           </button>
         </div>
-        <div class="planet-images">
-          <img :src="mercuryImg" class="planet mercury-img" />
-          <img :src="venusImg" class="planet venus-img" />
-          <img :src="earthImg" class="planet earth-img" />
-        </div>
+        <!-- <div class="planet-images"> -->
+        <img :src="mercuryImg" class="planet mercury-img" />
+        <img :src="venusImg" class="planet venus-img" />
+        <img :src="earthImg" class="planet earth-img" />
+        <!-- </div> -->
       </div>
       <!-- Display the quiz questions when the quiz starts -->
       <div v-if="showQuiz && !quizCompleted" class="quiz-questions">
@@ -355,12 +375,6 @@
   }
 
   /* ---> Images <--- */
-  .planet-images {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
   .planet {
     position: absolute;
     width: 200px;
@@ -369,18 +383,18 @@
   }
 
   .earth-img {
-    top: -450px;
-    left: -150px;
+    top: -60px;
+    left: -130px;
   }
 
   .venus-img {
-    top: -50px;
-    right: -150px;
+    bottom: -30px;
+    right: -100px;
   }
 
   .mercury-img {
-    top: -60px;
-    left: -150px;
+    bottom: -60px;
+    left: -130px;
   }
 
   .congrats-img {
@@ -411,6 +425,20 @@
     .answer-btn {
       width: 15em;
     }
+    /* .earth-img {
+      top: -450px;
+      left: -150px;
+    }
+
+    .venus-img {
+      top: -50px;
+      right: -150px;
+    }
+
+    .mercury-img {
+      top: -60px;
+      left: -150px;
+    } */
   }
 
   @media (min-width: 768.1px) and (max-width: 980px) {
