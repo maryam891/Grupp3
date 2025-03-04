@@ -1,9 +1,11 @@
 <script>
   import LogIn from '../components/LogIn.vue'
+import QuizResult from '../components/QuizResult.vue'
 
   export default {
     components: {
-      LogIn
+      LogIn,
+      QuizResult
     },
     data() {
       return {
@@ -130,6 +132,7 @@
         </div>
         <div class="page" v-show="currentPage === 'My Journey'">
           <h2>My Journey</h2>
+          <QuizResult />
         </div>
       </div>
     </div>
