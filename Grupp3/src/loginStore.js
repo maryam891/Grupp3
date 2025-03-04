@@ -1,6 +1,11 @@
  import { defineStore } from 'pinia'
 
 export const useLoginStore = defineStore('login', {
+  state: () => {
+    return {
+      username: ""
+    }
+  },
   actions: {
     login(username) {
       if (username) {
@@ -17,9 +22,4 @@ export const useLoginStore = defineStore('login', {
       localStorage.removeItem('username')
     }
   },
-  state: () => {
-    return {
-      username: ""
-    }
-  }
 })

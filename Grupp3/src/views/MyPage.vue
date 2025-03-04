@@ -8,10 +8,14 @@
     data() {
       return {
         currentPage: 'My Page',
-        message: ''
+        message: '',
+        modalText: '',
+        showModal: false,
+        modalClick: ''
       }
     },
     methods: {
+      //displays different content depending on tab
       openPage(pageName) {
         this.currentPage = pageName
       },
@@ -22,6 +26,24 @@
             this.message
         )
         this.message = ''
+      },
+      clickToUndo(click) {
+        if (click === 'delete') {
+          this.modalText = 'Do you wish to delete your account?'
+          this.modalClick = 'delete'
+        } else if (click === 'unsubscribe') {
+          this.modalText = 'Do you wish to unsubscribe from our newsletter?'
+          this.modalClick = 'unsubscribe'
+        }
+        this.showModal = true
+      },
+      confirmChoice(){
+        if (this.modalClick === 'delete') {
+          alert('Your account will be deleted within 30 days.')
+        } else if (this.modalClick === 'unsubscribe') {
+          alert('You have unsubscribed from our newsletter.')
+        }
+        this.showModal = false
       }
     }
   }
@@ -33,6 +55,7 @@
   </header>
   <main>
     <div class="my-page-container">
+      <!-- Navigation to my page & progress/journey -->
       <div class="my-page-navbar">
         <button class="mp-navbar-tab" @click="openPage('My Page')">
           My Page
@@ -44,14 +67,16 @@
       <div class="content-container">
         <div class="page" v-show="currentPage === 'My Page'">
           <h2>My Page</h2>
+          <!-- Box with user-info -->
           <div class="user-container">
             <i class="fa-solid fa-circle-user" style="color: #40027d" />
             <div class="user-info">
-              <p>Username:</p>
-              <p>Email address:</p>
+              <p>Username: TestUser1</p>
+              <p>Password: *********</p>
             </div>
             <i class="fa-solid fa-gears" style="color: #40027d" />
           </div>
+          <!-- Form to sign up to Newsletter -->
           <form @submit="onSubmitNewsletter">
             <h3 class="newsletter-h3">Sign up to our newsletter</h3>
             <p>
@@ -67,15 +92,40 @@
                 class="email-field"
                 required
               />
-              <input type="submit" value="Submit" class="enter-btn" />
+              <input type="submit" value="Submit" class="submit-btn" />
             </div>
           </form>
-          <div class="user-settings">
-            <button class="primary-btn">Delete account</button>
-            <button class="primary-btn">Unsubscribe*</button>
+          <!-- Account settings to delete acc or unsubscribe -->
+          <div class="account-settings">
+            <button class="primary-btn" @click="clickToUndo('delete')">
+              Delete account
+            </button>
+            <button class="primary-btn" @click="clickToUndo('unsubscribe')">
+              Unsubscribe*
+            </button>
             <p class="unsubscribe-news">
               *You can always subsribe to our newsletter again
             </p>
+          </div>
+          <!-- Display confirmation modal when the user clicks to delete acc/unsubscribe -->
+          <div v-if="showModal" class="modal-overlay">
+            <div class="modal">
+              <h4>{{ modalText }}</h4>
+              <div class="modal-buttons">
+                <button
+                  class="modal-btn secondary-btn"
+                  @click="confirmChoice"
+                >
+                  Yes
+                </button>
+                <button
+                  class="modal-btn secondary-btn"
+                  @click="showModal = false"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="page" v-show="currentPage === 'My Journey'">
@@ -87,37 +137,42 @@
 </template>
 
 <style scoped>
-  .login-container {
-    display: flex;
-    justify-content: end;
-  }
-
-  .email-field {
-    border: transparent;
-    padding: 8px;
+/* whole page container */
+  .my-page-container {
+    position: relative;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
+    width: 80vw;
+    left: 10%;
+    padding: 3.7em 2vw 6vh 2vw;
+    background-color: #ffffff;
+    color: #40027d;
     border-radius: 43.02px;
-    font-family: poppins;
-    border: 4px solid #e3cafb;
-  }
-
-  .enter-btn {
-    border: transparent;
-    padding: 4px;
-    border-radius: 8px;
-    font-family: poppins;
-  }
-
-  .enter-btn {
-    cursor: pointer;
-    background-color: #e3cafb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .my-page-navbar {
     position: absolute;
-    top: 2%;
+    top: 1%;
     left: 10%;
   }
 
+  .content-container {
+    border-radius: 43.02px;
+    border: 10px solid #e3cafb;
+    width: 90%;
+    height: 82%;
+  }
+
+  h2 {
+    position: relative;
+    margin: 1.5em;
+  }
+
+  /*navigation bar/tabs my pages*/
   .mp-navbar-tab {
     border-radius: 36.06px 36.06px 0 0;
     font-weight: 550;
@@ -132,23 +187,28 @@
     color: #280070;
   }
 
-  .primary-btn {
+
+  /*sign up to newsletter*/
+  .email-field {
+    border: transparent;
     padding: 8px;
-    margin-right: 2em;
-    margin-left: 2em;
-  }
-
-  .content-container {
     border-radius: 43.02px;
+    font-family: poppins;
     border: 4px solid #e3cafb;
-    width: 90%;
-    height: 82%;
   }
 
-  h2 {
-    position: relative;
+  .submit-btn {
+    border: transparent;
+    border-radius: 36.06px;
+    padding: 5px;
+    font-family: poppins;
+    cursor: pointer;
+    background-color: #e3cafb;
+    color: #280070;
+    font-weight: 550;
   }
 
+  /*user info and settings*/
   .user-container {
     display: flex;
     justify-content: center;
@@ -162,14 +222,15 @@
 
   .fa-circle-user {
     position: relative;
-    right: 25%;
+    right: 23%;
     font-size: 80px;
   }
 
   .fa-gears {
     position: relative;
-    left: 30%;
+    left: 22%;
     font-size: 30px;
+    cursor: pointer;
   }
 
   .user-info {
@@ -181,32 +242,51 @@
     margin-top: 1em;
   }
 
+  /*sig up to newsletter part*/
   form {
-    margin: 3em;
+    margin: 5em;
   }
 
-  .user-settings {
+  /*account settings*/
+  .account-settings {
     margin-top: 2em;
   }
 
   .unsubscribe-news {
     font-size: 9px;
+    margin-bottom: 5em;
   }
 
-  .my-page-container {
-    position: relative;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
-    height: 100vh;
-    width: 80vw;
-    left: 10%;
-    background-color: #ffffff;
-    color: #40027d;
-    border-radius: 43.02px;
+  .primary-btn {
+    margin: 2em;
+  }
+
+  /* modal confirm choice */
+  .modal-overlay {
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    width: 20rem;
+    height: 20rem;
+    background: #ffffff;
+    padding: 1rem;
+    margin: 1rem;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 43.02px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .modal {
     text-align: center;
+  }
+
+  .modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   @media screen and (min-width: 375px) and (max-width: 768px) {
