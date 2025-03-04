@@ -175,4 +175,19 @@
     background-color: #00000010;
     padding: 2em;
   }
+  @media screen and (max-width: 517px) {
+    form {
+      flex-wrap: wrap;
+    }
+  }
+  @media screen and (max-width: 468px) {
+    .btn-send {
+      width: 12%;
+    }
+    @media screen and (max-width: 427px) {
+      .btn-send {
+        width: 17%;
+      }
+    }
+  }
 </style>

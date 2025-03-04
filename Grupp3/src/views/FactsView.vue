@@ -91,7 +91,11 @@
         <header class="modal-header">
           <!--Add planet to favorites icon-->
           <i
-            class="fa-solid fa-heart heart-icon"
+            class="fa-solid fa-heart"
+            :class="{
+              pink: clicked,
+              gray: !clicked
+            }"
             @click="addToFav(clickedPlanet)"
           />
           <!--show icon overlay-->

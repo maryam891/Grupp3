@@ -15,7 +15,9 @@ export const useCounterStore = defineStore('favorite', {
     },
     addToFav(planet) {
       //push favorite planet into fav
+
       this.planet.push(planet)
+
       //Localstorage added favorite planet
       localStorage.setItem('favPlanet', JSON.stringify(this.planet))
       //get favorite planet

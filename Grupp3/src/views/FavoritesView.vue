@@ -5,7 +5,16 @@
     created() {
       //Get added planets
       this.favorite = JSON.parse(localStorage.getItem('favPlanet'))
-      this.favoritePlanets = true
+      //If a planet is added show this message
+      if (this.favorite !== []) {
+        this.favoritePlanets = true
+        this.noAddedplanets = false
+      }
+      //Check if no planet is added to favorites to render other header message
+      if (this.favorite === []) {
+        this.noAddedplanets = true
+        this.favoritePlanets = false
+      }
     },
     methods: {
       confirmToRemove(id) {
@@ -13,10 +22,10 @@
         this.favorite.splice(id, 1)
         //Update localstorage when removing planet
         localStorage.setItem('favPlanet', JSON.stringify(this.favorite))
-        //Check if no planet is added to favorites to render other message in div
-        if (this.favorite.length === 0) {
-          this.favoritePlanets = false
+        //Check if no planet is added to favorites to render other header message
+        if (this.favorite === []) {
           this.noAddedplanets = true
+          this.favoritePlanets = false
         }
       },
       //show confirm remove overlay when clicking on heart icon
@@ -126,6 +135,7 @@
     margin-bottom: 1em;
     height: 120px;
     width: 300px;
+    border-radius: 0.2em;
     background-color: rgb(250, 247, 247);
   }
 
