@@ -17,9 +17,14 @@
     <h1>
       Result
     </h1>
-    <div class="right-answers" v-for="result in resultStore.quizResults" :key="result.id">
-      <p>{{ resultStore.quizResults[0][0].question }}</p>
-      <p>{{ result.selectedAnswer }}</p>
+    <div class="right-answers" v-for="(result, index) in resultStore.quizResults" :key="index">
+      <ul>
+        <li>
+
+        </li>
+      </ul>
+      {{ resultStore.quizResults[0][0].question }}
+      {{ result.selectedAnswer }}
     </div>
     <div class="wrong-answers">
       <h2>Wrong answers</h2>
