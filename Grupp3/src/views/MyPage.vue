@@ -50,10 +50,10 @@
 </script>
 
 <template>
+  <main>
   <header>
     <LogIn />
   </header>
-  <main>
     <div class="my-page-container">
       <!-- Navigation to my page & progress/journey -->
       <div class="my-page-navbar">

@@ -310,7 +310,7 @@
   { "question_id": 17, "text": "They formed recently", "is_correct": false},
   { "question_id": 18, "text": "8", "is_correct": false},
   { "question_id": 18, "text": "14", "is_correct": true},
-  { "question_id": 18, "text": "14", "is_correct": false},
+  { "question_id": 18, "text": "62", "is_correct": false},
   { "question_id": 18, "text": "30", "is_correct": false},
   { "question_id": 19, "text": "It has a higher amount of methane in its atmosphere", "is_correct": true},
   { "question_id": 19, "text": "It has a thinner atmosphere", "is_correct": false},
