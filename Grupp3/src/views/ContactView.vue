@@ -26,6 +26,7 @@
 
 <template>
   <main>
+
     <h1>Contact us</h1>
     <section>
       <div class="contact-container">
@@ -83,6 +84,66 @@
         <p>12111 New York</p>
       </div>
     </section>
+
+    <section class="about-us">
+      <div class="info-container">
+        <h2>We have a great philosophy and team</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+      </div>
+    </section>
+
+    <h2 class="team">The team</h2>
+    <section class="all-employees">
+      <div class="employee">
+        <img
+        src="https://images.unsplash.com/photo-1554188248-986adbb73be4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9"
+        alt="geometry art" />
+          <h3>
+            Annika Janefur
+          </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="employee">
+        <img
+        src="https://images.unsplash.com/photo-1554188248-986adbb73be4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9"
+        alt="geometry art" />
+          <h3>
+            Fiona Bui
+          </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="employee">
+        <img
+        src="https://images.unsplash.com/photo-1554188248-986adbb73be4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9"
+        alt="geometry art" />
+          <h3>
+            Maryam Chaudhry
+          </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="employee">
+        <img
+        src="https://images.unsplash.com/photo-1554188248-986adbb73be4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9"
+        alt="geometry art" />
+          <h3>
+            Emilie Børve Nylén
+          </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </section>
+
   </main>
 </template>
 
@@ -143,7 +204,7 @@
   }
 
   .contact-field {
-    width: 90%;
+    width: 100%;
   }
 
   .contact-field,
@@ -161,8 +222,9 @@
   .btn-send {
     /* cursor: pointer; */
     background-color: #e3cafb;
-    width: 10%;
+    /* width: 10%; */
     border: none;
+    padding: 5px 15px 5px 15px;
   }
 
   .btn-send:hover {
@@ -176,13 +238,56 @@
     padding: 2em;
   }
 
-  @media screen and (max-width: 556px) and (min-width: 300px) {
-    textarea {
-      margin-left: 10px;
+  .all-employees {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* padding-left: 9em; */
+    gap: 20px;
+  }
+
+  .employee{
+    border: solid #fe859f 0.5px;
+    margin: 10px;
+    padding: 30px;
+    width: 33%;
+  }
+
+  .employee img {
+    width: 100%;
+  }
+
+  .info-container {
+    margin: 2em;
+
+    p {
+      margin-top: 1em;
+    }
+  }
+
+  .team{
+  text-align: center;
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 768px){
+    .form-contact-info{
+      flex-direction: column;
     }
 
-    main {
-      margin-left: 10px;
+    .all-employees {
+      flex-direction: column;
     }
+
+    .employee {
+      width: auto;
+    }
+  }
+
+  @media screen and (min-width: 768.1px) and (max-width: 980px){
+
+  }
+
+  @media screen and (min-width: 980.1px){
+
   }
 </style>
