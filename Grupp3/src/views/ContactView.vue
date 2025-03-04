@@ -238,13 +238,56 @@
     padding: 2em;
   }
 
-  @media screen and (max-width: 556px) and (min-width: 300px) {
-    textarea {
-      margin-left: 10px;
+  .all-employees {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* padding-left: 9em; */
+    gap: 20px;
+  }
+
+  .employee{
+    border: solid #fe859f 0.5px;
+    margin: 10px;
+    padding: 30px;
+    width: 33%;
+  }
+
+  .employee img {
+    width: 100%;
+  }
+
+  .info-container {
+    margin: 2em;
+
+    p {
+      margin-top: 1em;
+    }
+  }
+
+  .team{
+  text-align: center;
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 768px){
+    .form-contact-info{
+      flex-direction: column;
     }
 
-    main {
-      margin-left: 10px;
+    .all-employees {
+      flex-direction: column;
     }
+
+    .employee {
+      width: auto;
+    }
+  }
+
+  @media screen and (min-width: 768.1px) and (max-width: 980px){
+
+  }
+
+  @media screen and (min-width: 980.1px){
+
   }
 </style>
