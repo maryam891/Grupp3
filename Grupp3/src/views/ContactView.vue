@@ -269,7 +269,7 @@
   text-align: center;
   }
 
-  @media screen and (min-width: 375px) and (max-width: 768px){
+  @media screen and (min-width: 375px) and (max-width: 572px){
     .form-contact-info{
       flex-direction: column;
     }
@@ -282,6 +282,12 @@
       width: auto;
     }
   }
+
+  @media screen and (min-width: 572.1px) and (max-width: 768px){
+    .employee {
+      width: 80%;
+    }
+}
 
   @media screen and (min-width: 768.1px) and (max-width: 980px){
 
