@@ -7,7 +7,6 @@ export const useResultStore = defineStore('result', {
   actions: {
     // Function to save quiz results
     saveResult(dataFeedback) {
-      console.log('before save to localStorage:', feedback)
       // Get old result list from localStorage
       const existingResults =
         JSON.parse(localStorage.getItem('quizResults')) || []

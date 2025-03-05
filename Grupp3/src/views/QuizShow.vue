@@ -130,10 +130,10 @@
         const resultStore = useResultStore()
         const dataFeedback = {
           feedback: this.feedback,
-          countCorrect : this.correctAnswersCount,
-          totalQuestions : this.questions
+          countCorrect: this.correctAnswersCount,
+          totalQuestions: this.questions.length
         }
-        console.log (dataFeedback)
+        console.log(dataFeedback)
         resultStore.saveResult(dataFeedback) // save to Pinia + localStorage
         console.log('localStorage', localStorage.getItem('quizResults'))
       },
