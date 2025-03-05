@@ -3,10 +3,19 @@
 
   export default {
     data(){
-      const resultStore = useResultStore
-      console.log(resultStore)
       return{
-        resultStore,
+        resultStore: useResultStore(),
+        selectedRound: null,
+      }
+    },
+    computed: {
+      quizResults(){
+        return this.resultStore.quizResults
+      }
+    },
+    methods:{
+      showResult(index){
+          this.selectedRound = this.selectedRound === index? null : index
       }
     }
   }
@@ -17,19 +26,43 @@
     <h1>
       Result
     </h1>
-    <div class="right-answers" v-for="(result, index) in resultStore.quizResults" :key="index">
-      <ul>
-        <li>
 
+    <div class="right-answers" v-for="(round, index) in quizResults" :key="index">
+        <h2 @click="showResult (index)">Round {{ index + 1 }}</h2>
+
+      <ul v-show="selectedRound === index">
+        <h1>Right answer</h1>
+        <li v-for="(result, qIndex) in round.filter((q) => q.isCorrect === true)" :key="qIndex">
+          <p> <strong> Question:</strong> {{ result.question }} </p>
+          <p><strong> Selected answer:</strong> {{ result.selectedAnswer }} </p>
+          <p> {{ result.isCorrect }} </p>
+        </li>
+        <h1>Wrong answer</h1>
+        <li v-for="(result, qIndex) in round.filter((q) => q.isCorrect === false)" :key="qIndex">
+          <p><strong> Question:</strong> {{ result.question }} </p>
+          <p><strong> Selected answer:</strong> {{ result.selectedAnswer }} </p>
+          <p> {{ result.isCorrect }} </p>
         </li>
       </ul>
-      {{ resultStore.quizResults[0][0].question }}
-      {{ result.selectedAnswer }}
+
     </div>
-    <div class="wrong-answers">
-      <h2>Wrong answers</h2>
-      <p>Question x</p>
-      <p>Lorem Ipsum</p>
-    </div>
+    <!-- <div class="wrong-answers" v-for="(round, index) in quizResults" :key="index">
+      <h1>Wrong</h1>
+      <h2 @click="showResult (index)">Round {{ index + 1 }}</h2>
+      <ul>
+        <li v-for="(result, qIndex) in round.filter((q) => q.isCorrect === false)" :key="qIndex">
+          <p><strong> Question:</strong> {{ result.question }} </p>
+          <p><strong> Selected answer:</strong> {{ result.selectedAnswer }} </p>
+          <p> {{ result.isCorrect }} </p>
+        </li>
+      </ul>
+    </div> -->
   </main>
 </template>
+
+<style>
+ .hidden{
+  display: none;
+ }
+
+</style>
