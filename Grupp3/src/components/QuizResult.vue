@@ -6,6 +6,7 @@
       return{
         resultStore: useResultStore(),
         selectedRound: null,
+
       }
     },
     computed: {
@@ -17,7 +18,10 @@
       showResult(index){
           this.selectedRound = this.selectedRound === index? null : index
       }
-    }
+    },
+
+
+
   }
 </script>
 
@@ -27,21 +31,26 @@
       Result
     </h1>
 
-    <div class="right-answers" v-for="(round, index) in quizResults" :key="index">
+    <div class="results" v-for="(round, index) in quizResults" :key="index">
         <h2 @click="showResult (index)">Round {{ index + 1 }}</h2>
+        <i class="fa-solid fa-trophy"></i>
+
+        <i class="fa-solid fa-crown"></i>
+
+        <i class="fa-solid fa-award"></i>
 
       <ul v-show="selectedRound === index">
         <h1>Right answer</h1>
-        <li v-for="(result, qIndex) in round.filter((q) => q.isCorrect === true)" :key="qIndex">
+        <li v-for="(result, qIndex) in round.feedback.filter((q) => q.isCorrect)" :key="qIndex">
           <p> <strong> Question:</strong> {{ result.question }} </p>
           <p><strong> Selected answer:</strong> {{ result.selectedAnswer }} </p>
-          <p> {{ result.isCorrect }} </p>
+          <i class="fa-solid fa-check"></i>
         </li>
         <h1>Wrong answer</h1>
-        <li v-for="(result, qIndex) in round.filter((q) => q.isCorrect === false)" :key="qIndex">
+        <li v-for="(result, qIndex) in round.feedback.filter((q) => q.isCorrect === false)" :key="qIndex">
           <p><strong> Question:</strong> {{ result.question }} </p>
           <p><strong> Selected answer:</strong> {{ result.selectedAnswer }} </p>
-          <p> {{ result.isCorrect }} </p>
+          <i class="fa-solid fa-xmark" style="color: #f20713;"></i>
         </li>
       </ul>
 
@@ -61,8 +70,5 @@
 </template>
 
 <style>
- .hidden{
-  display: none;
- }
 
 </style>
