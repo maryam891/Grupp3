@@ -1,6 +1,6 @@
 <script>
   import { mapStores } from 'pinia'
-  import { useCounterStore } from '../favoriteStore'
+  import { useFavoriteStore } from '../favoriteStore'
   import Nasa from '../components/Nasa.vue'
   export default {
     components: {
@@ -20,12 +20,13 @@
         modalVisible: false,
         modalText: '',
         modalHeader: '',
-        iconOverlay: false
+        iconOverlay: false,
+        clicked: false
       }
     },
 
     computed: {
-      ...mapStores(useCounterStore)
+      ...mapStores(useFavoriteStore)
     },
     methods: {
       mouseOver(event) {
@@ -194,12 +195,16 @@
     margin-top: 1rem;
   }
 
-  .heart-icon {
+  .gray {
     color: rgb(120, 118, 118);
     position: relative;
     left: 94%;
     top: 10%;
     cursor: pointer;
+  }
+
+  .pink {
+    color: #e3cafb;
   }
 
   .icon-overlay {

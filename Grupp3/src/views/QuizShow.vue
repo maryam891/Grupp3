@@ -262,19 +262,21 @@
 
   .quiz-container {
     width: 100%;
-    height: 80vh;
-    margin: 0 auto;
+    height: auto;
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
   }
 
   .quiz-content {
     position: relative; /* .cancel-btn can be positioned inside */
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
-    height: 70%;
-    width: 60%;
+    height: auto;
+    width: 90%;
+    max-width: 800px;
     background-color: #ffffff;
     border-radius: 43.02px;
     display: flex;
@@ -282,6 +284,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 2rem;
   }
 
   .quiz-intro {
@@ -346,13 +349,14 @@
   }
   /* ---> Button <--- */
   .quiz-btn {
-    width: 20%;
+    width: 60%;
     margin: 1em;
   }
   .answer-btn {
     background-color: #ffffff;
     border: 2px solid #40027d;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     color: #40027d;
     transition: 0.3s;
   }
@@ -413,46 +417,21 @@
     color: white;
   }
 
-  @media (min-width: 375px) and (max-width: 768px) {
+  @media (max-width: 768px) {
     .quiz-content {
-      width: 85%;
-      height: auto;
-      padding: 15px;
+      width: 95%;
     }
     .quiz-btn {
-      width: 50%;
+      width: 80%;
     }
     .answer-btn {
-      width: 15em;
+      width: 80%;
     }
-    /* .earth-img {
-      top: -450px;
-      left: -150px;
-    }
-
-    .venus-img {
-      top: -50px;
-      right: -150px;
-    }
-
-    .mercury-img {
-      top: -60px;
-      left: -150px;
-    } */
   }
 
   @media (min-width: 768.1px) and (max-width: 980px) {
     .quiz-content {
-      width: 90%;
-      padding: 15px;
-    }
-    .quiz-content {
-      width: 70%;
-      padding: 15px;
-    }
-
-    .quiz-btn {
-      width: 8em;
+      width: 80%;
     }
   }
   @keyframes shake {

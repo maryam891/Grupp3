@@ -1,6 +1,6 @@
 <script>
   import { mapStores } from 'pinia'
-  import { useCounterStore } from '../favoriteStore'
+  import { useFavoriteStore } from '../favoriteStore'
   export default {
     created() {
       //Get added planets
@@ -47,7 +47,7 @@
       }
     },
     computed: {
-      ...mapStores(useCounterStore)
+      ...mapStores(useFavoriteStore)
     }
   }
 </script>

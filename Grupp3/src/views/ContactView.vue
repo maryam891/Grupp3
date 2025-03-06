@@ -146,6 +146,7 @@
         </p>
       </div>
     </section>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2133.208418984307!2d11.998990776539951!3d57.67893704201672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464ff369d0835015%3A0xba46082e9c214f49!2sIT-H%C3%B6gskolan!5e0!3m2!1ssv!2sse!4v1741253625541!5m2!1ssv!2sse" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" />
   </main>
 </template>
 
@@ -269,6 +270,11 @@
 
   .team {
     text-align: center;
+  }
+
+  iframe {
+    width: 100%;
+    padding: 2em;
   }
 
   @media screen and (min-width: 375px) and (max-width: 572px) {
