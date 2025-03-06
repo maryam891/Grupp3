@@ -1,34 +1,32 @@
 <script>
+  import { mapActions, mapState } from 'pinia'
+  import { useLoginStore } from '../loginStore'
   export default {
     data() {
       return {
         username: '',
-        password: '',
-        loggedInStatus: localStorage.getItem('loggedIn') === 'true'
+        password: ''
       }
     },
     methods: {
-      login() {
-        if (this.username !== '' && this.password !== '') {
-          this.loggedInStatus = true
-          localStorage.setItem('loggedIn', 'true')
-        } else {
-          alert('Please enter name and password')
-        }
-      },
-      logout() {
-        localStorage.removeItem('loggedIn')
-        this.username = ''
-        this.password = ''
-        this.loggedInStatus = false
+      //collect actions login&logout from store
+      ...mapActions(useLoginStore, ['login', 'logout']),
+      //sending input to & using login from store, saving username to be able to reuse it in profile
+      manageLogin() {
+        this.login(this.username, this.password)
       }
+    },
+    computed: {
+      //collect state from store
+      ...mapState(useLoginStore, ['loggedIn', 'username'])
     }
   }
 </script>
 
 <template>
   <div class="login-container">
-    <div v-if="!loggedInStatus">
+    <!-- Check if logged in to show login field-->
+    <div v-if="!loggedIn">
       <input
         type="text"
         placeholder="Username"
@@ -43,8 +41,10 @@
         class="input-field"
         required
       />
-      <button @click="login" class="login-btn">Log in</button>
+      <!--Sending login-info to pinia-->
+      <button @click="manageLogin" class="login-btn">Log in</button>
     </div>
+    <!--Check if logged in, hide login field and show logout-->
     <div class="logout-container" v-else>
       <button @click="logout" class="logout-btn">Log out</button>
     </div>

@@ -1,11 +1,9 @@
 <script>
   import LogIn from '../components/LogIn.vue'
-import QuizResult from '../components/QuizResult.vue'
 
   export default {
     components: {
-      LogIn,
-      QuizResult
+      LogIn
     },
     data() {
       return {
@@ -52,10 +50,10 @@ import QuizResult from '../components/QuizResult.vue'
 </script>
 
 <template>
-  <main>
   <header>
     <LogIn />
   </header>
+  <main>
     <div class="my-page-container">
       <!-- Navigation to my page & progress/journey -->
       <div class="my-page-navbar">
@@ -132,7 +130,6 @@ import QuizResult from '../components/QuizResult.vue'
         </div>
         <div class="page" v-show="currentPage === 'My Journey'">
           <h2>My Journey</h2>
-          <QuizResult />
         </div>
       </div>
     </div>

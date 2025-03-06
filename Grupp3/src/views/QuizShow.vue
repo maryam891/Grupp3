@@ -128,13 +128,7 @@
       quizLog() {
         // Retrieve the store instance from Pinia
         const resultStore = useResultStore()
-        const dataFeedback = {
-          feedback: this.feedback,
-          countCorrect: this.correctAnswersCount,
-          totalQuestions: this.questions.length
-        }
-        console.log(dataFeedback)
-        resultStore.saveResult(dataFeedback) // save to Pinia + localStorage
+        resultStore.saveResult(this.feedback) // save to Pinia + localStorage
         console.log('localStorage', localStorage.getItem('quizResults'))
       },
 
