@@ -1,6 +1,6 @@
 <script>
   const apiKey = import.meta.env.VITE_NASA_API_KEY
-  //fetching info abt Mars
+  //fetching img from Mars
   export default {
     created() {
       fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${apiKey}`)

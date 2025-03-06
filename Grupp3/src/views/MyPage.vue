@@ -1,9 +1,11 @@
 <script>
   import LogIn from '../components/LogIn.vue'
+  import QuizResult from '../components/QuizResult.vue'
 
   export default {
     components: {
-      LogIn
+      LogIn,
+      QuizResult
     },
     data() {
       return {
@@ -37,7 +39,7 @@
         }
         this.showModal = true
       },
-      confirmChoice(){
+      confirmChoice() {
         if (this.modalClick === 'delete') {
           alert('Your account will be deleted within 30 days.')
         } else if (this.modalClick === 'unsubscribe') {
@@ -50,10 +52,10 @@
 </script>
 
 <template>
-  <header>
-    <LogIn />
-  </header>
   <main>
+    <header>
+      <LogIn />
+    </header>
     <div class="my-page-container">
       <!-- Navigation to my page & progress/journey -->
       <div class="my-page-navbar">
@@ -112,10 +114,7 @@
             <div class="modal">
               <h4>{{ modalText }}</h4>
               <div class="modal-buttons">
-                <button
-                  class="modal-btn secondary-btn"
-                  @click="confirmChoice"
-                >
+                <button class="modal-btn secondary-btn" @click="confirmChoice">
                   Yes
                 </button>
                 <button
@@ -130,6 +129,7 @@
         </div>
         <div class="page" v-show="currentPage === 'My Journey'">
           <h2>My Journey</h2>
+          <QuizResult />
         </div>
       </div>
     </div>
@@ -137,7 +137,7 @@
 </template>
 
 <style scoped>
-/* whole page container */
+  /* whole page container */
   .my-page-container {
     position: relative;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
@@ -186,7 +186,6 @@
     width: 140px;
     color: #280070;
   }
-
 
   /*sign up to newsletter*/
   .email-field {

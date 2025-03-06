@@ -44,7 +44,7 @@
       <!--Sending login-info to pinia-->
       <button @click="manageLogin" class="login-btn">Log in</button>
     </div>
-    <!--Check if logged in, hide login field and show logout-->
+    <!--Check if logged in, hide login field and view logout-btn-->
     <div class="logout-container" v-else>
       <button @click="logout" class="logout-btn">Log out</button>
     </div>

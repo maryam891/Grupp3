@@ -21,13 +21,17 @@
         modalText: '',
         modalHeader: '',
         iconOverlay: false,
-        clicked: false
+        clicked: false,
+        addedPlanet: false,
+        planetExist: false,
+        planetExists: false
       }
     },
 
     computed: {
       ...mapStores(useFavoriteStore)
     },
+
     methods: {
       mouseOver(event) {
         event.target.classList.add('hovered')
@@ -44,13 +48,25 @@
       },
       closeModal() {
         this.modalVisible = false
+        this.iconOverlay = false
       },
-      addToFav(planets) {
-        this.favoriteStore.addToFav(planets)
-        this.iconOverlay = true
-      },
+
       closedOverlay() {
         this.iconOverlay = false
+      },
+      addToFav(planets) {
+        console.log('das')
+        if (this.favoriteStore.addToFav(planets) === false) {
+          this.planetExists = false
+          this.addedPlanet = true
+          this.planetExist = false
+          this.iconOverlay = true
+        } else {
+          this.planetExist = true
+          this.planetExists = true
+          this.addedPlanet = false
+          this.iconOverlay = true
+        }
       }
     }
   }
@@ -105,8 +121,12 @@
               class="fa-solid fa-x close-icon-overlay"
               @click="closedOverlay"
             />
-            <p class="overlay-text">Planet added to favorites</p>
-            <!-- <p>Planet already exists in favorites</p> -->
+            <p class="overlay-text" v-if="addedPlanet">
+              Planet added to favorites
+            </p>
+            <p class="overlay-text" v-else>
+              Planet already exists in favorites
+            </p>
           </div>
           <h1>{{ modalHeader }}</h1>
         </header>

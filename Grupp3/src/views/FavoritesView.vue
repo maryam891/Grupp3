@@ -6,12 +6,12 @@
       //Get added planets
       this.favorite = JSON.parse(localStorage.getItem('favPlanet'))
       //If a planet is added show this message
-      if (this.favorite !== []) {
+      if (this.favorite.length > 0) {
         this.favoritePlanets = true
         this.noAddedplanets = false
       }
       //Check if no planet is added to favorites to render other header message
-      if (this.favorite === []) {
+      if (this.favorite.length <= 0) {
         this.noAddedplanets = true
         this.favoritePlanets = false
       }
@@ -23,7 +23,7 @@
         //Update localstorage when removing planet
         localStorage.setItem('favPlanet', JSON.stringify(this.favorite))
         //Check if no planet is added to favorites to render other header message
-        if (this.favorite === []) {
+        if (this.favorite.length <= 0) {
           this.noAddedplanets = true
           this.favoritePlanets = false
         }

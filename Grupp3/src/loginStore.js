@@ -17,7 +17,7 @@ export const useLoginStore = defineStore('login', {
         alert('Please enter correct username and password!')
       }
     },
-    //removing from localstorage and making loggedin status false
+    //removing info from localstorage and making loggedin status false
     logout() {
       this.username = ''
       this.password = ''

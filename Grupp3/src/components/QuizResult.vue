@@ -19,9 +19,6 @@
           this.selectedRound = this.selectedRound === index? null : index
       }
     },
-
-
-
   }
 </script>
 
@@ -33,12 +30,9 @@
 
     <div class="results" v-for="(round, index) in quizResults" :key="index">
         <h2 @click="showResult (index)">Round {{ index + 1 }}</h2>
-        <i class="fa-solid fa-trophy"></i>
-
-        <i class="fa-solid fa-crown"></i>
-
-        <i class="fa-solid fa-award"></i>
-
+        <div v-if="((round.countCorrect / round.totalQuestions) * 100 >= 80)"><i class="fa-solid fa-crown"></i></div>
+        <div v-else-if="((round.countCorrect / round.totalQuestions) * 100 >= 60)"><i class="fa-solid fa-trophy"></i></div>
+        <div v-else><i class="fa-solid fa-award"></i></div>
       <ul v-show="selectedRound === index">
         <h1>Right answer</h1>
         <li v-for="(result, qIndex) in round.feedback.filter((q) => q.isCorrect)" :key="qIndex">
