@@ -33,12 +33,9 @@
         <div v-if="((round.countCorrect / round.totalQuestions) * 100 >= 80)"><i class="fa-solid fa-crown"></i></div>
         <div v-else-if="((round.countCorrect / round.totalQuestions) * 100 >= 60)"><i class="fa-solid fa-trophy"></i></div>
         <div v-else><i class="fa-solid fa-award"></i></div>
-<<<<<<< Updated upstream
-=======
 
 
 
->>>>>>> Stashed changes
       <ul v-show="selectedRound === index">
         <h1>Right answer</h1>
         <li v-for="(result, qIndex) in round.feedback.filter((q) => q.isCorrect)" :key="qIndex">
