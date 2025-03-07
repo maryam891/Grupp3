@@ -25,12 +25,16 @@
         addedPlanet: false,
         planetExist: false,
         planetExists: false,
-        heartColor: false
+        heartColor: false,
+        isFavorite: false
       }
     },
 
     computed: {
-      ...mapStores(useFavoriteStore)
+      ...mapStores(useFavoriteStore),
+      favoriteText(){
+        return this.isFavorite ? "Added to favorites" : "Add to favorites"
+      }
     },
 
     methods: {
@@ -46,17 +50,30 @@
         this.modalVisible = true
         this.modalText = planet.info
         this.modalHeader = planet.name
+        planets = this.favoriteStore.planetList.find((planet) => {
+          return planet.id === this.addedPlanet.id
+        })
+        if (planet === true) {
+          this.heartColor = true
+      } else {
+          this.heartColor = false
+      }
       },
       closeModal() {
         this.modalVisible = false
         this.iconOverlay = false
+        this.heartColor = false
+        this.isFavorite = false
       },
 
       closedOverlay() {
         this.iconOverlay = false
+        this.heartColor = false
+        // this.isFavorite = false
       },
       addToFav(planets) {
         console.log('das')
+        this.isFavorite = !this.isFavorite
         if (this.favoriteStore.addToFav(planets) === false) {
           this.planetExists = false
           this.addedPlanet = true
@@ -68,7 +85,7 @@
           this.addedPlanet = false
           this.iconOverlay = true
         }
-      }
+      },
     }
   }
 </script>
@@ -137,7 +154,9 @@
             }"
             @click="addToFav(clickedPlanet), heartColor = !heartColor"
           />
+          <p class="heart-text">{{ favoriteText }}</p>
         </div>
+
           <!--show icon overlay-->
           <div v-if="iconOverlay" class="icon-overlay">
             <i
@@ -268,6 +287,15 @@
     transition: all 0.2s ease-in-out;
   }
 
+  .heart-text {
+    position: relative;
+    left: 84%;
+    top: 10%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 11px;
+  }
+
   /* .gray {
     color: rgb(120, 118, 118);
     position: relative;
@@ -276,6 +304,7 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
   } */
+
   .gray:hover {
     transform: scale(1.2);
   }
