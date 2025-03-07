@@ -26,7 +26,8 @@
 <template>
   <div class="login-container">
     <!-- Check if logged in to show login field-->
-    <div v-if="!loggedIn">
+    <div class="login-content" v-if="!loggedIn">
+      <p>Log in to view your progress </p>
       <input
         type="text"
         placeholder="Username"
@@ -52,15 +53,33 @@
 </template>
 
 <style scoped>
-  .login-container {
+  .login-content {
+    display: grid;
+    justify-content: center;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.518);
+    width: 30vw;
+    left: 35%;
+    padding: 3.7em 2vw 6vh 2vw;
+    background-color: #ffffff;
+    color: #40027d;
+    border-radius: 43.02px;
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 4%;
+  }
+
+  .login-content p {
+    margin-bottom: 1.5em;
   }
 
   .input-field,
   .login-btn,
   .logout-btn {
-    border: transparent;
     border-radius: 36.06px;
     padding: 5px;
     font-family: poppins;
@@ -70,15 +89,42 @@
   .login-btn,
   .logout-btn {
     cursor: pointer;
+    border: transparent;
     background-color: #e3cafb;
     color: #40027d;
     font-weight: 400;
     width: 60px
   }
 
+  .login-btn {
+    display: flex;
+    justify-content: center;
+    margin-left: 50%;
+  }
+
+  .logout-btn {
+    margin-left: 90%;
+  }
+
   .input-field {
-    max-width: 10em;
+    max-width: 50%;
     cursor: text;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
+  }
+
+
+  @media screen and (min-width: 374.9px) and (max-width: 768px) {
+    .login-content {
+    width: 50%;
+    left: 30%;
+    }
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 572px){
+    .input-field {
+    max-width: 70%;
+    cursor: text;
+    margin-bottom: 1em;
+    }
   }
 </style>

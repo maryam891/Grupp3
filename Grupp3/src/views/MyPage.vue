@@ -1,6 +1,8 @@
 <script>
   import LogIn from '../components/LogIn.vue'
   import QuizResult from '../components/QuizResult.vue'
+  import { mapActions, mapState } from 'pinia'
+  import { useLoginStore } from '../loginStore'
 
   export default {
     components: {
@@ -13,10 +15,15 @@
         message: '',
         modalText: '',
         showModal: false,
-        modalClick: ''
+        modalClick: '',
+        username: this.username
       }
     },
+    computed: {
+      ...mapState(useLoginStore, ['username', 'loggedIn'])
+    },
     methods: {
+      ...mapActions(useLoginStore, ['loggedIn']),
       //displays different content depending on tab
       openPage(pageName) {
         this.currentPage = pageName
@@ -29,6 +36,7 @@
         )
         this.message = ''
       },
+      //settings to delete acc or unsubscribe from newsletter
       clickToUndo(click) {
         if (click === 'delete') {
           this.modalText = 'Do you wish to delete your account?'
@@ -53,10 +61,8 @@
 
 <template>
   <main>
-    <header>
-      <LogIn />
-    </header>
-    <div class="my-page-container">
+    <LogIn />
+    <div class="my-page-container" v-if="loggedIn">
       <!-- Navigation to my page & progress/journey -->
       <div class="my-page-navbar">
         <button class="mp-navbar-tab" @click="openPage('My Page')">
@@ -73,7 +79,7 @@
           <div class="user-container">
             <i class="fa-solid fa-circle-user" style="color: #40027d" />
             <div class="user-info">
-              <p>Username: TestUser1</p>
+              <p>Username: {{ username }}</p>
               <p>Password: *********</p>
             </div>
             <i class="fa-solid fa-gears" style="color: #40027d" />
@@ -305,29 +311,27 @@
   }
 
   @media screen and (min-width: 375px) and (max-width: 768px) {
-    form {
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 1em;
-      padding-left: 3em;
-    }
 
-    .newsletter-container {
-      display: flex;
-      flex-direction: column;
-    }
   }
 
   @media screen and (min-width: 768.1px) and (max-width: 980px) {
-    form {
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 1em;
-      padding-left: 3em;
-    }
 
-    .newsletter-container {
-      display: flex;
-    }
   }
+
+  @media screen and (min-width: 375px) and (max-width: 572px){
+    
+  }
+
+@media screen and (min-width: 572.1px) and (max-width: 768px){
+
+}
+
+@media screen and (min-width: 768.1px) and (max-width: 980px){
+
+}
+
+@media screen and (min-width: 980.1px) {
+
+}
+
 </style>
