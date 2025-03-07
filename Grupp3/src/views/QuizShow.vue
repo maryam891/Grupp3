@@ -146,6 +146,17 @@
         this.correctAnswersCount = 0
         this.feedback = []
         this.mark = {}
+      },
+      quizCompletedMessages() {
+        let scorePercentage =
+          (this.correctAnswersCount / this.questions.length) * 100
+        if (scorePercentage <= 30) {
+          return 'A small step now, a giant leap next time!'
+        } else if (scorePercentage < 80) {
+          return 'Great progress! Keep exploring the stars!'
+        } else {
+          return "Perfect score! You're a true explorer!"
+        }
       }
     },
     // Fetches questions when the component is mounted
@@ -248,7 +259,8 @@
           alt="congratulation"
           class="congrats-img"
         />
-        <h2>Quiz Completed!</h2>
+        <!-- <h2>Quiz Completed!</h2> -->
+        <h2>{{ quizCompletedMessages() }}</h2>
         <p>
           You answered {{ correctAnswersCount }} out of
           {{ questions.length }} correctly.
@@ -318,6 +330,12 @@
   h2 {
     font-weight: bold;
     color: #40027d;
+  }
+
+  h3 {
+    color: #40027d;
+    text-align: center;
+    font-size: 1rem;
   }
 
   h4 {
@@ -476,4 +494,3 @@
     animation: scaleUp 0.3s ease-in-out;
   }
 </style>
- 
