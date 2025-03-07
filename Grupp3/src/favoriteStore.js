@@ -22,7 +22,7 @@ export const useFavoriteStore = defineStore('favorite', {
           return favPlanet.id === addedPlanet.id
         })
       }
-      //Push favorite planet into localstorage if it doesn't exist
+      //Push favorite planet into planetList if it doesn't exist
       if (planetExists === false) {
         this.planetList.push(addedPlanet)
       } else {

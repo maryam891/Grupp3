@@ -5,12 +5,12 @@
     created() {
       //Get added planets
       this.favorite = JSON.parse(localStorage.getItem('favPlanet'))
-      //If a planet is added show this message
+      //If a planet is added show Your favorite planets
       if (this.favorite.length > 0) {
         this.favoritePlanets = true
         this.noAddedplanets = false
       }
-      //Check if no planet is added to favorites to render other header message
+      //Check if no planet is added to favorites to render No favorite planet added
       if (this.favorite.length <= 0) {
         this.noAddedplanets = true
         this.favoritePlanets = false
@@ -22,7 +22,7 @@
         this.favorite.splice(id, 1)
         //Update localstorage when removing planet
         localStorage.setItem('favPlanet', JSON.stringify(this.favorite))
-        //Check if no planet is added to favorites to render other header message
+        //Check if no planet is added to favorites to render other message
         if (this.favorite.length <= 0) {
           this.noAddedplanets = true
           this.favoritePlanets = false
@@ -30,7 +30,9 @@
       },
       //show confirm remove overlay when clicking on heart icon
       removeFromFav() {
-        this.confirmRemove = true
+        if (this.clicked === true) {
+          this.confirmRemove = true
+        }
       },
       cancelRemove() {
         this.confirmRemove = false
@@ -43,7 +45,8 @@
         favImg: [],
         favoritePlanets: false,
         noAddedplanets: false,
-        confirmRemove: false
+        confirmRemove: false,
+        clicked: false
       }
     },
     computed: {
@@ -58,10 +61,18 @@
     <h1>Your favorite planets</h1>
     <div class="favorites-container">
       <div v-for="(favorites, id) in favorite" class="favorite-card" :key="id">
-        <i class="fa-solid fa-heart heart-icon" @click="removeFromFav()" />
+        <i
+          class="fa-solid fa-heart heart-icon"
+          @click="removeFromFav()"
+          v-bind="clicked"
+        />
         <p>{{ favorites.name }}</p>
         <img :src="favorites.src" />
-        <div v-show="confirmRemove" class="remove-planet-overlay">
+        <div
+          v-show="confirmRemove"
+          class="remove-planet-overlay"
+          v-if="clicked === true"
+        >
           <p class="remove-overlay-text">
             Are you sure you want to remove the planet?
           </p>
