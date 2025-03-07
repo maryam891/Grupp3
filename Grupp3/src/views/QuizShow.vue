@@ -476,4 +476,3 @@
     animation: scaleUp 0.3s ease-in-out;
   }
 </style>
- 

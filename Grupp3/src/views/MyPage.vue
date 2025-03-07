@@ -288,6 +288,12 @@
     align-items: center;
   }
 
+  .modal-btn {
+    cursor: pointer;
+    color: #40027d;
+    border-color: #40027d;
+  }
+
   @media screen and (min-width: 375px) and (max-width: 768px) {
     form {
       display: flex;
