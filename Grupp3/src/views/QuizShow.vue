@@ -14,6 +14,7 @@
         mark: {},
         planets: [],
         showModal: false,
+        showMessage: false,
         playTimes: 1,
         isDisabledAnswerArea: false,
         earthImg: '/assets/image/earth-transparent.png',
@@ -104,6 +105,11 @@
             // If the user has made first incorrect attempts,
             this.feedback[this.currentQuestionIndex].isCorrect = false // Marks the current question's feedback as incorrect.
             this.mark[this.currentQuestionIndex] = false // show incorrect answers visually
+            // Show message to let user know they have 1 more chance
+            this.showMessage = true
+            setTimeout(() => {
+              this.showMessage = false
+            }, 2000)
             this.playTimes++ // Increments playTimes, allowing the user to try again
           }
         }
@@ -236,6 +242,9 @@
           >
             {{ answer.text }}
           </button>
+          <div v-if="showMessage">
+            <p class="blink">Try one more time</p>
+          </div>
         </div>
       </div>
       <!-- Display confirmation modal when the user clicks to close the quiz -->
@@ -417,7 +426,7 @@
 
   .venus-img {
     bottom: -30px;
-    right: -100px;
+    right: -130px;
   }
 
   .mercury-img {
@@ -429,7 +438,23 @@
     width: 120px;
     padding-bottom: 20px;
   }
-
+  @-webkit-keyframes blinker {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  .blink {
+    color: red;
+    text-decoration: blink;
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 0.6s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate;
+  }
   .correct {
     background-color: green;
     color: white;
