@@ -24,7 +24,8 @@
         clicked: false,
         addedPlanet: false,
         planetExist: false,
-        planetExists: false
+        planetExists: false,
+        heartColor: false
       }
     },
 
@@ -96,7 +97,28 @@
           </div>
         </div>
       </div>
-      <p>science.nasa.gov (Source)</p>
+
+      <!--Planets in their actual Size-->
+    <div class="size-main">
+      <div class="size-header">
+        <h1>The planets in size order</h1>
+      </div>
+      <div class="planet-size">
+        <!--Rendering the pictures from the array in created-->
+        <div class="planets">
+          <div class="planet-card" v-for="planet in planets" :key="planet.id">
+            <img
+              :src="planet.src"
+              :alt="planet.name"
+              :class="planet.class"
+            />
+            <p>{{ planet.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <p id="source">science.nasa.gov (Source)</p>
       <hr />
       <h2>Picture of the day and some facts</h2>
       <Nasa />
@@ -107,14 +129,15 @@
       <div class="modal-inner">
         <header class="modal-header">
           <!--Add planet to favorites icon-->
+        <div>
           <i
             class="fa-solid fa-heart"
             :class="{
-              pink: clicked,
-              gray: !clicked
+              pink: heartColor,
             }"
-            @click="addToFav(clickedPlanet)"
+            @click="addToFav(clickedPlanet), heartColor = !heartColor"
           />
+        </div>
           <!--show icon overlay-->
           <div v-if="iconOverlay" class="icon-overlay">
             <i
@@ -236,7 +259,7 @@
     cursor: pointer;
   }
 
-  .gray {
+  .fa-heart {
     color: rgb(120, 118, 118);
     position: relative;
     left: 94%;
@@ -244,11 +267,88 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
   }
+
+  /* .gray {
+    color: rgb(120, 118, 118);
+    position: relative;
+    left: 94%;
+    top: 10%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  } */
   .gray:hover {
     transform: scale(1.2);
   }
 
   .pink {
-    color: #e3cafb;
+    color: #fa2fc1;
   }
+
+  .mercury-img {
+    width: 3vw;
+    height: 3vw;
+    cursor: context-menu;
+  }
+
+  .venus-img {
+    width: 7vw;
+    height: 5vw;
+    cursor: context-menu;
+  }
+
+  .earth-img {
+    width: 8vw;
+    height: 5.5vw;
+    cursor: context-menu;
+  }
+
+  .mars-img {
+    width: 5vw;
+    height: 3.5vw;
+    cursor: context-menu;
+  }
+
+  .jupiter-img {
+    width: 40vw;
+    height: 25vw;
+    cursor: context-menu;
+  }
+
+  .saturn-img {
+    width: 33vw;
+    height: 19vw;
+    cursor: context-menu;
+  }
+
+  .uranus-img {
+    width: 15vw;
+    height: 11vw;
+    cursor: context-menu;
+  }
+
+  .neptune-img {
+    width: 14vw;
+    height: 10vw;
+    cursor: context-menu;
+  }
+
+  .pluto-img {
+    width: 1.5vw;
+    height: 1.5vw;
+    cursor: context-menu;
+  }
+
+  .size-header {
+    margin-top: 40px;
+  }
+
+  .planet-size {
+    margin-left: 60px;
+    margin-bottom: 40px;
+  }
+
+  #source {
+    font-size: 11px;
+  }
+
 </style>
