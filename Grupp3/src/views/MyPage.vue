@@ -99,14 +99,14 @@
           </form>
           <!-- Account settings to delete acc or unsubscribe -->
           <div class="account-settings">
-            <button class="primary-btn" @click="clickToUndo('delete')">
+            <button class="settings-btn" @click="clickToUndo('delete')">
               Delete account
             </button>
-            <button class="primary-btn" @click="clickToUndo('unsubscribe')">
+            <button class="settings-btn" @click="clickToUndo('unsubscribe')">
               Unsubscribe*
             </button>
             <p class="unsubscribe-news">
-              *You can always subsribe to our newsletter again
+              *You are welcome to subsribe to our newsletter again
             </p>
           </div>
           <!-- Display confirmation modal when the user clicks to delete acc/unsubscribe -->
@@ -199,12 +199,13 @@
   .submit-btn {
     border: transparent;
     border-radius: 36.06px;
-    padding: 5px;
+    width: 90px;
+    padding: 8px;
     font-family: poppins;
     cursor: pointer;
     background-color: #e3cafb;
     color: #280070;
-    font-weight: 550;
+    font-weight: 400;
   }
 
   /*user info and settings*/
@@ -248,7 +249,7 @@
 
   /*account settings*/
   .account-settings {
-    margin-top: 2em;
+    margin-top: 8em;
   }
 
   .unsubscribe-news {
@@ -256,7 +257,16 @@
     margin-bottom: 5em;
   }
 
-  .primary-btn {
+  .settings-btn {
+    border-radius: 36.06px;
+    font-weight: 550;
+    cursor: pointer;
+    height: 35px;
+    padding: 5px;
+    background-color: #c6bccf88;
+    border: none;
+    width: 100px;
+    color: #270070c0;
     margin: 2em;
   }
 

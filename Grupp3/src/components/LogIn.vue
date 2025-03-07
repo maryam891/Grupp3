@@ -72,7 +72,8 @@
     cursor: pointer;
     background-color: #e3cafb;
     color: #40027d;
-    font-weight: 550;
+    font-weight: 400;
+    width: 60px
   }
 
   .input-field {
