@@ -215,18 +215,6 @@
     margin-top: 1rem;
   }
 
-  .gray {
-    color: rgb(120, 118, 118);
-    position: relative;
-    left: 94%;
-    top: 10%;
-    cursor: pointer;
-  }
-
-  .pink {
-    color: #e3cafb;
-  }
-
   .icon-overlay {
     position: relative;
     left: 30%;
@@ -246,5 +234,21 @@
     color: rgb(105, 104, 104);
     float: right;
     cursor: pointer;
+  }
+
+  .gray {
+    color: rgb(120, 118, 118);
+    position: relative;
+    left: 94%;
+    top: 10%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .gray:hover {
+    transform: scale(1.2);
+  }
+
+  .pink {
+    color: #e3cafb;
   }
 </style>
