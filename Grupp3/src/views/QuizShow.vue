@@ -51,9 +51,10 @@
           0,
           questionCount
         )
+        this.$router.push({ query: { questionCount } })
       },
       // Cancel the quiz and reset values
-      cancelQuiz() {
+      resetQuiz() {
         this.showQuiz = false
         this.quizCompleted = false
         this.currentQuestionIndex = 0
@@ -61,15 +62,11 @@
         this.feedback = {}
         this.mark = []
         this.showModal = false
+        this.$router.push({ query: null })
       },
       // Check if selected answer is correct
       checkAnswer(answer) {
         this.selectedAnswer = answer.text
-        // creates a feedback entry linked to the question ID. Later, this feedback object can be used to show in my page view
-        // this.feedback[this.currentQuestionIndex] = {
-        //   questionId: answer.question_id,
-        //   isCorrect: true
-        // }
         this.feedback[this.currentQuestionIndex] = {
           question: this.questions[this.currentQuestionIndex].text,
           selectedAnswer: answer.text,
@@ -142,16 +139,6 @@
         console.log(dataFeedback)
         resultStore.saveResult(dataFeedback) // save to Pinia + localStorage
         console.log('localStorage', localStorage.getItem('quizResults'))
-      },
-
-      // Reset the quiz to its initial state
-      resetQuiz() {
-        this.showQuiz = false
-        this.quizCompleted = false
-        this.currentQuestionIndex = 0
-        this.correctAnswersCount = 0
-        this.feedback = []
-        this.mark = {}
       },
       quizCompletedMessages() {
         let scorePercentage =
@@ -252,7 +239,7 @@
         <div class="modal">
           <h4>Do you wish to leave this quiz?</h4>
           <div class="modal-buttons">
-            <button class="modal-btn secondary-btn" @click="cancelQuiz">
+            <button class="modal-btn secondary-btn" @click="resetQuiz">
               Yes, Quit
             </button>
             <button class="modal-btn secondary-btn" @click="showModal = false">
@@ -284,7 +271,6 @@
 <style scoped>
   .answers.disabled {
     pointer-events: none;
-    /* background: #40027d; */
   }
 
   .quiz-container {
@@ -311,7 +297,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 1rem;
   }
 
   .quiz-intro {
@@ -319,7 +305,7 @@
   }
 
   .quiz-questions {
-    width: 80%;
+    width: 100%;
   }
 
   .answers {
@@ -350,6 +336,7 @@
   h4 {
     color: #40027d;
     text-align: right;
+    margin: 1rem 2rem;
   }
   p {
     color: #000000;
@@ -448,7 +435,6 @@
   }
   .blink {
     color: red;
-    text-decoration: blink;
     -webkit-animation-name: blinker;
     -webkit-animation-duration: 0.6s;
     -webkit-animation-iteration-count: infinite;
@@ -471,9 +457,6 @@
       width: 95%;
     }
     .quiz-btn {
-      width: 80%;
-    }
-    .answer-btn {
       width: 80%;
     }
   }
