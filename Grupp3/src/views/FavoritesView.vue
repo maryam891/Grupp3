@@ -28,12 +28,17 @@
           this.favoritePlanets = false
         }
       },
-      //show confirm remove overlay when clicking on heart icon
-      removeFromFav() {
-        if (this.clicked === true) {
-          this.confirmRemove = true
+      //Show confirm remove overlay when clicking on heart icon
+      //Check for which planet with the icon has been clicked to only show overlay for that planet
+      removeFromFav(id) {
+        let clicked = this.favorite.find((clickedFav) => {
+          return clickedFav.id === id
+        })
+        if (clicked) {
+          this.confirmRemove = id
         }
       },
+      //close overlay when clicking on the No button
       cancelRemove() {
         this.confirmRemove = false
       }
@@ -45,8 +50,7 @@
         favImg: [],
         favoritePlanets: false,
         noAddedplanets: false,
-        confirmRemove: false,
-        clicked: false
+        confirmRemove: false
       }
     },
     computed: {
@@ -63,20 +67,18 @@
       <div v-for="(favorites, id) in favorite" class="favorite-card" :key="id">
         <i
           class="fa-solid fa-heart heart-icon"
-          @click="removeFromFav()"
-          v-bind="clicked"
+          @click="removeFromFav(favorites.id)"
         />
         <p>{{ favorites.name }}</p>
         <img :src="favorites.src" />
         <div
-          v-show="confirmRemove"
           class="remove-planet-overlay"
-          v-if="clicked === true"
+          v-if="confirmRemove === favorites.id"
         >
           <p class="remove-overlay-text">
             Are you sure you want to remove the planet?
           </p>
-          <button @click="confirmToRemove" class="confirm-remove-btn">
+          <button @click="confirmToRemove()" class="confirm-remove-btn">
             Yes
           </button>
           <button @click="cancelRemove" class="cancel-remove-btn">No</button>
