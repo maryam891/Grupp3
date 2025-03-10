@@ -2,7 +2,7 @@
   import LogIn from '../components/LogIn.vue'
   import QuizResult from '../components/QuizResult.vue'
   import { mapActions, mapState } from 'pinia'
-  import { useLoginStore } from '../loginStore'
+  import { useLoginStore } from '../stores/loginStore'
 
   export default {
     components: {

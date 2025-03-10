@@ -1,6 +1,6 @@
 <script>
   import { mapActions, mapState } from 'pinia'
-  import { useLoginStore } from '../loginStore'
+  import { useLoginStore } from '../stores/loginStore'
 
   export default {
     data() {
@@ -127,10 +127,10 @@
   }
 
   @media screen and (min-width: 572.1px) and (max-width: 768px) {
-      .logout-btn {
-        margin-left: 85%;
-      }
+    .logout-btn {
+      margin-left: 85%;
     }
+  }
 
   @media screen and (min-width: 375px) and (max-width: 572px) {
     .input-field {

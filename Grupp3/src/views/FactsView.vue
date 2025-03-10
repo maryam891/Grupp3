@@ -1,6 +1,6 @@
 <script>
   import { mapStores } from 'pinia'
-  import { useFavoriteStore } from '../favoriteStore'
+  import { useFavoriteStore } from '../stores/favoriteStore'
   import Nasa from '../components/Nasa.vue'
   export default {
     components: {

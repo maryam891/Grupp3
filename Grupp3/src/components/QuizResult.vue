@@ -1,5 +1,5 @@
 <script>
-  import { useResultStore } from "../resultStore"
+  import { useResultStore } from "../stores/resultStore"
 
   export default {
     data(){

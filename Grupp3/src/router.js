@@ -4,7 +4,7 @@ import FactsView from './views/FactsView.vue'
 import QuizShow from './views/QuizShow.vue'
 import ContactView from './views/ContactView.vue'
 import Favorites from './views/FavoritesView.vue'
-import MyPage from './views/MyPage.vue'
+import MyPages from './views/MyPages.vue'
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -12,8 +12,8 @@ export default createRouter({
     { path: '/', component: HomeView },
     { path: '/facts', component: FactsView },
     { path: '/quiz', component: QuizShow },
-    { path: '/Favorites', component: Favorites },
+    { path: '/favorites', component: Favorites },
     { path: '/contact', component: ContactView },
-    { path: '/mypage', component: MyPage }
+    { path: '/mypages', component: MyPages }
   ]
 })
