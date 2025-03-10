@@ -84,7 +84,7 @@
           <!-- Form to sign up to Newsletter -->
           <form @submit="onSubmitNewsletter">
             <h3 class="newsletter-h3">Sign up to our newsletter</h3>
-            <p>
+            <p class="newsletter-text">
               Stay updated with our latest news and exclusive insights—subscribe
               to our newsletter! Enter your email below and join our community.
             </p>
@@ -241,10 +241,16 @@
   /*sig up to newsletter part*/
   form {
     margin: 5em;
+    height: 100%;
+  }
+
+  .newsletter-text {
+    width: 100%;
   }
 
   /*account settings*/
   .account-settings {
+    display: inline-block;
     margin-top: 8em;
   }
 
@@ -260,6 +266,7 @@
     height: 35px;
     padding: 5px;
     background-color: #c6bccf88;
+    font-size: 0.7rem;
     border: none;
     width: 100px;
     color: #270070c0;
@@ -301,6 +308,9 @@
   }
 
   @media screen and (min-width: 375px) and (max-width: 768px) {
+    .email-field {
+      width: 60%;
+    }
     /*navigation and main content*/
     .my-page-container {
       width: 90vw;
@@ -315,13 +325,12 @@
     .content-container {
       border-radius: 43.02px;
       border: 10px solid #e3cafb;
-      width: 90%;
+      width: 100%;
       height: 82%;
     }
-
     /*user info and settings*/
     .user-container {
-      width: 80%;
+      width: 100%;
       padding: 10%;
       margin-left: 10%;
     }
@@ -329,7 +338,7 @@
     .fa-circle-user {
       position: relative;
       right: 2%;
-      font-size: 400%;
+      font-size: 40%;
     }
 
     .user-info {
@@ -338,21 +347,56 @@
       margin-top: 1em;
     }
 
-    /*sig up to newsletter part*/
-    .email-field {
-      border-radius: 20px;
-    }
-
     form {
-      margin: 2em 1.4em 0 0;
+      margin: 1em 1em 0 1em;
     }
 
     .submit-btn {
       margin-top: 1em;
     }
+
+    .logout-btn {
+      position: relative;
+      left: 10%;
+    }
   }
 
   @media screen and (min-width: 375px) and (max-width: 572px) {
+    .email-field {
+      width: 70%;
+      margin-bottom: 1em;
+    }
+    .my-page-navbar {
+      left: 11%;
+      height: 30px;
+      width: 200px;
+    }
+    .newsletter-container {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 90%;
+    }
+    .newsletter-text {
+      margin-top: 1em;
+    }
+    .newsletter-h3 {
+      text-align: left;
+    }
+    /*user info and settings*/
+    .user-container {
+      width: 63%;
+    }
+
+    .fa-circle-user {
+      right: 18%;
+      font-size: 60px;
+    }
+
+    .user-info {
+      right: 15%;
+    }
     .mp-navbar-tab {
       border-radius: 25px 25px 0 0;
       width: 100%;
@@ -368,22 +412,159 @@
       width: 100%;
       flex-direction: column;
     }
+
+    .settings-btn {
+      font-weight: 550;
+      padding: 5px;
+      font-size: 1rem;
+      margin-top: 20px;
+      width: 140px;
+      height: 40px;
+    }
+    .account-settings {
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-left: 20px;
+    }
+    .newsletter-text {
+      width: 90%;
+      height: 50%;
+      text-align: left;
+    }
+    .newsletter-container {
+      justify-content: center;
+      margin-top: 1em;
+      height: 100%;
+    }
+    .unsubscribe-news {
+      font-size: 0.9em;
+      width: 60%;
+      margin-left: 1em;
+    }
   }
 
   @media screen and (min-width: 572.1px) and (max-width: 768px) {
+    .newsletter-container {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+    .my-page-navbar {
+      left: 6%;
+    }
+    /*user info and settings*/
+    .user-container {
+      width: 63%;
+      height: 25%;
+      position: relative;
+      left: 10%;
+    }
+
+    .email-field {
+      width: 50%;
+      margin-bottom: 1em;
+    }
+
+    .fa-circle-user {
+      right: 20%;
+      font-size: 60px;
+    }
+
+    .user-info {
+      right: 15%;
+    }
+    .submit-btn {
+      border-radius: 32px;
+      width: 90px;
+      height: 40px;
+      padding: 8px;
+    }
+    .page {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .newsletter-text {
+      width: 100%;
+      height: 40%;
+    }
+
+    form {
+      margin: 1em 1.4em 0 1em;
+    }
+
+    .newsletter-container {
+      justify-content: center;
+      margin-top: 1em;
+      height: 100%;
+    }
+
+    .account-settings {
+      justify-content: left;
+    }
+    .settings-btn {
+      font-weight: 550;
+      height: 35px;
+      padding: 5px;
+      font-size: 1rem;
+      width: 140px;
+      height: 40px;
+    }
+    .unsubscribe-news {
+      font-size: 1em;
+      margin-left: 1em;
+    }
+  }
+  @media screen and (min-width: 768.1px) and (max-width: 980px) {
+    .unsubscribe-news {
+      font-size: 0.8em;
+    }
+    .my-page-navbar {
+      left: 11%;
+    }
+    .submit-btn {
+      border-radius: 32px;
+      width: 90px;
+      height: 40px;
+      padding: 8px;
+      margin-top: 1em;
+    }
     .page {
       display: flex;
       height: 100%;
       width: 100%;
       flex-direction: column;
     }
-  }
-  @media screen and (min-width: 768.1px) and (max-width: 980px) {
-    .page {
-      display: flex;
-      height: 100%;
+
+    .newsletter-text {
       width: 100%;
-      flex-direction: column;
+      height: 40%;
+    }
+
+    form {
+      margin: 2em 1.4em 0 1em;
+    }
+
+    .newsletter-container {
+      justify-content: center;
+      margin-top: 1em;
+    }
+    /*user info and settings*/
+    .user-container {
+      width: 63%;
+    }
+
+    .fa-circle-user {
+      right: 20%;
+      font-size: 60px;
+    }
+
+    .user-info {
+      right: 15%;
     }
   }
 
@@ -393,6 +574,28 @@
       height: 100%;
       width: 100%;
       flex-direction: column;
+    }
+
+    .submit-btn {
+      border-radius: 32px;
+      width: 90px;
+      height: 40px;
+      padding: 8px;
+      margin-top: 1em;
+    }
+
+    .newsletter-container {
+      justify-content: center;
+      margin-top: 1em;
+    }
+
+    .newsletter-container {
+      justify-content: center;
+      margin-top: 1em;
+    }
+
+    form {
+      margin: 2em 1.4em 0 1em;
     }
   }
 </style>
