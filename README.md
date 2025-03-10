@@ -1,9 +1,11 @@
 # Grupp3
-I detta projekt gör vi en websida där man kan lära sig om planeterna i vårt solsystem. 
+In this project, we are creating a website where you can learn about the planets in our solar system.
 
 Features:
-#1 Göra ett quiz om solsystemet. En fråga med 4 svars alternativ, klickar på en fråga och får respons om det är rätt eller inte
-#2 Man kan också läsa lite mer info om planeterna.
-#3 Kontaktformulär
-#4 Startsida med CTA
-#5 Favoritsida, där man kan spara sina favoritplaneter
+A quiz about the solar system – a question with four answer options, where you can click on an answer and get feedback on whether it's correct or not.
+Additional information about the planets.
+A contact form.
+A homepage with a call to action (CTA).
+A favorites page where you can save and remove your favorite planets.
+A login page.
+A My page where you can see quiz overview of your result.
