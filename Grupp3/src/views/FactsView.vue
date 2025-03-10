@@ -50,14 +50,14 @@
         this.modalVisible = true
         this.modalText = planet.info
         this.modalHeader = planet.name
-        planets = this.favoriteStore.planetList.find((planet) => {
+        /*planets = this.favoriteStore.planetList.find((planet) => {
           return planet.id === this.addedPlanet.id
         })
         if (planet === true) {
           this.heartColor = true
       } else {
           this.heartColor = false
-      }
+      }*/
       },
       closeModal() {
         this.modalVisible = false
@@ -106,6 +106,7 @@
             <img
               :src="planet.src"
               :alt="planet.name"
+              :class="planet.class"
               @click="showModal(planet)"
               @mouseover="mouseOver"
               @mouseout="mouseOut"
@@ -116,13 +117,13 @@
       </div>
 
       <!--Planets in their actual Size-->
-    <div class="size-main">
+    <!-- <div class="size-main">
       <div class="size-header">
         <h1>The planets in size order</h1>
       </div>
-      <div class="planet-size">
+      <div class="planet-size"> -->
         <!--Rendering the pictures from the array in created-->
-        <div class="planets">
+        <!-- <div class="planets">
           <div class="planet-card" v-for="planet in planets" :key="planet.id">
             <img
               :src="planet.src"
@@ -133,7 +134,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
       <p id="source">science.nasa.gov (Source)</p>
       <hr />
@@ -305,7 +306,7 @@
     transition: all 0.2s ease-in-out;
   } */
 
-  .gray:hover {
+  .fa-heart:hover {
     transform: scale(1.2);
   }
 
@@ -314,70 +315,243 @@
   }
 
   .mercury-img {
-    width: 3vw;
-    height: 3vw;
-    cursor: context-menu;
+    width: 7vw;
+    height: 5vw;
+    cursor: pointer;
   }
 
   .venus-img {
-    width: 7vw;
-    height: 5vw;
-    cursor: context-menu;
+    width: 10vw;
+    height: 7vw;
+    cursor: pointer;
   }
 
   .earth-img {
-    width: 8vw;
-    height: 5.5vw;
-    cursor: context-menu;
+    width: 16vw;
+    height: 11vw;
+    cursor: pointer;
   }
 
   .mars-img {
-    width: 5vw;
-    height: 3.5vw;
-    cursor: context-menu;
+    width: 8vw;
+    height: 6vw;
+    cursor: pointer;
   }
 
   .jupiter-img {
     width: 40vw;
     height: 25vw;
-    cursor: context-menu;
+    cursor: pointer;
   }
 
   .saturn-img {
     width: 33vw;
     height: 19vw;
-    cursor: context-menu;
+    cursor: pointer;
   }
 
   .uranus-img {
-    width: 15vw;
-    height: 11vw;
-    cursor: context-menu;
+    width: 20vw;
+    height: 15vw;
+    cursor: pointer;
   }
 
   .neptune-img {
-    width: 14vw;
-    height: 10vw;
-    cursor: context-menu;
+    width: 24vw;
+    height: 16vw;
+    cursor: pointer;
   }
 
   .pluto-img {
-    width: 1.5vw;
-    height: 1.5vw;
-    cursor: context-menu;
+    width: 6vw;
+    height: 4vw;
+    cursor: pointer;
   }
 
-  .size-header {
+  /* .size-header {
     margin-top: 40px;
   }
 
   .planet-size {
     margin-left: 60px;
     margin-bottom: 40px;
-  }
+  } */
 
   #source {
     font-size: 11px;
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 572px){
+
+      .planets p{
+        font-size: 12px;
+      }
+
+      .mercury-img {
+      width: 9vw;
+      height: 5vw;
+      cursor: pointer;
+    }
+
+    .venus-img {
+      width: 17vw;
+      height: 9vw;
+      cursor: pointer;
+    }
+
+    .earth-img {
+      width: 19vw;
+      height: 11vw;
+      cursor: pointer;
+    }
+
+    .mars-img {
+      width: 18vw;
+      height: 8vw;
+      cursor: pointer;
+    }
+
+    .jupiter-img {
+      width: 40vw;
+      height: 25vw;
+      cursor: pointer;
+    }
+
+    .saturn-img {
+      width: 33vw;
+      height: 19vw;
+      cursor: pointer;
+    }
+
+    .uranus-img {
+      width: 20vw;
+      height: 12vw;
+      cursor: pointer;
+    }
+
+    .neptune-img {
+      width: 26vw;
+      height: 16vw;
+      cursor: pointer;
+    }
+
+    .pluto-img {
+      width: 15vw;
+      height: 7vw;
+      cursor: pointer;
+    }
+  }
+
+  @media screen and (min-width: 572.1px) and (max-width: 768px){
+      .mercury-img {
+      width: 15vw;
+      height: 8vw;
+      cursor: pointer;
+    }
+
+    .venus-img {
+      width: 20vw;
+      height: 12vw;
+      cursor: pointer;
+    }
+
+    .earth-img {
+      width: 26vw;
+      height: 17vw;
+      cursor: pointer;
+    }
+
+    .mars-img {
+      width: 18vw;
+      height: 11vw;
+      cursor: pointer;
+    }
+
+    .jupiter-img {
+      width: 40vw;
+      height: 25vw;
+      cursor: pointer;
+    }
+
+    .saturn-img {
+      width: 55vw;
+      height: 25vw;
+      cursor: pointer;
+    }
+
+    .uranus-img {
+      width: 30vw;
+      height: 20vw;
+      cursor: pointer;
+    }
+
+    .neptune-img {
+      width: 32vw;
+      height: 21vw;
+      cursor: pointer;
+    }
+
+    .pluto-img {
+      width: 15vw;
+      height: 8vw;
+      cursor: pointer;
+    }
+  }
+
+  @media screen and (min-width: 768.1px) and (max-width: 980px){
+    .mercury-img {
+    width: 18vw;
+    height: 10vw;
+    cursor: pointer;
+  }
+
+  .venus-img {
+    width: 25vw;
+    height: 15vw;
+    cursor: pointer;
+  }
+
+  .earth-img {
+    width: 35vw;
+    height: 23vw;
+    cursor: pointer;
+  }
+
+  .mars-img {
+    width: 22vw;
+    height: 14vw;
+    cursor: pointer;
+  }
+
+  .jupiter-img {
+    width: 50vw;
+    height: 35vw;
+    cursor: pointer;
+  }
+
+  .saturn-img {
+    width: 75vw;
+    height: 35vw;
+    cursor: pointer;
+  }
+
+  .uranus-img {
+    width: 35vw;
+    height: 22vw;
+    cursor: pointer;
+  }
+
+  .neptune-img {
+    width: 35vw;
+    height: 23vw;
+    cursor: pointer;
+  }
+
+  .pluto-img {
+    width: 15vw;
+    height: 9vw;
+    cursor: pointer;
+  }
   }
 
 </style>
