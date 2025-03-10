@@ -17,8 +17,8 @@
       }
     },
     methods: {
+      //function to remove planets from favorites
       confirmToRemove(id) {
-        //function to remove planets from favorites
         //Filter out planets that are removed
         this.favorite = this.favorite.filter((planet) => {
           return planet.id !== id

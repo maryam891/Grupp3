@@ -35,7 +35,7 @@
       ...mapStores(useFavoriteStore),
       favoriteText() {
         return this.isFavorite ? 'Added to favorites' : 'Add to favorites'
-      },
+      }
       // checkFavorite() {
       //   return this.planets ? ':disabled = '
 
@@ -143,7 +143,7 @@
                 pink: heartColor
               }"
               @click="addToFav(clickedPlanet), (heartColor = !heartColor)"
-              :style="{pointerEvents: heartColor ? 'none' : 'auto', }"
+              :style="{ pointerEvents: heartColor ? 'none' : 'auto' }"
             />
             <p class="heart-text">{{ favoriteText }}</p>
           </div>

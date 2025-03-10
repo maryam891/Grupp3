@@ -19,7 +19,7 @@
 
 <template>
   <div>
-    <!--render planets-->
+    <!--render image and text-->
     <img :src="result.url" />
     <h2>{{ result.title }}</h2>
     <p>{{ result.explanation }}</p>
@@ -35,11 +35,5 @@
   p {
     height: 100%;
     width: 80%;
-  }
-
-  @media (min-width: 768px) and (max-width: 500px) {
-  }
-
-  @media (min-width: 500px) and (max-width: 375px) {
   }
 </style>
