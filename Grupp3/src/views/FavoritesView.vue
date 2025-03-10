@@ -19,7 +19,10 @@
     methods: {
       confirmToRemove(id) {
         //function to remove planets from favorites
-        this.favorite.splice(id, 1)
+        //Filter out planets that are removed
+        this.favorite = this.favorite.filter((planet) => {
+          return planet.id !== id
+        })
         //Update localstorage when removing planet
         localStorage.setItem('favPlanet', JSON.stringify(this.favorite))
         //Check if no planet is added to favorites to render other message
@@ -64,7 +67,11 @@
   <div v-if="favoritePlanets" class="main">
     <h1>Your favorite planets</h1>
     <div class="favorites-container">
-      <div v-for="(favorites, id) in favorite" class="favorite-card" :key="id">
+      <div
+        v-for="favorites in favorite"
+        class="favorite-card"
+        :key="favorites.id"
+      >
         <i
           class="fa-solid fa-heart heart-icon"
           @click="removeFromFav(favorites.id)"
@@ -78,7 +85,10 @@
           <p class="remove-overlay-text">
             Are you sure you want to remove the planet?
           </p>
-          <button @click="confirmToRemove()" class="confirm-remove-btn">
+          <button
+            @click="confirmToRemove(favorites.id)"
+            class="confirm-remove-btn"
+          >
             Yes
           </button>
           <button @click="cancelRemove" class="cancel-remove-btn">No</button>

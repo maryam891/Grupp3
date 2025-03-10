@@ -32,8 +32,8 @@
 
     computed: {
       ...mapStores(useFavoriteStore),
-      favoriteText(){
-        return this.isFavorite ? "Added to favorites" : "Add to favorites"
+      favoriteText() {
+        return this.isFavorite ? 'Added to favorites' : 'Add to favorites'
       }
     },
 
@@ -50,14 +50,17 @@
         this.modalVisible = true
         this.modalText = planet.info
         this.modalHeader = planet.name
-        /*planets = this.favoriteStore.planetList.find((planet) => {
-          return planet.id === this.addedPlanet.id
+        const planets = this.favoriteStore.planetList.find((planet) => {
+          return planet.id === this.clickedPlanet.id
         })
-        if (planet === true) {
+        if (planets) {
+          alert('hello')
           this.heartColor = true
-      } else {
+          this.isFavorite = true
+        } else {
           this.heartColor = false
-      }*/
+          this.isFavorite = false
+        }
       },
       closeModal() {
         this.modalVisible = false
@@ -85,7 +88,7 @@
           this.addedPlanet = false
           this.iconOverlay = true
         }
-      },
+      }
     }
   }
 </script>
@@ -117,13 +120,13 @@
       </div>
 
       <!--Planets in their actual Size-->
-    <!-- <div class="size-main">
+      <!-- <div class="size-main">
       <div class="size-header">
         <h1>The planets in size order</h1>
       </div>
       <div class="planet-size"> -->
-        <!--Rendering the pictures from the array in created-->
-        <!-- <div class="planets">
+      <!--Rendering the pictures from the array in created-->
+      <!-- <div class="planets">
           <div class="planet-card" v-for="planet in planets" :key="planet.id">
             <img
               :src="planet.src"
@@ -147,16 +150,16 @@
       <div class="modal-inner">
         <header class="modal-header">
           <!--Add planet to favorites icon-->
-        <div>
-          <i
-            class="fa-solid fa-heart"
-            :class="{
-              pink: heartColor,
-            }"
-            @click="addToFav(clickedPlanet), heartColor = !heartColor"
-          />
-          <p class="heart-text">{{ favoriteText }}</p>
-        </div>
+          <div>
+            <i
+              class="fa-solid fa-heart"
+              :class="{
+                pink: heartColor
+              }"
+              @click="addToFav(clickedPlanet), (heartColor = !heartColor)"
+            />
+            <p class="heart-text">{{ favoriteText }}</p>
+          </div>
 
           <!--show icon overlay-->
           <div v-if="iconOverlay" class="icon-overlay">
@@ -381,13 +384,12 @@
     font-size: 11px;
   }
 
-  @media screen and (min-width: 375px) and (max-width: 572px){
+  @media screen and (min-width: 375px) and (max-width: 572px) {
+    .planets p {
+      font-size: 12px;
+    }
 
-      .planets p{
-        font-size: 12px;
-      }
-
-      .mercury-img {
+    .mercury-img {
       width: 9vw;
       height: 5vw;
       cursor: pointer;
@@ -442,8 +444,8 @@
     }
   }
 
-  @media screen and (min-width: 572.1px) and (max-width: 768px){
-      .mercury-img {
+  @media screen and (min-width: 572.1px) and (max-width: 768px) {
+    .mercury-img {
       width: 15vw;
       height: 8vw;
       cursor: pointer;
@@ -498,60 +500,59 @@
     }
   }
 
-  @media screen and (min-width: 768.1px) and (max-width: 980px){
+  @media screen and (min-width: 768.1px) and (max-width: 980px) {
     .mercury-img {
-    width: 18vw;
-    height: 10vw;
-    cursor: pointer;
-  }
+      width: 18vw;
+      height: 10vw;
+      cursor: pointer;
+    }
 
-  .venus-img {
-    width: 25vw;
-    height: 15vw;
-    cursor: pointer;
-  }
+    .venus-img {
+      width: 25vw;
+      height: 15vw;
+      cursor: pointer;
+    }
 
-  .earth-img {
-    width: 35vw;
-    height: 23vw;
-    cursor: pointer;
-  }
+    .earth-img {
+      width: 35vw;
+      height: 23vw;
+      cursor: pointer;
+    }
 
-  .mars-img {
-    width: 22vw;
-    height: 14vw;
-    cursor: pointer;
-  }
+    .mars-img {
+      width: 22vw;
+      height: 14vw;
+      cursor: pointer;
+    }
 
-  .jupiter-img {
-    width: 50vw;
-    height: 35vw;
-    cursor: pointer;
-  }
+    .jupiter-img {
+      width: 50vw;
+      height: 35vw;
+      cursor: pointer;
+    }
 
-  .saturn-img {
-    width: 75vw;
-    height: 35vw;
-    cursor: pointer;
-  }
+    .saturn-img {
+      width: 75vw;
+      height: 35vw;
+      cursor: pointer;
+    }
 
-  .uranus-img {
-    width: 35vw;
-    height: 22vw;
-    cursor: pointer;
-  }
+    .uranus-img {
+      width: 35vw;
+      height: 22vw;
+      cursor: pointer;
+    }
 
-  .neptune-img {
-    width: 35vw;
-    height: 23vw;
-    cursor: pointer;
-  }
+    .neptune-img {
+      width: 35vw;
+      height: 23vw;
+      cursor: pointer;
+    }
 
-  .pluto-img {
-    width: 15vw;
-    height: 9vw;
-    cursor: pointer;
+    .pluto-img {
+      width: 15vw;
+      height: 9vw;
+      cursor: pointer;
+    }
   }
-  }
-
 </style>
