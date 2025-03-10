@@ -363,4 +363,23 @@
       left: 4%;
     }
   }
+
+  @media screen and (min-width: 572.1px) and (max-width: 768px) {
+  }
+  @media screen and (min-width: 768.1px) and (max-width: 980px) {
+    .page {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (min-width: 980.1px) {
+    .page {
+      display: flex;
+      height: 100%;
+      width: 100%;
+    }
+  }
 </style>

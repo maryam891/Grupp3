@@ -4,7 +4,7 @@
   export default {
     created() {
       //Get added planets
-      this.favorite = JSON.parse(localStorage.getItem('favPlanet'))
+      this.favorite = JSON.parse(localStorage.getItem('favPlanet')) || []
       //If a planet is added show Your favorite planets
       if (this.favorite.length > 0) {
         this.favoritePlanets = true
