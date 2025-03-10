@@ -3,7 +3,7 @@
   import { useFavoriteStore } from '../stores/favoriteStore'
   export default {
     created() {
-      //Get added planets
+      //Get added planets or empty array
       this.favorite = JSON.parse(localStorage.getItem('favPlanet')) || []
       //If a planet is added show Your favorite planets
       if (this.favorite.length > 0) {

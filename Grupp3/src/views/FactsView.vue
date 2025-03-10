@@ -1,10 +1,11 @@
 <script>
   import { mapStores } from 'pinia'
   import { useFavoriteStore } from '../stores/favoriteStore'
-  import Nasa from '../components/Nasa.vue'
+  import Nasa from '../components/NasaInfo.vue'
+  import NasaInfo from '../components/NasaInfo.vue'
   export default {
     components: {
-      Nasa: Nasa
+      NasaInfo: NasaInfo
     },
     created() {
       fetch('/infodb.json')
@@ -36,10 +37,6 @@
       favoriteText() {
         return this.isFavorite ? 'Added to favorites' : 'Add to favorites'
       }
-      // checkFavorite() {
-      //   return this.planets ? ':disabled = '
-
-      // }
     },
 
     methods: {
@@ -125,7 +122,7 @@
       <p id="source">science.nasa.gov (Source)</p>
       <hr />
       <h2>Picture of the day and some facts</h2>
-      <Nasa />
+      <NasaInfo />
     </div>
 
     <!--modal code-->
