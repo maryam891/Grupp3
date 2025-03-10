@@ -1,9 +1,8 @@
 <script>
- export default {
+  export default {
     data() {
       return {
-        earthImg: '/assets/image/earth-transparent.png',
-        starImg: '/assets/image/star.svg'
+        earthImg: '/assets/image/earth-transparent.png'
       }
     }
   }
@@ -28,16 +27,25 @@
     </div>
     <div class="textContainer">
       <div class="highlights">
-        <img :src="starImg" class="star-img" />
+        <i class="fa-solid fa-chalkboard-user" style="color: #e3cafb" />
         <p>Gamified learning</p>
+        <p class="USP-text">
+          Who said learning had to be boring? Level up your knowledge.
+        </p>
       </div>
       <div class="highlights">
-        <img :src="starImg" class="star-img" />
-        <p>Daily challenges</p>
+        <i class="fa-solid fa-earth-americas" style="color: #e3cafb" />
+        <p>Fun space facts</p>
+        <p class="USP-text">
+          Impress your friends with trivia only true space lovers know!
+        </p>
       </div>
       <div class="highlights">
-        <img :src="starImg" class="star-img" />
+        <i class="fa-regular fa-clock" style="color: #e3cafb" />
         <p>Bite-sized, anytime learning</p>
+        <p class="USP-text">
+          Learning on the go? Test your space knowledge anytime, anywhere!
+        </p>
       </div>
     </div>
   </main>
@@ -54,17 +62,17 @@
     padding: 3em;
   }
 
-.startpage-background-planet {
-  position: absolute;
-  top: 6vh;
-  left: 60vw;
-}
+  .startpage-background-planet {
+    position: absolute;
+    top: 6vh;
+    left: 60vw;
+  }
 
-.highlights{
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 2em;
-}
+  .highlights {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2em;
+  }
 
   .earth-img {
     height: 70vh;
@@ -72,7 +80,12 @@
 
   p {
     margin-top: 2vh;
-    margin-bottom: 2vh;
+  }
+
+  .USP-text {
+    margin-left: 25%;
+    font-size: 14px;
+    max-width: 50%;
   }
 
   .startpage-btn-part {
@@ -83,119 +96,100 @@
     margin-left: 4vw;
   }
 
-.textContainer {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100vw;
-  /* flex-direction: row; */
-  justify-content: space-around;
-  /* position: relative; */
-  margin-top: 10%;
-  /* left: 25%; */
-}
-
-.star-img {
-  width: 4vw;
-  margin-left: 35%;
-  /* position: relative;*/
-}
-
-@media screen and (min-width: 375px) and (max-width: 572px){
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-  }
-
-  .startpage-btn-part {
-    display: flex;
-  }
-
-  .secondary-btn {
-    margin-left: 2em;
-  }
-
   .textContainer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: left;
-    left: 0;
-    width: 100%;
-    padding-top: 4em;
+    display: flex;
+    text-align: center;
+    width: 100vw;
+    justify-content: space-around;
+    margin-top: 10%;
   }
 
-  .startpage-intro-container {
-    padding: 1em;
+  .fa-solid,
+  .fa-regular {
+    font-size: 200%;
   }
 
-  .star-img {
-    left: 0;
-    width: 3em;
+  @media screen and (min-width: 375px) and (max-width: 572px) {
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      justify-content: left;
+    }
+
+    .startpage-btn-part {
+      display: flex;
+    }
+
+    .secondary-btn {
+      margin-left: 2em;
+    }
+
+    .textContainer {
+      flex-direction: column;
+      align-items: center;
+      justify-content: left;
+      left: 0;
+      width: 100%;
+      padding-top: 4em;
+    }
+
+    .startpage-intro-container {
+      padding: 1em;
+    }
+
+    .earth-img {
+      display: none;
+    }
   }
 
-  .earth-img {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 572.1px) and (max-width: 768px){
-    .earth-img{
+  @media screen and (min-width: 572.1px) and (max-width: 768px) {
+    .earth-img {
       height: 15em;
       padding-right: 5em;
     }
 
     .startpage-intro-container {
-    margin-top: 0;
+      margin-top: 0;
+    }
+  }
+
+  @media screen and (min-width: 768.1px) and (max-width: 980px) {
+    .earth-img {
+      height: 20em;
+      padding-right: 2em;
     }
 
-    .star-img {
-    left: 0;
-    width: 4em;
-  }
-}
+    .startpage-intro-container {
+      margin-top: 0;
+    }
 
-@media screen and (min-width: 768.1px) and (max-width: 980px){
-  .earth-img {
-    height: 20em;
-    padding-right: 2em;
-  }
+    .textContainer {
+      /* left: 15%; */
+      padding-top: 4em;
+    }
 
-  .startpage-intro-container {
-  margin-top: 0;
-  }
-
-.textContainer {
-  /* left: 15%; */
-  padding-top: 4em;
-}
-
-.highlights {
-  padding-bottom: 2em;
-  padding-left: 2em;
-}
-
-.star-img {
-    left: 0;
-    width: 4em;
-  }
-}
-
-@media screen and (min-width: 980.1px) {
-  .textContainer {
-    padding-top: 7em;
-    width: 80%;
-    left: 0;
-    /* padding-left: 15%; */
+    .highlights {
+      padding-bottom: 2em;
+      padding-left: 2em;
+    }
   }
 
-  .earth-img {
-    height: 30em;
-    padding-right: 2em;
-  }
+  @media screen and (min-width: 980.1px) {
+    .textContainer {
+      padding-top: 7em;
+      width: 80%;
+      left: 0;
+      /* padding-left: 15%; */
+    }
 
-  .highlights {
-    padding-left: 6em;
+    .earth-img {
+      height: 30em;
+      padding-right: 2em;
+    }
+
+    .highlights {
+      padding-left: 6em;
+    }
   }
-}
 </style>
