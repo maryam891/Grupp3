@@ -61,11 +61,9 @@
         if (planets) {
           this.heartColor = true
           this.isFavorite = true
-          //this.isDisabled = true
         } else {
           this.heartColor = false
           this.isFavorite = false
-          // this.isDisabled = false
         }
       },
       closeModal() {
@@ -78,7 +76,6 @@
       closedOverlay() {
         this.iconOverlay = false
         this.heartColor = false
-        // this.isFavorite = false
       },
       addToFav(planets) {
         console.log('das')
@@ -178,11 +175,6 @@
 </template>
 
 <style scoped>
-  /* .disabled {
-    pointer-events: none;
-    cursor: not-allowed;
-  } */
-
   .hovered {
     scale: 1.1;
   }
@@ -291,15 +283,6 @@
     transition: all 0.2s ease-in-out;
     font-size: 11px;
   }
-
-  /* .gray {
-    color: rgb(120, 118, 118);
-    position: relative;
-    left: 94%;
-    top: 10%;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  } */
 
   .fa-heart:hover {
     transform: scale(1.2);
