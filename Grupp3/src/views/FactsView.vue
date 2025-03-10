@@ -26,7 +26,8 @@
         planetExist: false,
         planetExists: false,
         heartColor: false,
-        isFavorite: false
+        isFavorite: false,
+        isDisabled: false
       }
     },
 
@@ -34,7 +35,11 @@
       ...mapStores(useFavoriteStore),
       favoriteText() {
         return this.isFavorite ? 'Added to favorites' : 'Add to favorites'
-      }
+      },
+      // checkFavorite() {
+      //   return this.planets ? ':disabled = '
+
+      // }
     },
 
     methods: {
@@ -54,12 +59,13 @@
           return planet.id === this.clickedPlanet.id
         })
         if (planets) {
-          alert('hello')
           this.heartColor = true
           this.isFavorite = true
+          //this.isDisabled = true
         } else {
           this.heartColor = false
           this.isFavorite = false
+          // this.isDisabled = false
         }
       },
       closeModal() {
@@ -119,26 +125,6 @@
         </div>
       </div>
 
-      <!--Planets in their actual Size-->
-      <!-- <div class="size-main">
-      <div class="size-header">
-        <h1>The planets in size order</h1>
-      </div>
-      <div class="planet-size"> -->
-      <!--Rendering the pictures from the array in created-->
-      <!-- <div class="planets">
-          <div class="planet-card" v-for="planet in planets" :key="planet.id">
-            <img
-              :src="planet.src"
-              :alt="planet.name"
-              :class="planet.class"
-            />
-            <p>{{ planet.name }}</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
       <p id="source">science.nasa.gov (Source)</p>
       <hr />
       <h2>Picture of the day and some facts</h2>
@@ -157,6 +143,7 @@
                 pink: heartColor
               }"
               @click="addToFav(clickedPlanet), (heartColor = !heartColor)"
+              :style="{pointerEvents: heartColor ? 'none' : 'auto', }"
             />
             <p class="heart-text">{{ favoriteText }}</p>
           </div>
@@ -191,6 +178,11 @@
 </template>
 
 <style scoped>
+  /* .disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+  } */
+
   .hovered {
     scale: 1.1;
   }
