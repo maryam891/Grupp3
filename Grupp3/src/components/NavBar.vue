@@ -52,10 +52,13 @@ export default {
           >
         </li>
         <li>
-          <router-link to="/facts" class="nav-link">Facts</router-link>
+          <router-link to="/facts" class="nav-link">Planets</router-link>
         </li>
         <li>
           <router-link to="/favorites" class="nav-link">Favorites</router-link>
+        </li>
+        <li>
+          <router-link to="/mypages" class="nav-link">My Pages</router-link>
         </li>
       </ul>
       <!--Hamburgericon or xmark icon-->
@@ -75,10 +78,13 @@ export default {
             >
           </li>
           <li>
-            <router-link to="/facts" class="nav-link">Facts</router-link>
+            <router-link to="/facts" class="nav-link">Planets</router-link>
           </li>
           <li>
             <router-link to="/Favorites" class="nav-link">Favorites</router-link>
+          </li>
+          <li>
+          <router-link to="/mypages" class="nav-link">My Pages</router-link>
           </li>
         </ul>
       </transition>
