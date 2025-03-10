@@ -214,7 +214,10 @@
         <h2>{{ questions[currentQuestionIndex]?.text }}</h2>
         <!-- optional chaining -->
         <!-- Answer options for the current question -->
-        <div class="answers" :class="{ disabled: isDisabledAnswerArea }">
+        <div
+          class="answers"
+          :class="{ disabled: isDisabledAnswerArea || showMessage }"
+        >
           <button
             v-for="answer in questions[currentQuestionIndex]?.answers"
             :key="answer.text"

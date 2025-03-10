@@ -24,7 +24,11 @@
 <template>
   <main>
     <!-- <h1>Result</h1> -->
-    <div v-for="(round, index) in quizResults" :key="index">
+    <div
+      class="result-container"
+      v-for="(round, index) in quizResults"
+      :key="index"
+    >
       <div class="results">
         <h3 @click="showResult(index)">Round {{ index + 1 }}</h3>
         <div v-if="(round.countCorrect / round.totalQuestions) * 100 >= 80">
@@ -36,11 +40,22 @@
           <i class="fa-solid fa-trophy"></i>
         </div>
         <div v-else><i class="fa-solid fa-award"></i></div>
+        <div class="percent">
+          <div
+            :style="{
+              width: `${(round.countCorrect / round.totalQuestions) * 100}%`,
+              backgroundColor: 'green',
+              height: 'auto',
+              borderRadius: '15px'
+            }"
+          ></div>
+        </div>
+        <div>{{ (round.countCorrect / round.totalQuestions) * 100 }}%</div>
       </div>
       <div class="round-container" v-if="selectedRound === index">
         <table>
           <caption>
-            Right answer
+            Correct answers
           </caption>
           <thead>
             <tr>
@@ -70,7 +85,7 @@
 
         <table>
           <caption>
-            Wrong answer
+            Wrong answers
           </caption>
           <thead>
             <tr>
@@ -121,7 +136,16 @@
   .results {
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 15px;
+  }
+  .percent {
+    display: flex;
+    flex-grow: 1;
+    background-color: none;
+    border: 1px solid #333;
+    border-radius: 15px;
+    height: 1.25rem;
+    margin: 0 10px;
   }
   h3 {
     padding-right: 1rem;
@@ -142,6 +166,7 @@
   td {
     padding-top: 10px;
     padding-right: 10px;
-    align-content: start;
+    vertical-align: top;
+    text-align: left;
   }
 </style>
