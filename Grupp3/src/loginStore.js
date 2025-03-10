@@ -18,9 +18,8 @@ export const useLoginStore = defineStore('login', {
       }
     },
     //removing info from localstorage and making loggedin status false
-    logout() {
-      this.username = ''
-      this.password = ''
+    logout(username, password) {
+      username = ''
       this.loggedIn = false
       localStorage.removeItem('loggedIn')
       localStorage.removeItem('username')

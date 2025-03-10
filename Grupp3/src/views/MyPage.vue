@@ -15,8 +15,7 @@
         message: '',
         modalText: '',
         showModal: false,
-        modalClick: '',
-        username: this.username
+        modalClick: ''
       }
     },
     computed: {
@@ -80,9 +79,7 @@
             <i class="fa-solid fa-circle-user" style="color: #40027d" />
             <div class="user-info">
               <p>Username: {{ username }}</p>
-              <p>Password: *********</p>
             </div>
-            <i class="fa-solid fa-gears" style="color: #40027d" />
           </div>
           <!-- Form to sign up to Newsletter -->
           <form @submit="onSubmitNewsletter">
@@ -232,13 +229,6 @@
     font-size: 80px;
   }
 
-  .fa-gears {
-    position: relative;
-    left: 22%;
-    font-size: 30px;
-    cursor: pointer;
-  }
-
   .user-info {
     display: flex;
     flex-direction: column;
@@ -311,27 +301,66 @@
   }
 
   @media screen and (min-width: 375px) and (max-width: 768px) {
+    /*navigation and main content*/
+    .my-page-container {
+      width: 90vw;
+      left: 5%;
+    }
 
+    .my-page-navbar {
+      display: flex;
+      left: 20%;
+    }
+
+    .content-container {
+      border-radius: 43.02px;
+      border: 10px solid #e3cafb;
+      width: 90%;
+      height: 82%;
+    }
+
+    /*user info and settings*/
+    .user-container {
+      width: 80%;
+      padding: 10%;
+      margin-left: 10%;
+    }
+
+    .fa-circle-user {
+      position: relative;
+      right: 2%;
+      font-size: 400%;
+    }
+
+    .user-info {
+      left: 2%;
+      text-align: left;
+      margin-top: 1em;
+    }
+
+    /*sig up to newsletter part*/
+    .email-field {
+      border-radius: 20px;
+    }
+
+    form {
+      margin: 2em 1.4em 0 0;
+    }
+
+    .submit-btn {
+      margin-top: 1em;
+    }
   }
 
-  @media screen and (min-width: 768.1px) and (max-width: 980px) {
-
+  @media screen and (min-width: 375px) and (max-width: 572px) {
+    .mp-navbar-tab {
+      border-radius: 25px 25px 0 0;
+      width: 100%;
+    }
+    /* modal confirm choice */
+    .modal-overlay {
+      top: 0;
+      left: 4%;
+    }
   }
-
-  @media screen and (min-width: 375px) and (max-width: 572px){
-    
-  }
-
-@media screen and (min-width: 572.1px) and (max-width: 768px){
-
-}
-
-@media screen and (min-width: 768.1px) and (max-width: 980px){
-
-}
-
-@media screen and (min-width: 980.1px) {
-
-}
-
 </style>

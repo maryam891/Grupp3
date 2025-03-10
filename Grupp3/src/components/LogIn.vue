@@ -1,6 +1,7 @@
 <script>
   import { mapActions, mapState } from 'pinia'
   import { useLoginStore } from '../loginStore'
+
   export default {
     data() {
       return {
@@ -14,6 +15,11 @@
       //sending input to & using login from store, saving username to be able to reuse it in profile
       manageLogin() {
         this.login(this.username, this.password)
+      },
+      manageLogout() {
+        this.logout()
+        this.username = ''
+        this.password = ''
       }
     },
     computed: {
@@ -27,7 +33,7 @@
   <div class="login-container">
     <!-- Check if logged in to show login field-->
     <div class="login-content" v-if="!loggedIn">
-      <p>Log in to view your progress </p>
+      <p>Log in to view your progress</p>
       <input
         type="text"
         placeholder="Username"
@@ -47,7 +53,7 @@
     </div>
     <!--Check if logged in, hide login field and view logout-btn-->
     <div class="logout-container" v-else>
-      <button @click="logout" class="logout-btn">Log out</button>
+      <button @click="manageLogout" class="logout-btn">Log out</button>
     </div>
   </div>
 </template>
@@ -93,7 +99,7 @@
     background-color: #e3cafb;
     color: #40027d;
     font-weight: 400;
-    width: 60px
+    width: 60px;
   }
 
   .login-btn {
@@ -104,6 +110,7 @@
 
   .logout-btn {
     margin-left: 90%;
+    margin-bottom: 3%;
   }
 
   .input-field {
@@ -112,19 +119,28 @@
     margin-bottom: 1em;
   }
 
-
   @media screen and (min-width: 374.9px) and (max-width: 768px) {
     .login-content {
-    width: 50%;
-    left: 30%;
+      width: 50%;
+      left: 30%;
     }
   }
 
-  @media screen and (min-width: 375px) and (max-width: 572px){
+  @media screen and (min-width: 572.1px) and (max-width: 768px) {
+      .logout-btn {
+        margin-left: 85%;
+      }
+    }
+
+  @media screen and (min-width: 375px) and (max-width: 572px) {
     .input-field {
-    max-width: 70%;
-    cursor: text;
-    margin-bottom: 1em;
+      max-width: 70%;
+      cursor: text;
+      margin-bottom: 1em;
+    }
+
+    .logout-btn {
+      margin-left: 80%;
     }
   }
 </style>
