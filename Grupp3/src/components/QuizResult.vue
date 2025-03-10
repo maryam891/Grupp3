@@ -1,71 +1,147 @@
 <script>
-  import { useResultStore } from "../stores/resultStore"
+  import { useResultStore } from '../stores/resultStore'
 
   export default {
-    data(){
-      return{
+    data() {
+      return {
         resultStore: useResultStore(),
-        selectedRound: null,
-
+        selectedRound: null
       }
     },
     computed: {
-      quizResults(){
+      quizResults() {
         return this.resultStore.quizResults
       }
     },
-    methods:{
-      showResult(index){
-          this.selectedRound = this.selectedRound === index? null : index
+    methods: {
+      showResult(index) {
+        this.selectedRound = this.selectedRound === index ? null : index
       }
-    },
+    }
   }
 </script>
 
 <template>
   <main>
-    <h1>
-      Result
-    </h1>
-
-    <div class="results" v-for="(round, index) in quizResults" :key="index">
-        <h2 @click="showResult (index)">Round {{ index + 1 }}</h2>
-        <div v-if="((round.countCorrect / round.totalQuestions) * 100 >= 80)"><i class="fa-solid fa-crown"></i></div>
-        <div v-else-if="((round.countCorrect / round.totalQuestions) * 100 >= 60)"><i class="fa-solid fa-trophy"></i></div>
+    <!-- <h1>Result</h1> -->
+    <div v-for="(round, index) in quizResults" :key="index">
+      <div class="results">
+        <h3 @click="showResult(index)">Round {{ index + 1 }}</h3>
+        <div v-if="(round.countCorrect / round.totalQuestions) * 100 >= 80">
+          <i class="fa-solid fa-crown"></i>
+        </div>
+        <div
+          v-else-if="(round.countCorrect / round.totalQuestions) * 100 >= 60"
+        >
+          <i class="fa-solid fa-trophy"></i>
+        </div>
         <div v-else><i class="fa-solid fa-award"></i></div>
+      </div>
+      <div class="round-container" v-if="selectedRound === index">
+        <table>
+          <caption>
+            Right answer
+          </caption>
+          <thead>
+            <tr>
+              <th>Questions</th>
+              <th>Selected Answers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(result, qIndex) in round.feedback.filter(
+                (q) => q.isCorrect
+              )"
+              :key="qIndex"
+            >
+              <td>
+                {{ result.question }}
+              </td>
+              <td>
+                {{ result.selectedAnswer }}
+              </td>
+              <td>
+                <i class="fa-solid fa-check" style="color: #1fcf07"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-
-
-      <ul v-show="selectedRound === index">
-        <h1>Right answer</h1>
-        <li v-for="(result, qIndex) in round.feedback.filter((q) => q.isCorrect)" :key="qIndex">
-          <p> <strong> Question:</strong> {{ result.question }} </p>
-          <p><strong> Selected answer:</strong> {{ result.selectedAnswer }} </p>
-          <i class="fa-solid fa-check"></i>
-        </li>
-        <h1>Wrong answer</h1>
-        <li v-for="(result, qIndex) in round.feedback.filter((q) => q.isCorrect === false)" :key="qIndex">
-          <p><strong> Question:</strong> {{ result.question }} </p>
-          <p><strong> Selected answer:</strong> {{ result.selectedAnswer }} </p>
-          <i class="fa-solid fa-xmark" style="color: #f20713;"></i>
-        </li>
-      </ul>
-
+        <table>
+          <caption>
+            Wrong answer
+          </caption>
+          <thead>
+            <tr>
+              <th>Questions</th>
+              <th>Selected Answers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(result, qIndex) in round.feedback.filter(
+                (q) => q.isCorrect === false
+              )"
+              :key="qIndex"
+            >
+              <td>
+                {{ result.question }}
+              </td>
+              <td>
+                {{ result.selectedAnswer }}
+              </td>
+              <td>
+                <i class="fa-solid fa-xmark" style="color: #f20713"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <!-- <div class="wrong-answers" v-for="(round, index) in quizResults" :key="index">
-      <h1>Wrong</h1>
-      <h2 @click="showResult (index)">Round {{ index + 1 }}</h2>
-      <ul>
-        <li v-for="(result, qIndex) in round.filter((q) => q.isCorrect === false)" :key="qIndex">
-          <p><strong> Question:</strong> {{ result.question }} </p>
-          <p><strong> Selected answer:</strong> {{ result.selectedAnswer }} </p>
-          <p> {{ result.isCorrect }} </p>
-        </li>
-      </ul>
-    </div> -->
   </main>
 </template>
 
-<style>
-
+<style scope>
+  @media (min-width: 980px) {
+    .round-container {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  }
+  .round-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  .results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  h3 {
+    padding-right: 1rem;
+  }
+  caption {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  th {
+    padding-top: 10px;
+  }
+  td:first-child::before {
+    content: '* ';
+    color: #333;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  td {
+    padding-top: 10px;
+    padding-right: 10px;
+    align-content: start;
+  }
 </style>
