@@ -60,23 +60,22 @@
           <thead>
             <tr>
               <th>Questions</th>
-              <th>Selected Answers</th>
+              <th class="table-head">Selected Answers</th>
             </tr>
           </thead>
           <tbody>
             <tr
+              class="block"
               v-for="(result, qIndex) in round.feedback.filter(
                 (q) => q.isCorrect
               )"
               :key="qIndex"
             >
-              <td>
+              <td class="table-cell block">
                 {{ result.question }}
               </td>
-              <td>
+              <td class="table-cell block">
                 {{ result.selectedAnswer }}
-              </td>
-              <td>
                 <i class="fa-solid fa-check" style="color: #1fcf07"></i>
               </td>
             </tr>
@@ -90,23 +89,22 @@
           <thead>
             <tr>
               <th>Questions</th>
-              <th>Selected Answers</th>
+              <th class="table-head">Selected Answers</th>
             </tr>
           </thead>
           <tbody>
             <tr
+              class="block"
               v-for="(result, qIndex) in round.feedback.filter(
                 (q) => q.isCorrect === false
               )"
               :key="qIndex"
             >
-              <td>
+              <td class="table-cell block">
                 {{ result.question }}
               </td>
-              <td>
+              <td class="table-cell block">
                 {{ result.selectedAnswer }}
-              </td>
-              <td>
                 <i class="fa-solid fa-xmark" style="color: #f20713"></i>
               </td>
             </tr>
@@ -118,16 +116,9 @@
 </template>
 
 <style scope>
-  @media (min-width: 980px) {
-    .round-container {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-  }
   .round-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     text-align: left;
     align-items: flex-start;
     padding: 1rem;
@@ -168,5 +159,34 @@
     padding-right: 10px;
     vertical-align: top;
     text-align: left;
+  }
+  @media (min-width: 375px) and (max-width: 572px) {
+    table {
+      width: 100%;
+      text-align: left;
+    }
+    .table-cell {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .block {
+      display: block;
+    }
+    td {
+      padding: 0.5rem 0;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .table-head {
+      display: none;
+    }
+  }
+
+  @media (min-width: 980px) {
+    .round-container {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
   }
 </style>
