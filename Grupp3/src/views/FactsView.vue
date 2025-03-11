@@ -72,7 +72,7 @@
 
       closedOverlay() {
         this.iconOverlay = false
-        this.heartColor = false
+        this.heartColor = true
       },
       addToFav(planets) {
         console.log('das')
@@ -130,7 +130,7 @@
       <div class="modal-inner">
         <header class="modal-header">
           <!--Add planet to favorites icon-->
-          <div>
+          <div class="icon-container">
             <i
               class="fa-solid fa-heart"
               :class="{
@@ -172,6 +172,14 @@
 </template>
 
 <style scoped>
+  /* .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    position: relative;
+  } */
+
   .hovered {
     scale: 1.1;
   }
@@ -286,7 +294,7 @@
   }
 
   .pink {
-    color: #fa2fc1;
+    color: #e3cafb;
   }
 
   .mercury-img {
