@@ -141,6 +141,10 @@
   h3 {
     padding-right: 1rem;
   }
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
   caption {
     font-size: 1.25rem;
     font-weight: 600;
