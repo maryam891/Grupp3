@@ -294,7 +294,7 @@
   }
 
   .pink {
-    color: #e3cafb;
+    color:#f429a9;
   }
 
   .mercury-img {
@@ -366,8 +366,22 @@
 
   @media screen and (min-width: 375px) and (max-width: 572px) {
 
+    .modal {
+    position: fixed;
+    top: 40%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0, 5);
+    max-width: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
     .heart-text {
-    left: 64%;
+    left: 55%;
   }
 
     .planets p {
@@ -432,7 +446,7 @@
   @media screen and (min-width: 572.1px) and (max-width: 768px) {
 
     .heart-text {
-    left: 64%;
+    left: 70%;
   }
     .mercury-img {
       width: 15vw;
