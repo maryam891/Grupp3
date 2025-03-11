@@ -365,6 +365,11 @@
   }
 
   @media screen and (min-width: 375px) and (max-width: 572px) {
+
+    .heart-text {
+    left: 64%;
+  }
+
     .planets p {
       font-size: 12px;
     }
@@ -425,6 +430,10 @@
   }
 
   @media screen and (min-width: 572.1px) and (max-width: 768px) {
+
+    .heart-text {
+    left: 64%;
+  }
     .mercury-img {
       width: 15vw;
       height: 8vw;
