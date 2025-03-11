@@ -158,9 +158,10 @@
   }
 
   .my-page-navbar {
-    position: absolute;
-    top: 1%;
-    left: 10%;
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    width: 80%;
   }
 
   .content-container {
@@ -178,6 +179,7 @@
   /*navigation bar/tabs my pages*/
   .mp-navbar-tab {
     border-radius: 36.06px 36.06px 0 0;
+
     font-weight: 550;
     cursor: pointer;
     height: 43.21px;
@@ -367,9 +369,8 @@
       margin-bottom: 1em;
     }
     .my-page-navbar {
-      left: 11%;
-      height: 30px;
-      width: 200px;
+      height: 30%;
+      width: 60%;
     }
     .newsletter-container {
       height: 100%;
@@ -452,7 +453,7 @@
       flex-direction: row;
     }
     .my-page-navbar {
-      left: 6%;
+      width: 60%;
     }
     /*user info and settings*/
     .user-container {
@@ -524,7 +525,7 @@
       font-size: 0.8em;
     }
     .my-page-navbar {
-      left: 11%;
+      width: 80%;
     }
     .submit-btn {
       border-radius: 32px;
@@ -556,6 +557,7 @@
     /*user info and settings*/
     .user-container {
       width: 63%;
+      height: 25%;
     }
 
     .fa-circle-user {

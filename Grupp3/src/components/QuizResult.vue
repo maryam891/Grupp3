@@ -32,14 +32,14 @@
       <div class="results">
         <h3 @click="showResult(index)">Round {{ index + 1 }}</h3>
         <div v-if="(round.countCorrect / round.totalQuestions) * 100 >= 80">
-          <i class="fa-solid fa-crown"></i>
+          <i class="fa-solid fa-crown" />
         </div>
         <div
           v-else-if="(round.countCorrect / round.totalQuestions) * 100 >= 60"
         >
-          <i class="fa-solid fa-trophy"></i>
+          <i class="fa-solid fa-trophy" />
         </div>
-        <div v-else><i class="fa-solid fa-award"></i></div>
+        <div v-else><i class="fa-solid fa-award" /></div>
         <div class="percent">
           <div
             :style="{
@@ -48,7 +48,7 @@
               height: 'auto',
               borderRadius: '15px'
             }"
-          ></div>
+          />
         </div>
         <div>{{ (round.countCorrect / round.totalQuestions) * 100 }}%</div>
       </div>
@@ -76,7 +76,7 @@
               </td>
               <td class="table-cell block">
                 {{ result.selectedAnswer }}
-                <i class="fa-solid fa-check" style="color: #1fcf07"></i>
+                <i class="fa-solid fa-check" style="color: #1fcf07" />
               </td>
             </tr>
           </tbody>
@@ -105,7 +105,7 @@
               </td>
               <td class="table-cell block">
                 {{ result.selectedAnswer }}
-                <i class="fa-solid fa-xmark" style="color: #f20713"></i>
+                <i class="fa-solid fa-xmark" style="color: #f20713" />
               </td>
             </tr>
           </tbody>
@@ -140,6 +140,7 @@
   }
   h3 {
     padding-right: 1rem;
+    cursor: pointer;
   }
   table {
     table-layout: fixed;
