@@ -219,7 +219,7 @@
     justify-content: center;
     border-radius: 43.02px;
     background-color: #e3cafb;
-    width: 60%;
+    width: 50%;
     padding: 4vw;
     margin-top: 2em;
     margin-left: 14vw;
@@ -319,11 +319,6 @@
       left: 5%;
     }
 
-    .my-page-navbar {
-      display: flex;
-      left: 20%;
-    }
-
     .content-container {
       border-radius: 43.02px;
       border: 10px solid #e3cafb;
@@ -370,10 +365,10 @@
     }
     .my-page-navbar {
       height: 30%;
-      width: 60%;
+      width: 70%;
     }
     .newsletter-container {
-      height: 100%;
+      height: 90%;
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -381,17 +376,19 @@
     }
     .newsletter-text {
       margin-top: 1em;
+      width: 70%;
+      height: 50%;
     }
     .newsletter-h3 {
       text-align: left;
     }
     /*user info and settings*/
     .user-container {
-      width: 63%;
+      width: 64%;
     }
 
     .fa-circle-user {
-      right: 18%;
+      right: 16%;
       font-size: 60px;
     }
 
@@ -427,11 +424,12 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      margin-left: 20px;
+      margin-left: 1em;
+      margin-top: 3em;
     }
     .newsletter-text {
       width: 90%;
-      height: 50%;
+      height: 70%;
       text-align: left;
     }
     .newsletter-container {
@@ -441,8 +439,8 @@
     }
     .unsubscribe-news {
       font-size: 0.9em;
-      width: 60%;
-      margin-left: 1em;
+      width: 50%;
+      margin-left: 1.4em;
     }
   }
 
@@ -453,7 +451,7 @@
       flex-direction: row;
     }
     .my-page-navbar {
-      width: 60%;
+      width: 90%;
     }
     /*user info and settings*/
     .user-container {

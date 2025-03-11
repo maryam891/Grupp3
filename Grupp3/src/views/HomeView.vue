@@ -12,7 +12,7 @@
   <main>
     <div class="startpage-intro-container">
       <h1>Learn about the planets</h1>
-      <p>One quiz at a time</p>
+      <p>One question at a time</p>
       <div class="startpage-btn-part">
         <router-link to="/quiz">
           <button class="primary-btn">Go to quiz</button>
