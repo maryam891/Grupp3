@@ -9,7 +9,7 @@
         }
       }
     },
-    //kommentera
+    //contact form, emptying field after submit
     methods: {
       submitContactForm(e) {
         alert('Message sent successfully!')
@@ -35,7 +35,7 @@
             Contact us and we'll get back to you as soon as possible.
           </p>
           <p class="p-obligatory">*Obligatory field</p>
-          <!--kommentera-->
+          <!--contactform with required fields-->
           <form @submit="submitContactForm">
             <div class="form-contact-info">
               <label for="name">Name:</label>
@@ -223,9 +223,7 @@
   }
 
   .btn-send {
-    /* cursor: pointer; */
     background-color: #e3cafb;
-    /* width: 10%; */
     border: none;
     padding: 5px 15px 5px 15px;
   }
@@ -245,7 +243,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* padding-left: 9em; */
     gap: 20px;
   }
 
@@ -303,4 +300,3 @@
   @media screen and (min-width: 980.1px) {
   }
 </style>
- 

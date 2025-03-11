@@ -165,7 +165,6 @@
     }
 
     .textContainer {
-      /* left: 15%; */
       padding-top: 4em;
     }
 
@@ -180,7 +179,6 @@
       padding-top: 7em;
       width: 80%;
       left: 0;
-      /* padding-left: 15%; */
     }
 
     .earth-img {

@@ -23,7 +23,6 @@
 
 <template>
   <main>
-    <!-- <h1>Result</h1> -->
     <div
       class="result-container"
       v-for="(round, index) in quizResults"

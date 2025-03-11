@@ -34,9 +34,6 @@ export default {
     this.checkScreen();
   }
 }
-// const handleResetQuizView = () => {
-//   window.dispatchEvent(new CustomEvent("resetView"));
-// };
 </script>
 
 <template>
@@ -115,17 +112,12 @@ export default {
 /*Hamburger icon*/
 .icon, .exit-icon {
   display: flex;
-  /* position: absolute; */
   top: 0;
   right: 24px;
   cursor: pointer;
   font-size: 24px;
-
- /*i {
-    cursor: pointer;
-    font-size: 24px;
-  }*/
 }
+
 /*Mobilenavigation styling*/
 .dropdown-nav {
   display: flex;

@@ -72,7 +72,6 @@
           selectedAnswer: answer.text,
           isCorrect: answer.is_correct
         }
-        console.log(this.feedback)
         if (answer.is_correct) {
           // if the user selects the answer correct
           this.correctAnswersCount++
@@ -120,7 +119,6 @@
         } else {
           // If it's the last question, mark the quiz as completed
           this.quizCompleted = true
-          console.log('completed quiz')
           // Call quizLog() to save the results to Pinia + localStorage
           this.quizLog()
         }
@@ -136,9 +134,7 @@
           countCorrect: this.correctAnswersCount,
           totalQuestions: this.questions.length
         }
-        console.log(dataFeedback)
         resultStore.saveResult(dataFeedback) // save to Pinia + localStorage
-        console.log('localStorage', localStorage.getItem('quizResults'))
       },
       quizCompletedMessages() {
         let scorePercentage =
@@ -195,11 +191,9 @@
             30 Questions
           </button>
         </div>
-        <!-- <div class="planet-images"> -->
         <img :src="mercuryImg" class="planet mercury-img" />
         <img :src="venusImg" class="planet venus-img" />
         <img :src="earthImg" class="planet earth-img" />
-        <!-- </div> -->
       </div>
       <!-- Display the quiz questions when the quiz starts -->
       <div v-if="showQuiz && !quizCompleted" class="quiz-questions">
@@ -258,7 +252,6 @@
           alt="congratulation"
           class="congrats-img"
         />
-        <!-- <h2>Quiz Completed!</h2> -->
         <h2>{{ quizCompletedMessages() }}</h2>
         <p>
           You answered {{ correctAnswersCount }} out of

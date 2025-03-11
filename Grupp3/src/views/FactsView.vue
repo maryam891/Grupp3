@@ -1,7 +1,6 @@
 <script>
   import { mapStores } from 'pinia'
   import { useFavoriteStore } from '../stores/favoriteStore'
-  import Nasa from '../components/NasaInfo.vue'
   import NasaInfo from '../components/NasaInfo.vue'
   export default {
     components: {
@@ -24,7 +23,6 @@
         iconOverlay: false,
         clicked: false,
         addedPlanet: false,
-        planetExist: false,
         planetExists: false,
         heartColor: false,
         isFavorite: false,
@@ -32,6 +30,7 @@
       }
     },
 
+    // isFavorite is for rendering the text under hearticon.
     computed: {
       ...mapStores(useFavoriteStore),
       favoriteText() {
@@ -39,6 +38,7 @@
       }
     },
 
+    // Hover for the planets
     methods: {
       mouseOver(event) {
         event.target.classList.add('hovered')
@@ -47,11 +47,13 @@
         event.target.classList.remove('hovered')
       },
 
+      //The pop up that shows when clicking on a planet
       showModal(planet) {
         this.clickedPlanet = planet
         this.modalVisible = true
         this.modalText = planet.info
         this.modalHeader = planet.name
+        //Check if planet already exists in localstorage to not add the same planet twice
         const planets = this.favoriteStore.planetList.find((planet) => {
           return planet.id === this.clickedPlanet.id
         })
@@ -63,6 +65,7 @@
           this.isFavorite = false
         }
       },
+
       closeModal() {
         this.modalVisible = false
         this.iconOverlay = false
@@ -70,20 +73,18 @@
         this.isFavorite = false
       },
 
+      //Close icon overlay
       closedOverlay() {
         this.iconOverlay = false
         this.heartColor = true
       },
       addToFav(planets) {
-        console.log('das')
         this.isFavorite = !this.isFavorite
         if (this.favoriteStore.addToFav(planets) === false) {
           this.planetExists = false
           this.addedPlanet = true
-          this.planetExist = false
           this.iconOverlay = true
         } else {
-          this.planetExist = true
           this.planetExists = true
           this.addedPlanet = false
           this.iconOverlay = true
@@ -129,7 +130,7 @@
     <div class="modal" v-show="modalVisible">
       <div class="modal-inner">
         <header class="modal-header">
-          <!--Add planet to favorites icon-->
+          <!--Add planet to favorites icon + check if heartcolor has changes, disable click event if it has changed. (It's changed because its already in favorites)-->
           <div class="icon-container">
             <i
               class="fa-solid fa-heart"
@@ -151,9 +152,6 @@
             <p class="overlay-text" v-if="addedPlanet">
               Planet added to favorites
             </p>
-            <p class="overlay-text" v-else>
-              Planet already exists in favorites
-            </p>
           </div>
           <h1>{{ modalHeader }}</h1>
         </header>
@@ -172,14 +170,6 @@
 </template>
 
 <style scoped>
-  /* .icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 5px;
-    position: relative;
-  } */
-
   .hovered {
     scale: 1.1;
   }
@@ -350,15 +340,6 @@
     height: 4vw;
     cursor: pointer;
   }
-
-  /* .size-header {
-    margin-top: 40px;
-  }
-
-  .planet-size {
-    margin-left: 60px;
-    margin-bottom: 40px;
-  } */
 
   #source {
     font-size: 11px;

@@ -15,7 +15,6 @@ export const useResultStore = defineStore('result', {
       // Update the `quizResults` state with the new feedback
       this.quizResults = existingResults
       localStorage.setItem('quizResults', JSON.stringify(this.quizResults))
-      console.log('localStorage', this.quizResults)
     }
   }
 })

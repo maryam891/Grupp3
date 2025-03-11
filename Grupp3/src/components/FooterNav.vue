@@ -41,10 +41,9 @@
                 </ul>
             </div>
             <div class="footer-column">
-                <!-- kommentera -->
+                <!-- Newletter part -->
                 <form @submit="onSubmitNewsletter">
                     <h3 class="footer-newsletter-h3">Sign up to our newsletter</h3>
-    <!--                 <p>Stay updated with our latest news and exclusive insights—subscribe to our newsletter! Enter your email below and join our community.</p> -->
                     <div class="newsletter-container">
                         <input type="email" v-model="message" @keyup.enter="onSubmitNewsletter" placeholder="Email address" class="email-field" required />
                         <input type="submit" value="Submit" class="btn-enter" />
