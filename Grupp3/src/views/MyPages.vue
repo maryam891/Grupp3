@@ -72,7 +72,6 @@
         </button>
       </div>
       <div class="content-container">
-        <!-- <RouterView /> -->
         <div class="page" v-show="currentPage === 'My Page'">
           <h2>My Page</h2>
           <!-- Box with user-info -->
