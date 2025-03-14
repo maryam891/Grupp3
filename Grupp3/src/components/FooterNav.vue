@@ -33,7 +33,7 @@
                     <router-link to="/quiz" class="nav-link">Quiz</router-link>
                     </li>
                     <li>
-                    <router-link to="/facts" class="nav-link">Facts</router-link>
+                    <router-link to="/facts" class="nav-link">Planets</router-link>
                     </li>
                     <li>
                     <router-link to="/Favorites" class="nav-link">Favorites</router-link>

@@ -79,8 +79,8 @@
       <div class="address-part">
         <h3>Address:</h3>
         <p>SPACE LEARNING & co</p>
-        <p>The street 1800</p>
-        <p>12111 New York</p>
+        <p>Ebbe Lieberathsgatan 18C</p>
+        <p>412 83 Göteborg</p>
       </div>
     </section>
 
